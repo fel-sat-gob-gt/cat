@@ -1,0 +1,146 @@
+{
+  "cabecera": {
+    "Nombre": "FEL-CATALOGO-FRASES",
+    "Ultima Actualizacion": "11/10/2018 08:00:00"
+  },
+  "contenido": {
+    "tiposFrases": [
+      {
+        "codigoTipoFrase": 1,
+        "nombre": "Frase de retención del ISR",
+        "descripcion": "Indica el régimen al que se encuentra inscrito el EMISOR para que el RECEPTOR sepa si debe efectuarle o no la respectiva retención. Estas frases deben venir atómicamente del Registro Tributario Unificado según la afiliación de ISR que tenga el Emisor.",
+        "frases": [
+          {
+            "codigoEscenario": 1,
+            "escenario": "Afiliado al ISR Régimen Sobre las Utilidades de Actividades Lucrativas.",
+            "retenerISR": false,
+            "textoAColocar": "Sujeto a pagos trimestrales ISR"
+          },
+          {
+            "codigoEscenario": 2,
+            "escenario": "Afiliado al ISR Régimen Opcional Simplificado Sobre Ingresos de Actividades Lucrativas (y NO cuenta con una Resolución de la SAT que le permitiría hacer el pago directo y le evitaría ser objeto de retención)",
+            "retenerISR": true,
+            "textoAColocar": "Sujeto a retención definitiva ISR"
+          },
+          {
+            "codigoEscenario": 3,
+            "escenario": "Afiliado al ISR Régimen Opcional Simplificado Sobre Ingresos de Actividades Lucrativas (y SÍ cuenta con una Resolución de la SAT que le permite hacer el pago directo y le evita ser objeto de retención)",
+            "retenerISR": false,
+            "textoAColocar": "Sujeto a pago directo ISR (número de resolución y fecha)"
+          },
+		  {
+            "codigoEscenario": 4,
+            "escenario": "Exento del ISR",
+            "retenerISR": false,
+            "textoAColocar": "Exento del ISR "
+          }
+        ]
+      },
+      {
+        "codigoTipoFrase": 2,
+        "nombre": "Frase de retención del IVA",
+        "descripcion": "Indica si el EMISOR es Agente de Retención del IVA. Si el RECEPTOR también lo es sabrá que no debe efectuar la respectiva retención. Esta frase debe venir atómicamente del Registro Tributario Unificado según la afiliación de IVA AGENTE DE RETENCIÓN que tenga el Emisor.",
+        "frases": [
+          {
+            "codigoEscenario": 1,
+            "escenario": "Es Agente de Retención del IVA",
+            "esAgenteRetenedor": true,
+            "textoAColocar": "Agente de Retención del IVA"
+          }
+        ]
+      },
+      {
+        "codigoTipoFrase": 3,
+        "nombre": "Frase de no genera derecho a crédito fiscal del IVA",
+        "descripcion": "Cuando el emisor se encuentre afiliado al régimen de pequeño contribuyente, para que el receptor sepa que la factura no genera derecho a crédito fiscal. Esta frase debe venir atómicamente del Registro Tributario Unificado según la afiliación del IVA que tenga el Emisor",
+        "frases": [
+          {
+            "codigoEscenario": 1,
+            "escenario": "Es pequeño contribuyente del IVA",
+            "esPequenoContribuyente": true,
+            "textoAColocar": "No genera derecho a crédito fiscal"
+          }
+        ]
+      },
+      {
+        "codigoTipoFrase": 4,
+        "nombre": "Frase de exento o no afecto al IVA",
+        "descripcion": "Existen facturas que por diferentes motivos: a) NO deben incluir IVA. b) Deben incluir la base legal por la cual no incluyen el IVA (art. 11 Reglamento de la Ley del IVA y art. 29 literal “a” Ley del IVA).",
+        "frases": [
+          {
+            "codigoEscenario": 1,
+            "escenario": "Exportaciones. Cuando el vendedor exporta bienes o servicios.",
+            "incluyeIVA": false,
+            "textoAColocar": "Exportaciones. Exenta del IVA (art. 7 núm. 2 Ley del IVA)"
+          },
+          {
+            "codigoEscenario": 2,
+            "escenario": "Servicios que presten las instituciones fiscalizadas por la Superintendencia de Bancos y las bolsas de valores autorizadas para operar en el país.",
+            "incluyeIVA": false,
+            "textoAColocar": "Servicios que presten las instituciones fiscalizadas por la SIB. Exenta del IVA (art. 7 núm. 4 Ley del IVA)"
+          },
+          {
+            "codigoEscenario": 3,
+            "escenario": "Ventas de cooperativas. Cuando una cooperativa le vende bienes o servicios a sus asociados, cooperativas, federaciones, centrales de servicios y confederaciones de cooperativas.",
+            "incluyeIVA": false,
+            "textoAColocar": "Ventas de cooperativas. Exenta del IVA (art. 7 núm. 5 Ley del IVA)"
+          },
+          {
+            "codigoEscenario": 4,
+            "escenario": "Aportes y donaciones a asociaciones, fundaciones e instituciones, educativas, culturales de asistencia o de servicio social y las religiosas no lucrativas.",
+            "incluyeIVA": false,
+            "textoAColocar": "Aportes y donaciones. Exenta del IVA (art.  7 núm. 9 Ley del IVA)"
+          },
+          {
+            "codigoEscenario": 5,
+            "escenario": "Pagos por el derecho de ser miembro y las cuotas periódicas a las asociaciones o instituciones sociales, gremiales, culturales, científicas, educativas y deportivas, así como a los colegios de profesionales y los partidos políticos.",
+            "incluyeIVA": false,
+            "textoAColocar": "Cuotas periódicas a asociaciones o instituciones sociales. Exenta del IVA (art. 7 núm. 10 Ley del IVA)"
+          },
+          {
+            "codigoEscenario": 6,
+            "escenario": "Servicios exentos que prestan las asociaciones, fundaciones e instituciones educativas, de asistencia o de servicio social y las religiosas, y otras",
+            "incluyeIVA": false,
+            "textoAColocar": "Servicios exentos. Exenta del IVA (art. 7 núm. 13 Ley del IVA)"
+          },
+          {
+            "codigoEscenario": 7,
+            "escenario": "Venta de activos de Bancos o Sociedades Financieras a las que la Superintendencia de Bancos haya aprobado un plan de regulación o en que exista Junta de Exclusión de activos y pasivos, cuando se transfieran a otros Bancos o sociedades financieras, previa autorización de la Junta Monetaria. Esta exención tendrá validez siempre que la operación no sea para eludir responsabilidades civiles, penales, o de otra naturaleza.",
+            "incluyeIVA": false,
+            "textoAColocar": "Venta de activos de Bancos. Exenta del IVA (art. 7 núm. 14 Ley del IVA)"
+          },
+          {
+            "codigoEscenario": 8,
+            "escenario": "Servicios exentos centros educativos privados en lo que respecta a la matrícula de inscripción, colegiaturas y derechos de examen, de los cursos que tengan autorizados por la autoridad competente.",
+            "incluyeIVA": false,
+            "textoAColocar": "Cuotas centros educativos. Exenta del IVA (art. 8 núm. 1 Ley del IVA)"
+          },
+          {
+            "codigoEscenario": 9,
+            "escenario": "Medicamentos. Cuando una compañía farmacéutica le vende medicamentos genéricos o antirretrovirales a determinados pacientes.",
+            "incluyeIVA": false,
+            "textoAColocar": "Medicamentos genéricos o antirretrovirales. Exenta del IVA (art. 7 núm. 15 Ley del IVA)"
+          },
+          {
+            "codigoEscenario": 10,
+            "escenario": "Vehículos: Cuando se vende un vehículo terrestre del modelo de dos o más años anteriores al del año en curso.",
+            "incluyeIVA": false,
+            "textoAColocar": "Vehículos. Esta factura no incluye IVA (art. 55 Ley del IVA)"
+          },
+          {
+            "codigoEscenario": 11,
+            "escenario": "Ventas a maquilas. Cuando el vendedor vende bienes o servicios de producción local a empresas calificadas bajo el decreto 29-89. Base legal: artículo 12 bis literal g del decreto 29-89 Ley de Maquila; artículo 11 del Acuerdo Gubernativo 5-2013 Reglamento de la Ley del IVA. Operaciones específicas de maquilas, usuarios de zonas francas y coexportadores. Para los casos de ventas no afectas al IVA que pueden darse entre estos actores. Base legal: artículo 36 bis y 36 ter del Decreto 29-89, Ley de Fomento a la Actividad Exportadora y de Maquila.",
+            "incluyeIVA": false,
+            "textoAColocar": "Operaciones específicas de maquilas. No afecta al IVA (Decreto 29-89 Ley de Maquila)"
+          },
+          {
+            "codigoEscenario": 12,
+            "escenario": "Ventas a zonas francas. Cuando el vendedor vende bienes o servicios de producción local a empresas calificadas bajo el decreto 65-89. Base legal: artículo 22 bis literal e del decreto 29-89 Ley de Zonas Francas. Ventas de zonas francas. Por transferencias de mercancías que se realicen dentro y entre zonas francas. Base legal: artículo 22 literal c del Decreto 65-89 Ley de Zonas Francas",
+            "incluyeIVA": false,
+            "textoAColocar": "Ventas de zonas francas. No afecta al IVA (Decreto 65-89 Ley de Zonas Francas)"
+          }
+        ]
+      }
+    ]
+  }
+}

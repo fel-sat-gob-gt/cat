@@ -1,0 +1,190 @@
+{
+  "Cabecera": {
+    "Nombre": "FEL-CATALOGO-UNIDADES-GRAVABLES",
+    "Ultima Actualizacion": "29/05/2018 08:00:00"
+  },
+  "Contenido": [
+    {
+      "impuesto": "IVA",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Tasa 12.00%",
+          "nombreCorto": "IVA 12%",
+          "operaSobreCasilla": "MontoGravable",
+          "factor": 0.12
+        },
+        {
+          "codigoUnidadGravable": 2,
+          "nombreUnidadGravable": "Tasa 0",
+          "nombreCorto": "IVA 0",
+          "operaSobreCasilla": "MontoGravable",
+          "factor": 0
+        }
+      ]
+    },
+    {
+      "impuesto": "PETROLEO",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Gasolina superior",
+          "nombreCorto": "Gasolina superior Q4.70",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 4.7
+        },
+        {
+          "codigoUnidadGravable": 2,
+          "nombreUnidadGravable": "Gasolina regular",
+          "nombreCorto": "Gasolina regular Q4.60",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 4.6
+        },
+        {
+          "codigoUnidadGravable": 3,
+          "nombreUnidadGravable": "Gasolina de aviación",
+          "nombreCorto": "Gasolina de aviación Q4.70",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 4.7
+        },
+        {
+          "codigoUnidadGravable": 4,
+          "nombreUnidadGravable": "Diésel",
+          "nombreCorto": "Diésel Q1.30",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 1.3
+        },
+        {
+          "codigoUnidadGravable": 5,
+          "nombreUnidadGravable": "Gas Oil",
+          "nombreCorto": "Gas Oil Q1.30",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 1.3
+        },
+        {
+          "codigoUnidadGravable": 6,
+          "nombreUnidadGravable": "Kerosina (DPK), (Avjet, turbo fuel)",
+          "nombreCorto": "Kerosina avjet turbo fuel Q0.50",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.5
+        },
+        {
+          "codigoUnidadGravable": 7,
+          "nombreUnidadGravable": "Nafta",
+          "nombreCorto": "Nafta Q0.50",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.5
+        },
+        {
+          "codigoUnidadGravable": 8,
+          "nombreUnidadGravable": "Fuel Oil (Bunker C)",
+          "nombreCorto": "Fuel Oil (Bunker C) Q0.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0
+        },
+        {
+          "codigoUnidadGravable": 9,
+          "nombreUnidadGravable": "Gas licuado de petróleo a granel",
+          "nombreCorto": "Gas licuado granel Q0.50",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.5
+        },
+        {
+          "codigoUnidadGravable": 10,
+          "nombreUnidadGravable": "Gas licuado petróleo carburación",
+          "nombreCorto": "Gas licuado carburación Q0.50",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.5
+        },
+        {
+          "codigoUnidadGravable": 11,
+          "nombreUnidadGravable": "Petróleo crudo usado como combustible",
+          "nombreCorto": "Petróleo crudo combustible Q0.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0
+        },
+        {
+          "codigoUnidadGravable": 12,
+          "nombreUnidadGravable": "Otros combustibles derivados del petróleo",
+          "nombreCorto": "Otros combustibles Q0.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0
+        },
+        {
+          "codigoUnidadGravable": 13,
+          "nombreUnidadGravable": "Asfaltos",
+          "nombreCorto": "Asfaltos Q0.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0
+        }
+      ]
+    },
+    {
+      "impuesto": "TURISMO HOSPEDAJE",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Tasa Hospedaje 10%",
+          "nombreCorto": "Hospedaje 10.00%",
+          "operaSobreCasilla": "MontoGravable",
+          "factor": 0.1
+        }
+      ]
+    },
+    {
+      "impuesto": "TURISMO PASAJES",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Salida del país por vía aérea",
+          "nombreCorto": "Salida vía aérea USD30.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 30
+        },
+        {
+          "codigoUnidadGravable": 2,
+          "nombreUnidadGravable": "Salida del país por vía marítima",
+          "nombreCorto": "Salida vía marítima USD10.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 10
+        }
+      ]
+    },
+    {
+      "impuesto": "TIMBRE DE PRENSA",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Timbre de prensa cinco (5) por millar",
+          "nombreCorto": "Timbre de prensa",
+          "operaSobreCasilla": "MontoGravable",
+          "factor": 0.5
+        }
+      ]
+    },
+    {
+      "impuesto": "BOMBEROS",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Tasa por seguro contra incendio",
+          "nombreCorto": "Bomberos 2.00%",
+          "operaSobreCasilla": "MontoGravable",
+          "factor": 0.02
+        }
+      ]
+    },
+    {
+      "impuesto": "TASA MUNICIPAL",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": null,
+          "nombreUnidadGravable": "Texto variable (nombre del departamento, municipio y concepto)",
+          "nombreCorto": "Texto variable",
+          "operaSobreCasilla": null,
+          "factor": null
+        }
+      ]
+    }
+  ]
+}

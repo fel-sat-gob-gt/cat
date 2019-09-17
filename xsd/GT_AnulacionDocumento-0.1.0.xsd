@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2018 rel. 2 (http://www.altova.com) por Eduardo Guillen (personal) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:dte="http://www.sat.gob.gt/dte/fel/0.1.0" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	targetNamespace="http://www.sat.gob.gt/dte/fel/0.1.0" elementFormDefault="qualified"
+	version="0.1.0">
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
+		schemaLocation="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/xmldsig-core-schema.xsd"/>
+	<xs:element name="GTAnulacionDocumento">
+		<xs:annotation>
+			<xs:documentation>Transacción de anulación de un Documento Tributario Electrónico del Régimen FEL.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SAT">
+					<xs:annotation>
+						<xs:documentation>Estándar de la Superintendencia de Administración Tributaria para el Documento Tributario Electrónico.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="AnulacionDTE" id="UUID">
+								<xs:annotation>
+									<xs:documentation>Agrupa la estructura para la Anulacion de una transaccion DTE.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="DatosGenerales" id="DatosAnulacion">
+											<xs:complexType>
+												<xs:attribute name="ID" use="required"
+												fixed="DatosAnulacion"/>
+												<xs:attribute name="NumeroDocumentoAAnular"
+												type="dte:tipoUUID" use="required">
+												<xs:annotation>
+												<xs:documentation>Número de autorización asignado al DTE que se está Anulando</xs:documentation>
+												</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="NITEmisor" use="required"
+												id="NitEmisorDocumentoAnular">
+												<xs:annotation>
+												<xs:documentation>Indica el NIT del Emisor del DTE (sin guión).</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="dte:tipoNITDelEFACE">
+												<xs:whiteSpace value="collapse"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="IDReceptor" use="required"
+												id="IDReceptorDocumentoAnular">
+												<xs:annotation>
+												<xs:documentation>Indica el NIT o CUI del RECEPTOR, CF.</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="dte:tipoNITReceptor">
+												<xs:whiteSpace value="collapse"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="FechaEmisionDocumentoAnular"
+												use="required">
+												<xs:annotation>
+												<xs:documentation>Fecha y hora de emisión del DTE a Anular. Formato aaaa-mm-ddThh:mm:ss.000-06:00)</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:dateTime"/>
+												</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="FechaHoraAnulacion"
+												use="required">
+												<xs:annotation>
+												<xs:documentation>Fecha y hora de la Anulación del DTE. Formato aaaa-mm-ddThh:mm:ss.000-06:00)</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:dateTime"/>
+												</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="MotivoAnulacion" use="required">
+												<xs:annotation>
+												<xs:documentation>Observaciones de la razon de la Anulacion</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="255"/>
+												<xs:minLength value="1"/>
+												<xs:whiteSpace value="collapse"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Certificacion" id="Certificacion"
+											minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Agrupa los datos relacionados con la Certificación de la Anulación de DTE.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+												<xs:element name="NITCertificador">
+												<xs:annotation>
+												<xs:documentation>NIT del Certificador sin guión.</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="dte:tipoNITDelEFACE">
+												<xs:minLength value="1"/>
+												<xs:maxLength value="13"/>
+												<xs:whiteSpace value="collapse"/>
+												<xs:pattern value="([1-9])+([0-9])*([0-9]|K)"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="NombreCertificador">
+												<xs:annotation>
+												<xs:documentation>Nombre del Certificador (De acuerdo a los registros tributarios).</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:maxLength value="255"/>
+												<xs:whiteSpace value="collapse"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="FechaHoraCertificacion"
+												type="xs:dateTime">
+												<xs:annotation>
+												<xs:documentation>Es la fecha y hora del momento en que el Certificador incorpora su firma electrónica a la Anulación del DTE.</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="ID" use="required" fixed="DatosCertificados"
+									/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="ds:Signature" id="FirmaEmisor"/>
+				<xs:element ref="ds:Signature" id="FirmaCertificador" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="Version" type="xs:decimal" use="required" fixed="0.1">
+				<xs:annotation>
+					<xs:documentation>Esta casilla indica el numero de versión del documento.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="VersionType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,3}">
+				<xs:annotation>
+					<xs:documentation>por ejemplo. x , donde x son números enteros de 0 a
+                        999</xs:documentation>
+				</xs:annotation>
+			</xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tipoString100">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="100"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tipoUUID">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[0-9A-F]{8}-([0-9A-F]{4}-){3}[0-9A-F]{12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="tipoDocumento"/>
+	<xs:simpleType name="tipoNITReceptor">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="13"/>
+			<xs:pattern value="(([1-9])+([0-9])*(-?)([0-9]|K))|(([1-9]+[0-9]){12,13})|(CF)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tipoNITDelEFACE">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="13"/>
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="([1-9])+([0-9])*([0-9]|K)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NonNegativeFloat">
+		<xs:annotation>
+			<xs:documentation>Acepta cantidades mayores a 0</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumeroNDecimales" final="">
+		<xs:annotation>
+			<xs:documentation>Acepta cantidades mayores a 0</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="6"/>
+			<xs:totalDigits value="18"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumeroDosDecimales" final="">
+		<xs:annotation>
+			<xs:documentation>Acepta cantidades mayores a 0</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

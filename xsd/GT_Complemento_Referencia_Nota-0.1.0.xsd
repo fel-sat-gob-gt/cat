@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:cno="http://www.sat.gob.gt/face2/ComplementoReferenciaNota/0.1.0"
+	targetNamespace="http://www.sat.gob.gt/face2/ComplementoReferenciaNota/0.1.0"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ReferenciasNota">
+		<xs:annotation>
+			<xs:documentation>Agrupa la informacion del documento original al cual hace referencia esta Nota (Debito/Credito)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="Version" type="xs:decimal" use="required">
+				<xs:annotation>
+					<xs:documentation>Indica la version de este complemento.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="RegimenAntiguo">
+				<xs:annotation>
+					<xs:documentation>Debe incluirse solamente cuando el documento original corresponde al regimen de papel o FACE1.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Antiguo"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="NumeroAutorizacionDocumentoOrigen" use="required">
+				<xs:annotation>
+					<xs:documentation>Indica el numero de Autorizacion del regimen FEL cuando el atributo RegimenAntiguo no se coloca en el complemento, de lo contrario se utiliza para indicar el Numero de Resolucion de Autorizacion del regimen de papel o FACE1.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:token">
+						<xs:whiteSpace value="collapse"/>
+						<xs:pattern
+							value="[0-9A-F]{8}-([0-9A-F]{4}-){3}[0-9A-F]{12}|([2]{1}[0-9]{3}-[1-9]{1}[0-9]{0,2}-[1-9]{1}[0-9]{0,6}-[1-9]{1}[0-9]{0,6})"
+						/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="FechaEmisionDocumentoOrigen" type="xs:date" use="required">
+				<xs:annotation>
+					<xs:documentation>Se utiliza para verificar que pasados los 2 meses una Nota de Crédito no incluya el IVA.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="MotivoAjuste">
+				<xs:annotation>
+					<xs:documentation>Descripcion de la causa por la cual se realiza el Ajuste.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="200"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="SerieDocumentoOrigen">
+				<xs:annotation>
+					<xs:documentation>Numero de Serie correspondiente al regimen de papel o FACE1.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="20"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="NumeroDocumentoOrigen">
+				<xs:annotation>
+					<xs:documentation>Numero de Documento correspondiente al regimen de papel o FACE1.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

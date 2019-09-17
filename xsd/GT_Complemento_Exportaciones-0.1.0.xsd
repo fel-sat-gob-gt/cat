@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2017 rel. 3 sp1 (http://www.altova.com) by chejo (test) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cex="http://www.sat.gob.gt/face2/ComplementoExportaciones/0.1.0" targetNamespace="http://www.sat.gob.gt/face2/ComplementoExportaciones/0.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Exportacion">
+		<xs:annotation>
+			<xs:documentation>Definición Global de complemento de exportación</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="NombreConsignatarioODestinatario" id="SubTotalConDescuento">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="70"/>
+							<xs:minLength value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DireccionConsignatarioODestinatario" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation/>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="70"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CodigoConsignatarioODestinatario" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="17"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="NombreComprador" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="150"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DireccionComprador" minOccurs="0" maxOccurs="1">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="150"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CodigoComprador" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="17"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="OtraReferencia" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="35"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="INCOTERM" type="cex:INCOTERMType"/>
+				<xs:element name="NombreExportador" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="70"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CodigoExportador" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="17"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Version" type="cex:VersionType" use="required" fixed="1"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="VersionType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,3}">
+				<xs:annotation>
+					<xs:documentation>por ejemplo. x , donde x  es  numero entero de 0 a 999</xs:documentation>
+				</xs:annotation>
+			</xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NonNegativeFloat">
+		<xs:annotation>
+			<xs:documentation>Acepta cantidades mayores a 0</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INCOTERMType">
+		<xs:annotation>
+			<xs:documentation>Catálogo Edifact</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="EXW"/>
+			<xs:enumeration value="FCA"/>
+			<xs:enumeration value="FAS"/>
+			<xs:enumeration value="FOB"/>
+			<xs:enumeration value="CFR"/>
+			<xs:enumeration value="CIF"/>
+			<xs:enumeration value="CPT"/>
+			<xs:enumeration value="CIP"/>
+			<xs:enumeration value="DDP"/>
+			<xs:enumeration value="DAP"/>
+			<xs:enumeration value="DAT"/>
+			<xs:enumeration value="ZZZ"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

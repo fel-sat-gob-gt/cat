@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:cfc="http://www.sat.gob.gt/dte/fel/CompCambiaria/0.1.0"
+	targetNamespace="http://www.sat.gob.gt/dte/fel/CompCambiaria/0.1.0"
+	elementFormDefault="qualified">
+	<xs:element name="AbonosFacturaCambiaria">
+		<xs:annotation>
+			<xs:documentation>Definición Global de abonos de factura cambiaria</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Abono" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="NumeroAbono" id="SubTotalConDescuento">
+								<xs:simpleType>
+									<xs:restriction base="xs:int">
+										<xs:totalDigits value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="FechaVencimiento" type="xs:date" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation/>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="MontoAbono" type="cfc:NonNegativeFloat"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Version" type="cfc:VersionType" use="required" fixed="1"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="VersionType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,3}">
+				<xs:annotation>
+					<xs:documentation>por ejemplo. x , donde x  es  numero entero de 0 a 999</xs:documentation>
+				</xs:annotation>
+			</xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NonNegativeFloat">
+		<xs:annotation>
+			<xs:documentation>Acepta cantidades mayores a 0</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
