@@ -1,7 +1,7 @@
 {
    "Cabecera":{
       "Nombre":"FEL-CATALOGO-MENSAJES",
-      "Ultima Actualizacion":"24/05/19"
+      "Ultima Actualizacion":"11/11/19"
    },
    "Contenido":[
       {
@@ -29,7 +29,7 @@
          "validacion":"El NIT Certificador no se encontraba acreditado por el NIT Emisor del DTE, en el momento que indica la casilla Fecha y hora de emisión",
          "mensaje":"El Certificador no está acreditado por el Emisor del DTE."
       },
-	  {
+	    {
          "codigo":"FEL_ANU099",
          "validacion":"El NIT Certificador no se encontraba acreditado por el NIT Emisor del DTE, en el momento que indica la casilla Fecha y hora de emisión",
          "mensaje":"El Certificador no está acreditado por el Emisor del DTE."
@@ -145,7 +145,7 @@
          "mensaje":"El Tipo de Documento no aplica para este Régimen del IVA."
       },
       {
-         "codigo":"FEL_INF318",
+         "codigo":"FEL_RCP318",
          "validacion":"No está presente en el XML un tipo de frase requerido para el Tipo de DTE",
          "mensaje":"El Tipo de Frase debe estar presente para el Tipo de DTE"
       },
@@ -448,6 +448,26 @@
          "codigo":"FEL_RCP379",
          "validacion":"El NIT no está activo en el Registro de Emisores FEL.",
          "mensaje":"El NIT no corresponde a un Emisor Activo del Régimen FEL."
+      },
+      {
+         "codigo":"FEL_INF380",
+         "validacion":"Se incluye la casilla Tipo Especial y el Tipo de documento es diferente de “FESP",
+         "mensaje":"La casilla Tipo Especial sólo puede incluirse en Facturas Especiales"
+      },
+      {
+         "codigo":"FEL_INF381",
+         "validacion":"El contenido de la casilla ID del receptor es igual a CF y el Tipo de documento es FESP",
+         "mensaje":"El ID del Receptor no puede ser CF para una factura especial."
+      },
+      {
+         "codigo":"FEL_INF382",
+         "validacion":"Se incluye la casilla Tipo Especial con el texto Número de documento de identificación del extranjero”y el contenido de la casilla ID del receptor no cumple con estas condiciones:Tener una longitud entre 3 y 18 caracteres, Puede contener letras de la A a la Z (mayúsculas) y dígitos (0-9), No debe contener espacios",
+         "mensaje":"El ID del Receptor no corresponde a un formato del tipo especial Número de documento de identificación del extranjero."
+      },
+      {
+         "codigo":"FEL_RCP383",
+         "validacion":"El tipo de documento es NCRE o NDEB y la moneda es diferente a la moneda del documento referenciado según la casilla Numero Autorizacion Documento Origen en el complemento Referencias a las notas de crédito o débito incluido.",
+         "mensaje":"Las notas de débito o crédito deben ser emitidas en la misma moneda del documento origen."
       },
       {
          "codigo":"FEL_SEC500",
