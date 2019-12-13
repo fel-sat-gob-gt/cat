@@ -48,7 +48,7 @@
 												<xs:attribute name="IDReceptor" use="required"
 												id="IDReceptorDocumentoAnular">
 												<xs:annotation>
-												<xs:documentation>Indica el NIT o CUI del RECEPTOR, CF.</xs:documentation>
+												<xs:documentation>Indica el NIT, CUI o Identificacion Extranjera del RECEPTOR, CF.</xs:documentation>
 												</xs:annotation>
 												<xs:simpleType>
 												<xs:restriction base="dte:tipoNITReceptor">
@@ -173,8 +173,8 @@
 	<xs:simpleType name="tipoNITReceptor">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
-			<xs:maxLength value="13"/>
-			<xs:pattern value="(([1-9])+([0-9])*(-?)([0-9]|K))|(([1-9]+[0-9]){12,13})|(CF)"/>
+			<xs:maxLength value="18"/>
+			<xs:pattern value="(([1-9])+([0-9])*([0-9]|K))|(([1-9]+[0-9]){12,13})|(CF)|^([A-Z0-9]{3,18})$"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="tipoNITDelEFACE">
