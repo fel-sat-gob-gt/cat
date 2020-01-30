@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-	xmlns:dte="http://www.sat.gob.gt/dte/fel/0.1.0" 
-	xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://www.sat.gob.gt/dte/fel/0.1.0" elementFormDefault="qualified" version="2.0">
+	xmlns:dte="http://www.sat.gob.gt/dte/fel/0.2.0" 
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://www.sat.gob.gt/dte/fel/0.2.0" elementFormDefault="qualified" version="2.0">
 	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/xmldsig-core-schema.xsd"/>
 	<xs:element name="GTDocumento">
 		<xs:annotation>
