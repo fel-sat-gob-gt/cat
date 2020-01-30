@@ -1,1122 +1,1086 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:dte="http://www.sat.gob.gt/dte/fel/0.1.0" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
-	targetNamespace="http://www.sat.gob.gt/dte/fel/0.1.0" elementFormDefault="qualified"
-	version="0.4">
-	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
-		schemaLocation="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/xmldsig-core-schema.xsd"/>
-	<xs:element name="GTDocumento">
-		<xs:annotation>
-			<xs:documentation>Definición Global de Documento Electrónico para Guatemala.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="SAT">
-					<xs:annotation>
-						<xs:documentation>Estándar de la Superintendencia de Administración Tributaria para el Documento Tributario Electrónico.</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="DTE" id="UUID">
-								<xs:annotation>
-									<xs:documentation>Agrupa la estructura para un DTE.</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="DatosEmision" id="DatosEmision">
-											<xs:complexType>
-												<xs:sequence>
-												<xs:element name="DatosGenerales">
-												<xs:annotation>
-												<xs:documentation>Agrupa los datos generales del DTE.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:attribute name="Tipo" use="required">
-												<xs:annotation>
-												<xs:documentation>Código que indica si el DTE es una factura, una nota de crédito, una nota de débito, un recibo, etc.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:whiteSpace value="collapse"/>
-												<xs:enumeration value="FACT"/>
-												<xs:enumeration value="FCAM"/>
-												<xs:enumeration value="FPEQ"/>
-												<xs:enumeration value="FCAP"/>
-												<xs:enumeration value="FESP"/>
-												<xs:enumeration value="NABN"/>
-												<xs:enumeration value="RDON"/>
-												<xs:enumeration value="RECI"/>
-												<xs:enumeration value="NDEB"/>
-												<xs:enumeration value="NCRE"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="Exp">
-												<xs:annotation>
-												<xs:documentation>Indica si el DTE servira para una Exportación</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:enumeration value="SI"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="FechaHoraEmision"
-												use="required">
-												<xs:annotation>
-												<xs:documentation>Fecha y hora de emisión del DTE. Formato  aaaa-mm-ddThh:mm:ss.000-06:00 (Milisegundos opcionales, zona horaria especificada o interpretada como hora de Guatemala.)</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:dateTime"/>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="CodigoMoneda"
-												type="dte:tipoMoneda" use="required">
-												<xs:annotation>
-												<xs:documentation>Código de la moneda en la que se emite el DTE.</xs:documentation>
-												</xs:annotation>
-												</xs:attribute>
-												<xs:attribute name="NumeroAcceso" use="optional">
-												<xs:annotation>
-												<xs:documentation> Es un número generado por el Emisor en forma aleatoria, que va desde 100000000 hasta 999999999</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:positiveInteger">
-												<xs:whiteSpace value="collapse"/>
-												<xs:minInclusive value="100000000"/>
-												<xs:maxInclusive value="999999999"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												</xs:complexType>
-												</xs:element>
-												<xs:element name="Emisor">
-												<xs:annotation>
-												<xs:documentation>Agrupa la información del Emisor del DTE.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:element name="DireccionEmisor"
-												type="dte:tipoDireccion">
-												<xs:annotation>
-												<xs:documentation>Agrupa los datos de la dirección del establecimiento del Emisor.</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												</xs:sequence>
-												<xs:attribute name="NITEmisor"
-												type="dte:tipoNITDelEFACE" use="required">
-												<xs:annotation>
-												<xs:documentation>Indica el NIT del Emisor del DTE (sin guión).</xs:documentation>
-												</xs:annotation>
-												</xs:attribute>
-												<xs:attribute name="NombreEmisor" use="required">
-												<xs:annotation>
-												<xs:documentation>Nombres y apellidos o razón social del Emisor (De acuerdo a los registros tributarios en el momento de la emisión). </xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:maxLength value="255"/>
-												<xs:minLength value="1"/>
-												<xs:whiteSpace value="collapse"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="CodigoEstablecimiento"
-												use="required">
-												<xs:annotation>
-												<xs:documentation>Número del establecimiento donde se emite el documento. Es el que aparece asignado por SAT en sus registros.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:positiveInteger">
-												<xs:minInclusive value="1"/>
-												<xs:maxInclusive value="9999"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="NombreComercial"
-												use="required">
-												<xs:annotation>
-												<xs:documentation>Indica el nombre comercial del establecimiento (de acuerdo a los registros tributarios) donde se emite el documento. </xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-												<xs:maxLength value="255"/>
-												<xs:whiteSpace value="collapse"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="CorreoEmisor">
-												<xs:annotation>
-												<xs:documentation>Indica la Dirección de correo electrónico del Emisor. </xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="dte:TipoCorreoElectronico">
-												<xs:whiteSpace value="collapse"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="AfiliacionIVA" use="required">
-												<xs:annotation>
-												<xs:documentation>De acuerdo al Régimen que tenga registrado el contribuyente, se refiere a que puede ser General/Exento o Pequeño Contribuyente.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:enumeration value="GEN"/>
-												<xs:enumeration value="EXE"/>
-												<xs:enumeration value="PEQ"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												</xs:complexType>
-												</xs:element>
-												<xs:element name="Receptor">
-												<xs:annotation>
-												<xs:documentation>Agrupa la información del Receptor.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:element name="DireccionReceptor"
-												type="dte:tipoDireccion" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Agrupa los datos de dirección del receptor.</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												</xs:sequence>
-												<xs:attribute name="IDReceptor" use="required"
-												id="IDReceptor">
-												<xs:annotation>
-												<xs:documentation>Indica el NIT o CUI del RECEPTOR, CF.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="dte:tipoNITReceptor">
-												<xs:whiteSpace value="collapse"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="TipoEspecial">
-												<xs:annotation>
-												<xs:documentation>Cuando la casilla está llena debe contener el valor “CUI”, lo que significa que la casilla “IDReceptor” no incluye un NIT sino un CUI.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:whiteSpace value="collapse"/>
-												<xs:enumeration value="CUI"/>
-											    <xs:enumeration value="EXT"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="NombreReceptor" use="required"
-												id="RazonSocial">
-												<xs:annotation>
-												<xs:documentation>Si la casilla “IDReceptor” contiene un NIT valido el nombre indicado debe corresponder a los registros tributarios. Caso contrario el contenido puede ser cualquiera que solicite el RECEPTOR.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-												<xs:maxLength value="255"/>
-												<xs:whiteSpace value="collapse"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="CorreoReceptor">
-												<xs:annotation>
-												<xs:documentation>Indica la Dirección de correo electrónico del receptor. </xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="dte:TipoCorreoElectronico">
-												<xs:whiteSpace value="collapse"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												</xs:complexType>
-												</xs:element>
-												<xs:element name="Frases" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Agrupa las frases de un documento.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:element name="Frase" maxOccurs="100">
-												<xs:annotation>
-												<xs:documentation>En esta sección deberá indicarse los regímenes y textos especiales que son requeridos en los DTE, de acuerdo a la afiliación del contribuyente y tipo de operación.
-														</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:attribute name="TipoFrase" use="required">
-												<xs:annotation>
-												<xs:documentation>Identifica un determinado catálogo de leyendas.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:annotation>
-												<xs:documentation>Tipo de Aviso incluido en los
-                                                                      DTE </xs:documentation>
-												</xs:annotation>
-												<xs:restriction base="xs:positiveInteger">
-												<xs:whiteSpace value="collapse"/>
-												<xs:minInclusive value="1"/>
-												<xs:maxInclusive value="5"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="CodigoEscenario"
-												use="required">
-												<xs:annotation>
-												<xs:documentation>Indica un determinado Escenario dentro del catálogo de leyendas.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:int">
-												<xs:minInclusive value="1"/>
-												<xs:maxInclusive value="99"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												</xs:complexType>
-												</xs:element>
-												</xs:sequence>
-												</xs:complexType>
-												</xs:element>
-												<xs:element name="Items" id="Detalles">
-												<xs:annotation>
-												<xs:documentation>Agrupa la información de los Items.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:element name="Item" id="Detalle"
-												maxOccurs="9999">
-												<xs:annotation>
-												<xs:documentation>Agrupa la información de un renglón o ítem de un DTE. Se refiere a lo que la Ley del IVA define como “concepto” en la venta de bienes o como “clase de servicio” en la prestación de servicios. También se refiere a lo que el Reglamento de la Ley del IVA indica como “detalle” o “descripción” de la venta, del servicio prestado o del arrendamiento. </xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:element name="Cantidad" id="Cantidad">
-												<xs:annotation>
-												<xs:documentation>Indica la cantidad de unidades del ítem.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:simpleContent>
-												<xs:extension base="dte:NumeroNDecimales"/>
-												</xs:simpleContent>
-												</xs:complexType>
-												</xs:element>
-												<xs:element name="UnidadMedida" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Indica la unidad de medida en que está expresado el elemento CantidadItem.  Si el emisor lo desea, puede utilizar la nomenclatura definida por la Intendencia de Aduanas de la SAT en su tabla SAT-IA-008.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-												<xs:maxLength value="3"/>
-												<xs:whiteSpace value="collapse"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:element>
-												<xs:element name="Descripcion" id="Descripcion">
-												<xs:annotation>
-												<xs:documentation>Indica la descripción del ítem. </xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-												<xs:maxLength value="10000"/>
-												<xs:whiteSpace value="collapse"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:element>
-												<xs:element name="PrecioUnitario"
-												id="PrecioUnitario">
-												<xs:annotation>
-												<xs:documentation>Precio de cada unidad del ítem en la moneda en que se emite el DTE (quetzales, dólares, euros, etc.).</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="dte:NumeroNDecimales"/>
-												</xs:simpleType>
-												</xs:element>
-												<xs:element name="Precio"
-												type="dte:NumeroNDecimales" id="Precio">
-												<xs:annotation>
-												<xs:documentation>PrecioUnitario multiplicado por CantidadItem. </xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												<xs:element name="Descuento"
-												type="dte:NumeroNDecimales" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Indica el descuento a aplicar sobre el elemento Precio.</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												<xs:element name="Impuestos" id="Impuestos"
-												minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Agrupa los impuestos aplicados al ítem.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:element name="Impuesto" maxOccurs="20">
-												<xs:annotation>
-												<xs:documentation>Agrupa los datos de un Impuesto.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:element name="NombreCorto">
-												<xs:annotation>
-												<xs:documentation>Nombre corto que identifica el impuesto.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="dte:TipoImpuesto">
-												<xs:whiteSpace value="collapse"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:element>
-												<xs:element name="CodigoUnidadGravable">
-												<xs:annotation>
-												<xs:documentation/>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:integer">
-												<xs:minInclusive value="1"/>
-												<xs:totalDigits value="7"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:element>
-												<xs:element name="MontoGravable"
-												type="dte:NumeroNDecimales" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Monto sobre el cual se aplica el impuesto.</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												<xs:element name="CantidadUnidadesGravables"
-												type="dte:NumeroNDecimales" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation/>
-												</xs:annotation>
-												</xs:element>
-												<xs:element name="MontoImpuesto">
-												<xs:annotation>
-												<xs:documentation/>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:simpleContent>
-												<xs:extension base="dte:NumeroNDecimales"/>
-												</xs:simpleContent>
-												</xs:complexType>
-												</xs:element>
-												</xs:sequence>
-												</xs:complexType>
-												</xs:element>
-												</xs:sequence>
-												</xs:complexType>
-												</xs:element>
-												<xs:element name="Total"
-												type="dte:NumeroNDecimales">
-												<xs:annotation>
-												<xs:documentation>Precio menos Descuento más la sumatoria de las casillas “MontoImpuesto” (de los impuestos que sean sumables al DTE.</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												<xs:element name="ComplementosItem" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>a) Contiene diferentes subesquemas XSD. 
-b) Sirve para integrar al ítem información adicional de interés para la SAT.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence maxOccurs="unbounded">
-												<xs:element name="ComplementoItem">
-												<xs:annotation>
-												<xs:documentation>Complemento Item.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:any/>
-												</xs:sequence>
-												<xs:attribute name="IDComplementoItem">
-												<xs:annotation>
-												<xs:documentation>Identificador  del complemento del Item.</xs:documentation>
-												</xs:annotation>
-												</xs:attribute>
-												<xs:attribute name="NombreComplementoItem"
-												use="required">
-												<xs:annotation>
-												<xs:documentation>Indica el nombre del complento del Item.</xs:documentation>
-												</xs:annotation>
-												</xs:attribute>
-												<xs:attribute name="URIComplementoItem"
-												use="required">
-												<xs:annotation>
-												<xs:documentation>Indica el URI del XSD del complemento del Item.</xs:documentation>
-												</xs:annotation>
-												</xs:attribute>
-												</xs:complexType>
-												</xs:element>
-												</xs:sequence>
-												</xs:complexType>
-												</xs:element>
-												</xs:sequence>
-												<xs:attribute name="NumeroLinea" use="required">
-												<xs:annotation>
-												<xs:documentation>Correlativo del ítem dentro del DTE. En el caso de Notas de Débito y Notas de Crédito identifica el renglón o ítem del documento original.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:positiveInteger">
-												<xs:minInclusive value="1"/>
-												<xs:maxInclusive value="9999"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="BienOServicio" use="required">
-												<xs:annotation>
-												<xs:documentation>Indica si el ítem es un bien o servicio.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:length value="1"/>
-												<xs:whiteSpace value="collapse"/>
-												<xs:enumeration value="B"/>
-												<xs:enumeration value="S"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												</xs:complexType>
-												</xs:element>
-												</xs:sequence>
-												</xs:complexType>
-												</xs:element>
-												<xs:element name="Totales">
-												<xs:annotation>
-												<xs:documentation>Agrupa los montos totales a nivel de DTE.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:element name="TotalImpuestos" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Agrupa los totales de impuestos agrupados por tipo de impuesto.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:element name="TotalImpuesto" maxOccurs="20">
-												<xs:annotation>
-												<xs:documentation>Agrupa los datos de cada impuesto.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:attribute name="NombreCorto" use="required">
-												<xs:annotation>
-												<xs:documentation>Nombre corto que identifica el impuesto.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="dte:TipoImpuesto">
-												<xs:whiteSpace value="collapse"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="TotalMontoImpuesto"
-												type="dte:NumeroNDecimales" use="required"
-												id="ImpuestoTotales">
-												<xs:annotation>
-												<xs:documentation>Sumatoria de MontoImpuesto de cada uno de los ítems con el mismo impuesto. Ejemplo: Si el elemento impuesto es IVA, este atributo deberá contener la sumatoria de los montos de IVA incluidos en todos los ítems del documento.</xs:documentation>
-												</xs:annotation>
-												</xs:attribute>
-												</xs:complexType>
-												</xs:element>
-												</xs:sequence>
-												</xs:complexType>
-												</xs:element>
-												<xs:element name="GranTotal"
-												type="dte:NumeroNDecimales">
-												<xs:annotation>
-												<xs:documentation>Sumatoria de los elementos Total de cada uno de los ítems del DTE.</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												</xs:sequence>
-												</xs:complexType>
-												</xs:element>
-												<xs:element name="Complementos" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>a) Contiene diferentes subesquemas XSD. 
-b) Sirve para integrar al DTE información adicional de interés para la SAT.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence maxOccurs="unbounded">
-												<xs:element name="Complemento">
-												<xs:annotation>
-												<xs:documentation>Complemento.</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:any/>
-												</xs:sequence>
-												<xs:attribute name="IDComplemento">
-												<xs:annotation>
-												<xs:documentation>Identificador del complemento.</xs:documentation>
-												</xs:annotation>
-												</xs:attribute>
-												<xs:attribute name="NombreComplemento"
-												use="required">
-												<xs:annotation>
-												<xs:documentation>Indica el nombre del Complemento.</xs:documentation>
-												</xs:annotation>
-												</xs:attribute>
-												<xs:attribute name="URIComplemento" use="required">
-												<xs:annotation>
-												<xs:documentation>Indica el URI del XSD del complemento.</xs:documentation>
-												</xs:annotation>
-												</xs:attribute>
-												</xs:complexType>
-												</xs:element>
-												</xs:sequence>
-												</xs:complexType>
-												</xs:element>
-												</xs:sequence>
-												<xs:attribute name="ID" use="required"
-												fixed="DatosEmision"/>
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="Certificacion" id="Certificacion"
-											minOccurs="0">
-											<xs:annotation>
-												<xs:documentation>Agrupa los datos relacionados con la autorización del DTE de parte del Certificador.</xs:documentation>
-											</xs:annotation>
-											<xs:complexType>
-												<xs:sequence>
-												<xs:element name="NITCertificador">
-												<xs:annotation>
-												<xs:documentation>NIT del Certificador sin guión.</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-												<xs:maxLength value="13"/>
-												<xs:whiteSpace value="collapse"/>
-												<xs:pattern value="([1-9])+([0-9])*([0-9]|K)"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:element>
-												<xs:element name="NombreCertificador">
-												<xs:annotation>
-												<xs:documentation>Nombre del Certificador (De acuerdo a los registros tributarios).</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-												<xs:maxLength value="255"/>
-												<xs:whiteSpace value="collapse"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:element>
-												<xs:element name="NumeroAutorizacion">
-												<xs:annotation>
-												<xs:documentation>Número de autorización asignado que identifica de forma única a cada documento emitido por medio del sistema del Certificador. Por la naturaleza del UUID no es un número correlativo y se representa como un número hexadecimal</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:simpleContent>
-												<xs:extension base="dte:tipoUUID">
-												<xs:attribute name="Serie" use="required">
-												<xs:annotation>
-												<xs:documentation>Se forma con los primeros 8 dígitos hexadecimales del UUID, de izquierda a derecha, de tal forma que queda estructurado como se describe a continuación: De un UUID Original: dbb51ae2-3a62-4437-b8e9-42ecfb761156, el valor resultante será: dbb51ae2</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:whiteSpace value="collapse"/>
-												<xs:minLength value="1"/>
-												<xs:maxLength value="20"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute name="Numero" use="required">
-												<xs:annotation>
-												<xs:documentation>Se forma con el equivalente en números decimales de los dígitos hexadecimales del UUID, a partir de la posición 9 hasta la posición 16 (excluyendo los guiones “-“), de izquierda a derecha, de tal forma que queda estructurado como se describe a continuación: De un UUID Original: dbb51ae2-3a62-4437-b8e9-42ecfb761156, el valor resultante será: 979518519</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:positiveInteger">
-												<xs:minInclusive value="1"/>
-												<xs:maxInclusive value="999999999999999"/>
-												<xs:totalDigits value="15"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												</xs:extension>
-												</xs:simpleContent>
-												</xs:complexType>
-												</xs:element>
-												<xs:element name="FechaHoraCertificacion">
-												<xs:annotation>
-												<xs:documentation>Es la fecha y hora del momento en que el Certificador incorpora su firma electrónica al DTE. Formato  aaaa-mm-ddThh:mm:ss.000-06:00 (Milisegundos opcionales, zona horaria especificada o interpretada como hora de Guatemala</xs:documentation>
-												</xs:annotation>
-												<xs:simpleType>
-												<xs:restriction base="xs:dateTime">
-													<xs:pattern value="((\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(.(\d{3}))?(-06:00)?)"/>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:element>
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-									<xs:attribute name="ID" use="required" fixed="DatosCertificados"
-									/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="Adenda" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Elemento opcional, en el cual se puede indicar información de caracter comercial, no tributaria relacionada con el documento que el emisor le transmite al receptor.</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:sequence>
-										<xs:any namespace="##any" processContents="lax"
-											maxOccurs="unbounded"/>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-						<xs:attribute name="ClaseDocumento" use="required">
-							<xs:annotation>
-								<xs:documentation>Identificación del Documento Tributario Electrónico.</xs:documentation>
-							</xs:annotation>
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:whiteSpace value="collapse"/>
-									<xs:enumeration value="dte"/>
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:attribute>
-					</xs:complexType>
-				</xs:element>
-				<xs:element ref="ds:Signature" id="FirmaEmisor"/>
-				<xs:element ref="ds:Signature" id="FirmaCertificador" minOccurs="0"/>
-			</xs:sequence>
-			<xs:attribute name="Version" type="xs:decimal" use="required" fixed="0.4">
-				<xs:annotation>
-					<xs:documentation>Esta casilla indica el numero de versión del documento.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
-	<xs:simpleType name="VersionType">
-		<xs:restriction base="xs:string">
-			<xs:pattern value="[0-9]{1,3}">
-				<xs:annotation>
-					<xs:documentation>por ejemplo. x , donde x son números enteros de 0 a
-                        999</xs:documentation>
-				</xs:annotation>
-			</xs:pattern>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="tipoString100">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="100"/>
-			<xs:whiteSpace value="collapse"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="tipoUUID">
-		<xs:restriction base="xs:token">
-			<xs:pattern value="[0-9A-F]{8}-([0-9A-F]{4}-){3}[0-9A-F]{12}"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="tipoDocumento"/>
-	<xs:simpleType name="tipoNITReceptor">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="18"/>
-			<xs:pattern value="(([1-9])+([0-9])*([0-9]|K))|(([1-9]+[0-9]){12,13})|(CF)|^([A-Z0-9]{3,18})$"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="tipoNITDelEFACE">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="13"/>
-			<xs:whiteSpace value="collapse"/>
-			<xs:pattern value="([1-9])+([0-9])*([0-9]|K)"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="tipoDireccion">
-		<xs:sequence>
-			<xs:element name="Direccion">
-				<xs:annotation>
-					<xs:documentation>
-</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:minLength value="1"/>
-						<xs:maxLength value="200"/>
-						<xs:whiteSpace value="collapse"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="CodigoPostal" type="xs:integer">
-				<xs:annotation>
-					<xs:documentation/>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="Municipio">
-				<xs:annotation>
-					<xs:documentation/>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:maxLength value="100"/>
-						<xs:whiteSpace value="collapse"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="Departamento">
-				<xs:annotation>
-					<xs:documentation/>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:maxLength value="100"/>
-						<xs:whiteSpace value="collapse"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="Pais">
-				<xs:annotation>
-					<xs:documentation/>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="dte:tipoCodigoPais">
-						<xs:whiteSpace value="collapse"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:simpleType name="tipoMoneda">
-		<xs:annotation>
-			<xs:documentation>ISO 4217</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:length value="3"/>
-			<xs:enumeration value="GTQ"/>
-			<xs:enumeration value="USD"/>
-		    <xs:enumeration value="VES"/>
-			<xs:enumeration value="CRC"/>
-			<xs:enumeration value="SVC"/>
-			<xs:enumeration value="NIO"/>
-			<xs:enumeration value="DKK"/>
-			<xs:enumeration value="NOK"/>
-			<xs:enumeration value="SEK"/>
-			<xs:enumeration value="CAD"/>
-			<xs:enumeration value="HKD"/>
-			<xs:enumeration value="TWD"/>
-			<xs:enumeration value="PTE"/>
-			<xs:enumeration value="EUR"/>
-			<xs:enumeration value="CHF"/>
-			<xs:enumeration value="HNL"/>
-			<xs:enumeration value="GBP"/>
-			<xs:enumeration value="ARS"/>
-			<xs:enumeration value="DOP"/>
-			<xs:enumeration value="COP"/>
-			<xs:enumeration value="MXN"/>
-			<xs:enumeration value="BRL"/>
-			<xs:enumeration value="MYR"/>
-			<xs:enumeration value="INR"/>
-			<xs:enumeration value="PKR"/>
-			<xs:enumeration value="KPW"/>
-			<xs:enumeration value="JPY"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="tipoCodigoPais">
-		<xs:annotation>
-			<xs:documentation>Código de País ISO 3166-1</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="AD"/>
-			<xs:enumeration value="AE"/>
-			<xs:enumeration value="AF"/>
-			<xs:enumeration value="AG"/>
-			<xs:enumeration value="AI"/>
-			<xs:enumeration value="AL"/>
-			<xs:enumeration value="AM"/>
-			<xs:enumeration value="AN"/>
-			<xs:enumeration value="AO"/>
-			<xs:enumeration value="AQ"/>
-			<xs:enumeration value="AR"/>
-			<xs:enumeration value="AS"/>
-			<xs:enumeration value="AT"/>
-			<xs:enumeration value="AU"/>
-			<xs:enumeration value="AW"/>
-			<xs:enumeration value="AX"/>
-			<xs:enumeration value="AZ"/>
-			<xs:enumeration value="BA"/>
-			<xs:enumeration value="BB"/>
-			<xs:enumeration value="BD"/>
-			<xs:enumeration value="BE"/>
-			<xs:enumeration value="BF"/>
-			<xs:enumeration value="BG"/>
-			<xs:enumeration value="BH"/>
-			<xs:enumeration value="BI"/>
-			<xs:enumeration value="BJ"/>
-			<xs:enumeration value="BL"/>
-			<xs:enumeration value="BM"/>
-			<xs:enumeration value="BN"/>
-			<xs:enumeration value="BO"/>
-			<xs:enumeration value="BR"/>
-			<xs:enumeration value="BS"/>
-			<xs:enumeration value="BT"/>
-			<xs:enumeration value="BV"/>
-			<xs:enumeration value="BW"/>
-			<xs:enumeration value="BY"/>
-			<xs:enumeration value="BZ"/>
-			<xs:enumeration value="CA"/>
-			<xs:enumeration value="CC"/>
-			<xs:enumeration value="CD"/>
-			<xs:enumeration value="CF"/>
-			<xs:enumeration value="CG"/>
-			<xs:enumeration value="CH"/>
-			<xs:enumeration value="CI"/>
-			<xs:enumeration value="CK"/>
-			<xs:enumeration value="CL"/>
-			<xs:enumeration value="CM"/>
-			<xs:enumeration value="CN"/>
-			<xs:enumeration value="CO"/>
-			<xs:enumeration value="CR"/>
-			<xs:enumeration value="CU"/>
-			<xs:enumeration value="CV"/>
-			<xs:enumeration value="CX"/>
-			<xs:enumeration value="CY"/>
-			<xs:enumeration value="CZ"/>
-			<xs:enumeration value="DE"/>
-			<xs:enumeration value="DJ"/>
-			<xs:enumeration value="DK"/>
-			<xs:enumeration value="DM"/>
-			<xs:enumeration value="DO"/>
-			<xs:enumeration value="DZ"/>
-			<xs:enumeration value="EC"/>
-			<xs:enumeration value="EE"/>
-			<xs:enumeration value="EG"/>
-			<xs:enumeration value="EH"/>
-			<xs:enumeration value="ER"/>
-			<xs:enumeration value="ES"/>
-			<xs:enumeration value="ET"/>
-			<xs:enumeration value="FI"/>
-			<xs:enumeration value="FJ"/>
-			<xs:enumeration value="FK"/>
-			<xs:enumeration value="FM"/>
-			<xs:enumeration value="FO"/>
-			<xs:enumeration value="FR"/>
-			<xs:enumeration value="GA"/>
-			<xs:enumeration value="GB"/>
-			<xs:enumeration value="GD"/>
-			<xs:enumeration value="GE"/>
-			<xs:enumeration value="GF"/>
-			<xs:enumeration value="GG"/>
-			<xs:enumeration value="GH"/>
-			<xs:enumeration value="GI"/>
-			<xs:enumeration value="GL"/>
-			<xs:enumeration value="GM"/>
-			<xs:enumeration value="GN"/>
-			<xs:enumeration value="GP"/>
-			<xs:enumeration value="GQ"/>
-			<xs:enumeration value="GR"/>
-			<xs:enumeration value="GS"/>
-			<xs:enumeration value="GT"/>
-			<xs:enumeration value="GU"/>
-			<xs:enumeration value="GW"/>
-			<xs:enumeration value="GY"/>
-			<xs:enumeration value="HK"/>
-			<xs:enumeration value="HM"/>
-			<xs:enumeration value="HN"/>
-			<xs:enumeration value="HR"/>
-			<xs:enumeration value="HT"/>
-			<xs:enumeration value="HU"/>
-			<xs:enumeration value="ID"/>
-			<xs:enumeration value="IE"/>
-			<xs:enumeration value="IL"/>
-			<xs:enumeration value="IM"/>
-			<xs:enumeration value="IN"/>
-			<xs:enumeration value="IO"/>
-			<xs:enumeration value="IQ"/>
-			<xs:enumeration value="IR"/>
-			<xs:enumeration value="IS"/>
-			<xs:enumeration value="IT"/>
-			<xs:enumeration value="JE"/>
-			<xs:enumeration value="JM"/>
-			<xs:enumeration value="JO"/>
-			<xs:enumeration value="JP"/>
-			<xs:enumeration value="KE"/>
-			<xs:enumeration value="KG"/>
-			<xs:enumeration value="KH"/>
-			<xs:enumeration value="KI"/>
-			<xs:enumeration value="KM"/>
-			<xs:enumeration value="KN"/>
-			<xs:enumeration value="KP"/>
-			<xs:enumeration value="KR"/>
-			<xs:enumeration value="KW"/>
-			<xs:enumeration value="KY"/>
-			<xs:enumeration value="KZ"/>
-			<xs:enumeration value="LA"/>
-			<xs:enumeration value="LB"/>
-			<xs:enumeration value="LC"/>
-			<xs:enumeration value="LI"/>
-			<xs:enumeration value="LK"/>
-			<xs:enumeration value="LR"/>
-			<xs:enumeration value="LS"/>
-			<xs:enumeration value="LT"/>
-			<xs:enumeration value="LU"/>
-			<xs:enumeration value="LV"/>
-			<xs:enumeration value="LY"/>
-			<xs:enumeration value="MA"/>
-			<xs:enumeration value="MC"/>
-			<xs:enumeration value="MD"/>
-			<xs:enumeration value="ME"/>
-			<xs:enumeration value="MF"/>
-			<xs:enumeration value="MG"/>
-			<xs:enumeration value="MH"/>
-			<xs:enumeration value="MK"/>
-			<xs:enumeration value="ML"/>
-			<xs:enumeration value="MM"/>
-			<xs:enumeration value="MN"/>
-			<xs:enumeration value="MO"/>
-			<xs:enumeration value="MP"/>
-			<xs:enumeration value="MQ"/>
-			<xs:enumeration value="MR"/>
-			<xs:enumeration value="MS"/>
-			<xs:enumeration value="MT"/>
-			<xs:enumeration value="MU"/>
-			<xs:enumeration value="MV"/>
-			<xs:enumeration value="MW"/>
-			<xs:enumeration value="MX"/>
-			<xs:enumeration value="MY"/>
-			<xs:enumeration value="MZ"/>
-			<xs:enumeration value="NA"/>
-			<xs:enumeration value="NC"/>
-			<xs:enumeration value="NE"/>
-			<xs:enumeration value="NF"/>
-			<xs:enumeration value="NG"/>
-			<xs:enumeration value="NI"/>
-			<xs:enumeration value="NL"/>
-			<xs:enumeration value="NO"/>
-			<xs:enumeration value="NP"/>
-			<xs:enumeration value="NR"/>
-			<xs:enumeration value="NU"/>
-			<xs:enumeration value="NZ"/>
-			<xs:enumeration value="OM"/>
-			<xs:enumeration value="PA"/>
-			<xs:enumeration value="PE"/>
-			<xs:enumeration value="PF"/>
-			<xs:enumeration value="PG"/>
-			<xs:enumeration value="PH"/>
-			<xs:enumeration value="PK"/>
-			<xs:enumeration value="PL"/>
-			<xs:enumeration value="PM"/>
-			<xs:enumeration value="PN"/>
-			<xs:enumeration value="PR"/>
-			<xs:enumeration value="PS"/>
-			<xs:enumeration value="PT"/>
-			<xs:enumeration value="PW"/>
-			<xs:enumeration value="PY"/>
-			<xs:enumeration value="QA"/>
-			<xs:enumeration value="RE"/>
-			<xs:enumeration value="RO"/>
-			<xs:enumeration value="RS"/>
-			<xs:enumeration value="RU"/>
-			<xs:enumeration value="RW"/>
-			<xs:enumeration value="SA"/>
-			<xs:enumeration value="SB"/>
-			<xs:enumeration value="SC"/>
-			<xs:enumeration value="SD"/>
-			<xs:enumeration value="SE"/>
-			<xs:enumeration value="SG"/>
-			<xs:enumeration value="SH"/>
-			<xs:enumeration value="SI"/>
-			<xs:enumeration value="SJ"/>
-			<xs:enumeration value="SK"/>
-			<xs:enumeration value="SL"/>
-			<xs:enumeration value="SM"/>
-			<xs:enumeration value="SN"/>
-			<xs:enumeration value="SO"/>
-			<xs:enumeration value="SR"/>
-			<xs:enumeration value="ST"/>
-			<xs:enumeration value="SV"/>
-			<xs:enumeration value="SY"/>
-			<xs:enumeration value="SZ"/>
-			<xs:enumeration value="TC"/>
-			<xs:enumeration value="TD"/>
-			<xs:enumeration value="TF"/>
-			<xs:enumeration value="TG"/>
-			<xs:enumeration value="TH"/>
-			<xs:enumeration value="TJ"/>
-			<xs:enumeration value="TK"/>
-			<xs:enumeration value="TL"/>
-			<xs:enumeration value="TM"/>
-			<xs:enumeration value="TN"/>
-			<xs:enumeration value="TO"/>
-			<xs:enumeration value="TR"/>
-			<xs:enumeration value="TT"/>
-			<xs:enumeration value="TV"/>
-			<xs:enumeration value="TW"/>
-			<xs:enumeration value="TZ"/>
-			<xs:enumeration value="UA"/>
-			<xs:enumeration value="UG"/>
-			<xs:enumeration value="UM"/>
-			<xs:enumeration value="US"/>
-			<xs:enumeration value="UY"/>
-			<xs:enumeration value="UZ"/>
-			<xs:enumeration value="VA"/>
-			<xs:enumeration value="VC"/>
-			<xs:enumeration value="VE"/>
-			<xs:enumeration value="VG"/>
-			<xs:enumeration value="VI"/>
-			<xs:enumeration value="VN"/>
-			<xs:enumeration value="VU"/>
-			<xs:enumeration value="WF"/>
-			<xs:enumeration value="WS"/>
-			<xs:enumeration value="YE"/>
-			<xs:enumeration value="YT"/>
-			<xs:enumeration value="ZA"/>
-			<xs:enumeration value="ZM"/>
-			<xs:enumeration value="ZW"/>
-			<xs:enumeration value="BQ"/>
-			<xs:enumeration value="CW"/>
-			<xs:enumeration value="SS"/>
-			<xs:enumeration value="SX"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="TipoCorreoElectronico">
-		<xs:annotation>
-			<xs:documentation>Validador de correos electronicos</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:whiteSpace value="collapse"/>
-			<xs:pattern value="((\w[-+._\w]+@\w[-.\w]+\.\w[-.\w]+)(;?))*"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="NonNegativeFloat">
-		<xs:annotation>
-			<xs:documentation>Acepta cantidades mayores a 0</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:float">
-			<xs:minInclusive value="0"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="NumeroNDecimales" final="">
-		<xs:annotation>
-			<xs:documentation>Acepta cantidades mayores a 0</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:decimal">
-			<xs:minInclusive value="0"/>
-			<xs:fractionDigits value="10"/>
-			<xs:totalDigits value="22"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="NumeroDosDecimales" final="">
-		<xs:annotation>
-			<xs:documentation>Acepta cantidades mayores a 0</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:decimal">
-			<xs:minInclusive value="0"/>
-			<xs:fractionDigits value="2"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="TipoImpuesto">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="IVA"/>
-			<xs:enumeration value="PETROLEO"/>
-			<xs:enumeration value="TURISMO HOSPEDAJE"/>
-			<xs:enumeration value="TURISMO PASAJES"/>
-			<xs:enumeration value="TIMBRE DE PRENSA"/>
-			<xs:enumeration value="BOMBEROS"/>
-			<xs:enumeration value="TASA MUNICIPAL"/>
-		</xs:restriction>
-	</xs:simpleType>
+<xs:schema targetNamespace="http://www.sat.gob.gt/dte/fel/0.1.0" elementFormDefault="qualified" version="0.4" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:dte="http://www.sat.gob.gt/dte/fel/0.1.0" 
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/xmldsig-core-schema.xsd"/>
+    <xs:element name="GTDocumento">
+        <xs:annotation>
+            <xs:documentation>Definición Global de Documento Electrónico para Guatemala.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="SAT">
+                    <xs:annotation>
+                        <xs:documentation>Estándar de la Superintendencia de Administración Tributaria para el Documento Tributario Electrónico.</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="DTE" id="UUID">
+                                <xs:annotation>
+                                    <xs:documentation>Agrupa la estructura para un DTE.</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="DatosEmision" id="DatosEmision">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="DatosGenerales">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Agrupa los datos generales del DTE.</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:complexType>
+                                                            <xs:attribute name="Tipo" use="required">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Código que indica si el DTE es una factura, una nota de crédito, una nota de débito, un recibo, etc.</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:string">
+                                                                        <xs:whiteSpace value="collapse"/>
+                                                                        <xs:enumeration value="FACT"/>
+                                                                        <xs:enumeration value="FCAM"/>
+                                                                        <xs:enumeration value="FPEQ"/>
+                                                                        <xs:enumeration value="FCAP"/>
+                                                                        <xs:enumeration value="FESP"/>
+                                                                        <xs:enumeration value="NABN"/>
+                                                                        <xs:enumeration value="RDON"/>
+                                                                        <xs:enumeration value="RECI"/>
+                                                                        <xs:enumeration value="NDEB"/>
+                                                                        <xs:enumeration value="NCRE"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="Exp">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Indica si el DTE servira para una Exportación</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:string">
+                                                                        <xs:enumeration value="SI"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="FechaHoraEmision" use="required">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Fecha y hora de emisión del DTE. Formato  aaaa-mm-ddThh:mm:ss.000-06:00 (Milisegundos opcionales, zona horaria especificada o interpretada como hora de Guatemala.)</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:dateTime"/>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="CodigoMoneda" type="dte:tipoMoneda" use="required">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Código de la moneda en la que se emite el DTE.</xs:documentation>
+                                                                </xs:annotation>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="NumeroAcceso" use="optional">
+                                                                <xs:annotation>
+                                                                    <xs:documentation> Es un número generado por el Emisor en forma aleatoria, que va desde 100000000 hasta 999999999</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:positiveInteger">
+                                                                        <xs:whiteSpace value="collapse"/>
+                                                                        <xs:minInclusive value="100000000"/>
+                                                                        <xs:maxInclusive value="999999999"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="Emisor">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Agrupa la información del Emisor del DTE.</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="DireccionEmisor" type="dte:tipoDireccion">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Agrupa los datos de la dirección del establecimiento del Emisor.</xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                            <xs:attribute name="NITEmisor" type="dte:tipoNITDelEFACE" use="required">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Indica el NIT del Emisor del DTE (sin guión).</xs:documentation>
+                                                                </xs:annotation>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="NombreEmisor" use="required">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Nombres y apellidos o razón social del Emisor (De acuerdo a los registros tributarios en el momento de la emisión). </xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:string">
+                                                                        <xs:maxLength value="255"/>
+                                                                        <xs:minLength value="1"/>
+                                                                        <xs:whiteSpace value="collapse"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="CodigoEstablecimiento" use="required">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Número del establecimiento donde se emite el documento. Es el que aparece asignado por SAT en sus registros.</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:positiveInteger">
+                                                                        <xs:minInclusive value="1"/>
+                                                                        <xs:maxInclusive value="9999"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="NombreComercial" use="required">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Indica el nombre comercial del establecimiento (de acuerdo a los registros tributarios) donde se emite el documento. </xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:string">
+                                                                        <xs:minLength value="1"/>
+                                                                        <xs:maxLength value="255"/>
+                                                                        <xs:whiteSpace value="collapse"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="CorreoEmisor">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Indica la Dirección de correo electrónico del Emisor. </xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="dte:TipoCorreoElectronico">
+                                                                        <xs:whiteSpace value="collapse"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="AfiliacionIVA" use="required">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>De acuerdo al Régimen que tenga registrado el contribuyente, se refiere a que puede ser General/Exento o Pequeño Contribuyente.</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:string">
+                                                                        <xs:enumeration value="GEN"/>
+                                                                        <xs:enumeration value="EXE"/>
+                                                                        <xs:enumeration value="PEQ"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="Receptor">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Agrupa la información del Receptor.</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="DireccionReceptor" type="dte:tipoDireccion" minOccurs="0">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Agrupa los datos de dirección del receptor.</xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                            <xs:attribute name="IDReceptor" use="required" id="IDReceptor">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Indica el NIT o CUI del RECEPTOR, CF.</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="dte:tipoNITReceptor">
+                                                                        <xs:whiteSpace value="collapse"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="TipoEspecial">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Cuando la casilla está llena debe contener el valor “CUI”, lo que significa que la casilla “IDReceptor” no incluye un NIT sino un CUI.</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:string">
+                                                                        <xs:whiteSpace value="collapse"/>
+                                                                        <xs:enumeration value="CUI"/>
+                                                                        <xs:enumeration value="EXT"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="NombreReceptor" use="required" id="RazonSocial">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Si la casilla “IDReceptor” contiene un NIT valido el nombre indicado debe corresponder a los registros tributarios. Caso contrario el contenido puede ser cualquiera que solicite el RECEPTOR.</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:string">
+                                                                        <xs:minLength value="1"/>
+                                                                        <xs:maxLength value="255"/>
+                                                                        <xs:whiteSpace value="collapse"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="CorreoReceptor">
+                                                                <xs:annotation>
+                                                                    <xs:documentation>Indica la Dirección de correo electrónico del receptor. </xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="dte:TipoCorreoElectronico">
+                                                                        <xs:whiteSpace value="collapse"/>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="Frases" minOccurs="0">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Agrupa las frases de un documento.</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="Frase" maxOccurs="100">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>En esta sección deberá indicarse los regímenes y textos especiales que son requeridos en los DTE, de acuerdo a la afiliación del contribuyente y tipo de operación.														</xs:documentation>
+                                                                    </xs:annotation>
+                                                                    <xs:complexType>
+                                                                        <xs:attribute name="TipoFrase" use="required">
+                                                                            <xs:annotation>
+                                                                                <xs:documentation>Identifica un determinado catálogo de leyendas.</xs:documentation>
+                                                                            </xs:annotation>
+                                                                            <xs:simpleType>
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Tipo de Aviso incluido en los                                                                      DTE </xs:documentation>
+                                                                                </xs:annotation>
+                                                                                <xs:restriction base="xs:positiveInteger">
+                                                                                    <xs:whiteSpace value="collapse"/>
+                                                                                    <xs:minInclusive value="1"/>
+                                                                                    <xs:maxInclusive value="5"/>
+                                                                                </xs:restriction>
+                                                                            </xs:simpleType>
+                                                                        </xs:attribute>
+                                                                        <xs:attribute name="CodigoEscenario" use="required">
+                                                                            <xs:annotation>
+                                                                                <xs:documentation>Indica un determinado Escenario dentro del catálogo de leyendas.</xs:documentation>
+                                                                            </xs:annotation>
+                                                                            <xs:simpleType>
+                                                                                <xs:restriction base="xs:int">
+                                                                                    <xs:minInclusive value="1"/>
+                                                                                    <xs:maxInclusive value="99"/>
+                                                                                </xs:restriction>
+                                                                            </xs:simpleType>
+                                                                        </xs:attribute>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="Items" id="Detalles">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Agrupa la información de los Items.</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="Item" id="Detalle" maxOccurs="9999">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Agrupa la información de un renglón o ítem de un DTE. Se refiere a lo que la Ley del IVA define como “concepto” en la venta de bienes o como “clase de servicio” en la prestación de servicios. También se refiere a lo que el Reglamento de la Ley del IVA indica como “detalle” o “descripción” de la venta, del servicio prestado o del arrendamiento. </xs:documentation>
+                                                                    </xs:annotation>
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="Cantidad" id="Cantidad">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Indica la cantidad de unidades del ítem.</xs:documentation>
+                                                                                </xs:annotation>
+                                                                                <xs:complexType>
+                                                                                    <xs:simpleContent>
+                                                                                        <xs:extension base="dte:NumeroNDecimales"/>
+                                                                                    </xs:simpleContent>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                            <xs:element name="UnidadMedida" minOccurs="0">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Indica la unidad de medida en que está expresado el elemento CantidadItem.  Si el emisor lo desea, puede utilizar la nomenclatura definida por la Intendencia de Aduanas de la SAT en su tabla SAT-IA-008.</xs:documentation>
+                                                                                </xs:annotation>
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:string">
+                                                                                        <xs:minLength value="1"/>
+                                                                                        <xs:maxLength value="3"/>
+                                                                                        <xs:whiteSpace value="collapse"/>
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element name="Descripcion" id="Descripcion">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Indica la descripción del ítem. </xs:documentation>
+                                                                                </xs:annotation>
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:string">
+                                                                                        <xs:minLength value="1"/>
+                                                                                        <xs:maxLength value="10000"/>
+                                                                                        <xs:whiteSpace value="collapse"/>
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element name="PrecioUnitario" id="PrecioUnitario">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Precio de cada unidad del ítem en la moneda en que se emite el DTE (quetzales, dólares, euros, etc.).</xs:documentation>
+                                                                                </xs:annotation>
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="dte:NumeroNDecimales"/>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element name="Precio" type="dte:NumeroNDecimales" id="Precio">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>PrecioUnitario multiplicado por CantidadItem. </xs:documentation>
+                                                                                </xs:annotation>
+                                                                            </xs:element>
+                                                                            <xs:element name="Descuento" type="dte:NumeroNDecimales" minOccurs="0">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Indica el descuento a aplicar sobre el elemento Precio.</xs:documentation>
+                                                                                </xs:annotation>
+                                                                            </xs:element>
+                                                                            <xs:element name="Impuestos" id="Impuestos" minOccurs="0">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Agrupa los impuestos aplicados al ítem.</xs:documentation>
+                                                                                </xs:annotation>
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element name="Impuesto" maxOccurs="20">
+                                                                                            <xs:annotation>
+                                                                                                <xs:documentation>Agrupa los datos de un Impuesto.</xs:documentation>
+                                                                                            </xs:annotation>
+                                                                                            <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                    <xs:element name="NombreCorto">
+                                                                                                        <xs:annotation>
+                                                                                                            <xs:documentation>Nombre corto que identifica el impuesto.</xs:documentation>
+                                                                                                        </xs:annotation>
+                                                                                                        <xs:simpleType>
+                                                                                                            <xs:restriction base="dte:TipoImpuesto">
+                                                                                                                <xs:whiteSpace value="collapse"/>
+                                                                                                            </xs:restriction>
+                                                                                                        </xs:simpleType>
+                                                                                                    </xs:element>
+                                                                                                    <xs:element name="CodigoUnidadGravable">
+                                                                                                        <xs:annotation>
+                                                                                                            <xs:documentation/>
+                                                                                                        </xs:annotation>
+                                                                                                        <xs:simpleType>
+                                                                                                            <xs:restriction base="xs:integer">
+                                                                                                                <xs:minInclusive value="1"/>
+                                                                                                                <xs:totalDigits value="7"/>
+                                                                                                            </xs:restriction>
+                                                                                                        </xs:simpleType>
+                                                                                                    </xs:element>
+                                                                                                    <xs:element name="MontoGravable" type="dte:NumeroNDecimales" minOccurs="0">
+                                                                                                        <xs:annotation>
+                                                                                                            <xs:documentation>Monto sobre el cual se aplica el impuesto.</xs:documentation>
+                                                                                                        </xs:annotation>
+                                                                                                    </xs:element>
+                                                                                                    <xs:element name="CantidadUnidadesGravables" type="dte:NumeroNDecimales" minOccurs="0">
+                                                                                                        <xs:annotation>
+                                                                                                            <xs:documentation/>
+                                                                                                        </xs:annotation>
+                                                                                                    </xs:element>
+                                                                                                    <xs:element name="MontoImpuesto">
+                                                                                                        <xs:annotation>
+                                                                                                            <xs:documentation/>
+                                                                                                        </xs:annotation>
+                                                                                                        <xs:complexType>
+                                                                                                            <xs:simpleContent>
+                                                                                                                <xs:extension base="dte:NumeroNDecimales"/>
+                                                                                                            </xs:simpleContent>
+                                                                                                        </xs:complexType>
+                                                                                                    </xs:element>
+                                                                                                </xs:sequence>
+                                                                                            </xs:complexType>
+                                                                                        </xs:element>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                            <xs:element name="Total" type="dte:NumeroNDecimales">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Precio menos Descuento más la sumatoria de las casillas “MontoImpuesto” (de los impuestos que sean sumables al DTE.</xs:documentation>
+                                                                                </xs:annotation>
+                                                                            </xs:element>
+                                                                            <xs:element name="ComplementosItem" minOccurs="0">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>a) Contiene diferentes subesquemas XSD. b) Sirve para integrar al ítem información adicional de interés para la SAT.</xs:documentation>
+                                                                                </xs:annotation>
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence maxOccurs="unbounded">
+                                                                                        <xs:element name="ComplementoItem">
+                                                                                            <xs:annotation>
+                                                                                                <xs:documentation>Complemento Item.</xs:documentation>
+                                                                                            </xs:annotation>
+                                                                                            <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                    <xs:any/>
+                                                                                                </xs:sequence>
+                                                                                                <xs:attribute name="IDComplementoItem">
+                                                                                                    <xs:annotation>
+                                                                                                        <xs:documentation>Identificador  del complemento del Item.</xs:documentation>
+                                                                                                    </xs:annotation>
+                                                                                                </xs:attribute>
+                                                                                                <xs:attribute name="NombreComplementoItem" use="required">
+                                                                                                    <xs:annotation>
+                                                                                                        <xs:documentation>Indica el nombre del complento del Item.</xs:documentation>
+                                                                                                    </xs:annotation>
+                                                                                                </xs:attribute>
+                                                                                                <xs:attribute name="URIComplementoItem" use="required">
+                                                                                                    <xs:annotation>
+                                                                                                        <xs:documentation>Indica el URI del XSD del complemento del Item.</xs:documentation>
+                                                                                                    </xs:annotation>
+                                                                                                </xs:attribute>
+                                                                                            </xs:complexType>
+                                                                                        </xs:element>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute name="NumeroLinea" use="required">
+                                                                            <xs:annotation>
+                                                                                <xs:documentation>Correlativo del ítem dentro del DTE. En el caso de Notas de Débito y Notas de Crédito identifica el renglón o ítem del documento original.</xs:documentation>
+                                                                            </xs:annotation>
+                                                                            <xs:simpleType>
+                                                                                <xs:restriction base="xs:positiveInteger">
+                                                                                    <xs:minInclusive value="1"/>
+                                                                                    <xs:maxInclusive value="9999"/>
+                                                                                </xs:restriction>
+                                                                            </xs:simpleType>
+                                                                        </xs:attribute>
+                                                                        <xs:attribute name="BienOServicio" use="required">
+                                                                            <xs:annotation>
+                                                                                <xs:documentation>Indica si el ítem es un bien o servicio.</xs:documentation>
+                                                                            </xs:annotation>
+                                                                            <xs:simpleType>
+                                                                                <xs:restriction base="xs:string">
+                                                                                    <xs:length value="1"/>
+                                                                                    <xs:whiteSpace value="collapse"/>
+                                                                                    <xs:enumeration value="B"/>
+                                                                                    <xs:enumeration value="S"/>
+                                                                                </xs:restriction>
+                                                                            </xs:simpleType>
+                                                                        </xs:attribute>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="Totales">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Agrupa los montos totales a nivel de DTE.</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="TotalImpuestos" minOccurs="0">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Agrupa los totales de impuestos agrupados por tipo de impuesto.</xs:documentation>
+                                                                    </xs:annotation>
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="TotalImpuesto" maxOccurs="20">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Agrupa los datos de cada impuesto.</xs:documentation>
+                                                                                </xs:annotation>
+                                                                                <xs:complexType>
+                                                                                    <xs:attribute name="NombreCorto" use="required">
+                                                                                        <xs:annotation>
+                                                                                            <xs:documentation>Nombre corto que identifica el impuesto.</xs:documentation>
+                                                                                        </xs:annotation>
+                                                                                        <xs:simpleType>
+                                                                                            <xs:restriction base="dte:TipoImpuesto">
+                                                                                                <xs:whiteSpace value="collapse"/>
+                                                                                            </xs:restriction>
+                                                                                        </xs:simpleType>
+                                                                                    </xs:attribute>
+                                                                                    <xs:attribute name="TotalMontoImpuesto" type="dte:NumeroNDecimales" use="required" id="ImpuestoTotales">
+                                                                                        <xs:annotation>
+                                                                                            <xs:documentation>Sumatoria de MontoImpuesto de cada uno de los ítems con el mismo impuesto. Ejemplo: Si el elemento impuesto es IVA, este atributo deberá contener la sumatoria de los montos de IVA incluidos en todos los ítems del documento.</xs:documentation>
+                                                                                        </xs:annotation>
+                                                                                    </xs:attribute>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="GranTotal" type="dte:NumeroNDecimales">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Sumatoria de los elementos Total de cada uno de los ítems del DTE.</xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="Complementos" minOccurs="0">
+                                                        <xs:annotation>
+                                                            <xs:documentation>a) Contiene diferentes subesquemas XSD. b) Sirve para integrar al DTE información adicional de interés para la SAT.</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:complexType>
+                                                            <xs:sequence maxOccurs="unbounded">
+                                                                <xs:element name="Complemento">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Complemento.</xs:documentation>
+                                                                    </xs:annotation>
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:any/>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute name="IDComplemento">
+                                                                            <xs:annotation>
+                                                                                <xs:documentation>Identificador del complemento.</xs:documentation>
+                                                                            </xs:annotation>
+                                                                        </xs:attribute>
+                                                                        <xs:attribute name="NombreComplemento" use="required">
+                                                                            <xs:annotation>
+                                                                                <xs:documentation>Indica el nombre del Complemento.</xs:documentation>
+                                                                            </xs:annotation>
+                                                                        </xs:attribute>
+                                                                        <xs:attribute name="URIComplemento" use="required">
+                                                                            <xs:annotation>
+                                                                                <xs:documentation>Indica el URI del XSD del complemento.</xs:documentation>
+                                                                            </xs:annotation>
+                                                                        </xs:attribute>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute name="ID" use="required" fixed="DatosEmision"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Certificacion" id="Certificacion" minOccurs="0">
+                                            <xs:annotation>
+                                                <xs:documentation>Agrupa los datos relacionados con la autorización del DTE de parte del Certificador.</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="NITCertificador">
+                                                        <xs:annotation>
+                                                            <xs:documentation>NIT del Certificador sin guión.</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                                <xs:minLength value="1"/>
+                                                                <xs:maxLength value="13"/>
+                                                                <xs:whiteSpace value="collapse"/>
+                                                                <xs:pattern value="([1-9])+([0-9])*([0-9]|K)"/>
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="NombreCertificador">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Nombre del Certificador (De acuerdo a los registros tributarios).</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                                <xs:minLength value="1"/>
+                                                                <xs:maxLength value="255"/>
+                                                                <xs:whiteSpace value="collapse"/>
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="NumeroAutorizacion">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Número de autorización asignado que identifica de forma única a cada documento emitido por medio del sistema del Certificador. Por la naturaleza del UUID no es un número correlativo y se representa como un número hexadecimal</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="dte:tipoUUID">
+                                                                    <xs:attribute name="Serie" use="required">
+                                                                        <xs:annotation>
+                                                                            <xs:documentation>Se forma con los primeros 8 dígitos hexadecimales del UUID, de izquierda a derecha, de tal forma que queda estructurado como se describe a continuación: De un UUID Original: dbb51ae2-3a62-4437-b8e9-42ecfb761156, el valor resultante será: dbb51ae2</xs:documentation>
+                                                                        </xs:annotation>
+                                                                        <xs:simpleType>
+                                                                            <xs:restriction base="xs:string">
+                                                                                <xs:whiteSpace value="collapse"/>
+                                                                                <xs:minLength value="1"/>
+                                                                                <xs:maxLength value="20"/>
+                                                                            </xs:restriction>
+                                                                        </xs:simpleType>
+                                                                    </xs:attribute>
+                                                                    <xs:attribute name="Numero" use="required">
+                                                                        <xs:annotation>
+                                                                            <xs:documentation>Se forma con el equivalente en números decimales de los dígitos hexadecimales del UUID, a partir de la posición 9 hasta la posición 16 (excluyendo los guiones “-“), de izquierda a derecha, de tal forma que queda estructurado como se describe a continuación: De un UUID Original: dbb51ae2-3a62-4437-b8e9-42ecfb761156, el valor resultante será: 979518519</xs:documentation>
+                                                                        </xs:annotation>
+                                                                        <xs:simpleType>
+                                                                            <xs:restriction base="xs:positiveInteger">
+                                                                                <xs:minInclusive value="1"/>
+                                                                                <xs:maxInclusive value="999999999999999"/>
+                                                                                <xs:totalDigits value="15"/>
+                                                                            </xs:restriction>
+                                                                        </xs:simpleType>
+                                                                    </xs:attribute>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="FechaHoraCertificacion">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Es la fecha y hora del momento en que el Certificador incorpora su firma electrónica al DTE. Formato  aaaa-mm-ddThh:mm:ss.000-06:00 (Milisegundos opcionales, zona horaria especificada o interpretada como hora de Guatemala</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:dateTime">
+                                                                <xs:pattern value="((\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(.(\d{3}))?(-06:00)?)"/>
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="ID" use="required" fixed="DatosCertificados"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Adenda" minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>Elemento opcional, en el cual se puede indicar información de caracter comercial, no tributaria relacionada con el documento que el emisor le transmite al receptor.</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:any namespace="##any" processContents="lax" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="ClaseDocumento" use="required">
+                            <xs:annotation>
+                                <xs:documentation>Identificación del Documento Tributario Electrónico.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:whiteSpace value="collapse"/>
+                                    <xs:enumeration value="dte"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="ds:Signature" id="FirmaEmisor"/>
+                <xs:element ref="ds:Signature" id="FirmaCertificador" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="Version" type="xs:decimal" use="required" fixed="0.4">
+                <xs:annotation>
+                    <xs:documentation>Esta casilla indica el numero de versión del documento.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="VersionType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{1,3}">
+                <xs:annotation>
+                    <xs:documentation>por ejemplo. x , donde x son números enteros de 0 a                        999</xs:documentation>
+                </xs:annotation>
+            </xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tipoString100">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+            <xs:whiteSpace value="collapse"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tipoUUID">
+        <xs:restriction base="xs:token">
+            <xs:pattern value="[0-9A-F]{8}-([0-9A-F]{4}-){3}[0-9A-F]{12}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="tipoDocumento"/>
+    <xs:simpleType name="tipoNITReceptor">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="18"/>
+            <xs:pattern value="(([1-9])+([0-9])*([0-9]|K))|(([1-9]+[0-9]){12,13})|(CF)|^([A-Z0-9]{3,18})$"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tipoNITDelEFACE">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="13"/>
+            <xs:whiteSpace value="collapse"/>
+            <xs:pattern value="([1-9])+([0-9])*([0-9]|K)"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="tipoDireccion">
+        <xs:sequence>
+            <xs:element name="Direccion">
+                <xs:annotation>
+                    <xs:documentation></xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="200"/>
+                        <xs:whiteSpace value="collapse"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CodigoPostal" type="xs:integer">
+                <xs:annotation>
+                    <xs:documentation/>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Municipio">
+                <xs:annotation>
+                    <xs:documentation/>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="100"/>
+                        <xs:whiteSpace value="collapse"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Departamento">
+                <xs:annotation>
+                    <xs:documentation/>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="100"/>
+                        <xs:whiteSpace value="collapse"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Pais">
+                <xs:annotation>
+                    <xs:documentation/>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="dte:tipoCodigoPais">
+                        <xs:whiteSpace value="collapse"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="tipoMoneda">
+        <xs:annotation>
+            <xs:documentation>ISO 4217</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:length value="3"/>
+            <xs:enumeration value="GTQ"/>
+            <xs:enumeration value="USD"/>
+            <xs:enumeration value="VES"/>
+            <xs:enumeration value="CRC"/>
+            <xs:enumeration value="SVC"/>
+            <xs:enumeration value="NIO"/>
+            <xs:enumeration value="DKK"/>
+            <xs:enumeration value="NOK"/>
+            <xs:enumeration value="SEK"/>
+            <xs:enumeration value="CAD"/>
+            <xs:enumeration value="HKD"/>
+            <xs:enumeration value="TWD"/>
+            <xs:enumeration value="PTE"/>
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="CHF"/>
+            <xs:enumeration value="HNL"/>
+            <xs:enumeration value="GBP"/>
+            <xs:enumeration value="ARS"/>
+            <xs:enumeration value="DOP"/>
+            <xs:enumeration value="COP"/>
+            <xs:enumeration value="MXN"/>
+            <xs:enumeration value="BRL"/>
+            <xs:enumeration value="MYR"/>
+            <xs:enumeration value="INR"/>
+            <xs:enumeration value="PKR"/>
+            <xs:enumeration value="KPW"/>
+            <xs:enumeration value="JPY"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tipoCodigoPais">
+        <xs:annotation>
+            <xs:documentation>Código de País ISO 3166-1</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="AD"/>
+            <xs:enumeration value="AE"/>
+            <xs:enumeration value="AF"/>
+            <xs:enumeration value="AG"/>
+            <xs:enumeration value="AI"/>
+            <xs:enumeration value="AL"/>
+            <xs:enumeration value="AM"/>
+            <xs:enumeration value="AN"/>
+            <xs:enumeration value="AO"/>
+            <xs:enumeration value="AQ"/>
+            <xs:enumeration value="AR"/>
+            <xs:enumeration value="AS"/>
+            <xs:enumeration value="AT"/>
+            <xs:enumeration value="AU"/>
+            <xs:enumeration value="AW"/>
+            <xs:enumeration value="AX"/>
+            <xs:enumeration value="AZ"/>
+            <xs:enumeration value="BA"/>
+            <xs:enumeration value="BB"/>
+            <xs:enumeration value="BD"/>
+            <xs:enumeration value="BE"/>
+            <xs:enumeration value="BF"/>
+            <xs:enumeration value="BG"/>
+            <xs:enumeration value="BH"/>
+            <xs:enumeration value="BI"/>
+            <xs:enumeration value="BJ"/>
+            <xs:enumeration value="BL"/>
+            <xs:enumeration value="BM"/>
+            <xs:enumeration value="BN"/>
+            <xs:enumeration value="BO"/>
+            <xs:enumeration value="BR"/>
+            <xs:enumeration value="BS"/>
+            <xs:enumeration value="BT"/>
+            <xs:enumeration value="BV"/>
+            <xs:enumeration value="BW"/>
+            <xs:enumeration value="BY"/>
+            <xs:enumeration value="BZ"/>
+            <xs:enumeration value="CA"/>
+            <xs:enumeration value="CC"/>
+            <xs:enumeration value="CD"/>
+            <xs:enumeration value="CF"/>
+            <xs:enumeration value="CG"/>
+            <xs:enumeration value="CH"/>
+            <xs:enumeration value="CI"/>
+            <xs:enumeration value="CK"/>
+            <xs:enumeration value="CL"/>
+            <xs:enumeration value="CM"/>
+            <xs:enumeration value="CN"/>
+            <xs:enumeration value="CO"/>
+            <xs:enumeration value="CR"/>
+            <xs:enumeration value="CU"/>
+            <xs:enumeration value="CV"/>
+            <xs:enumeration value="CX"/>
+            <xs:enumeration value="CY"/>
+            <xs:enumeration value="CZ"/>
+            <xs:enumeration value="DE"/>
+            <xs:enumeration value="DJ"/>
+            <xs:enumeration value="DK"/>
+            <xs:enumeration value="DM"/>
+            <xs:enumeration value="DO"/>
+            <xs:enumeration value="DZ"/>
+            <xs:enumeration value="EC"/>
+            <xs:enumeration value="EE"/>
+            <xs:enumeration value="EG"/>
+            <xs:enumeration value="EH"/>
+            <xs:enumeration value="ER"/>
+            <xs:enumeration value="ES"/>
+            <xs:enumeration value="ET"/>
+            <xs:enumeration value="FI"/>
+            <xs:enumeration value="FJ"/>
+            <xs:enumeration value="FK"/>
+            <xs:enumeration value="FM"/>
+            <xs:enumeration value="FO"/>
+            <xs:enumeration value="FR"/>
+            <xs:enumeration value="GA"/>
+            <xs:enumeration value="GB"/>
+            <xs:enumeration value="GD"/>
+            <xs:enumeration value="GE"/>
+            <xs:enumeration value="GF"/>
+            <xs:enumeration value="GG"/>
+            <xs:enumeration value="GH"/>
+            <xs:enumeration value="GI"/>
+            <xs:enumeration value="GL"/>
+            <xs:enumeration value="GM"/>
+            <xs:enumeration value="GN"/>
+            <xs:enumeration value="GP"/>
+            <xs:enumeration value="GQ"/>
+            <xs:enumeration value="GR"/>
+            <xs:enumeration value="GS"/>
+            <xs:enumeration value="GT"/>
+            <xs:enumeration value="GU"/>
+            <xs:enumeration value="GW"/>
+            <xs:enumeration value="GY"/>
+            <xs:enumeration value="HK"/>
+            <xs:enumeration value="HM"/>
+            <xs:enumeration value="HN"/>
+            <xs:enumeration value="HR"/>
+            <xs:enumeration value="HT"/>
+            <xs:enumeration value="HU"/>
+            <xs:enumeration value="ID"/>
+            <xs:enumeration value="IE"/>
+            <xs:enumeration value="IL"/>
+            <xs:enumeration value="IM"/>
+            <xs:enumeration value="IN"/>
+            <xs:enumeration value="IO"/>
+            <xs:enumeration value="IQ"/>
+            <xs:enumeration value="IR"/>
+            <xs:enumeration value="IS"/>
+            <xs:enumeration value="IT"/>
+            <xs:enumeration value="JE"/>
+            <xs:enumeration value="JM"/>
+            <xs:enumeration value="JO"/>
+            <xs:enumeration value="JP"/>
+            <xs:enumeration value="KE"/>
+            <xs:enumeration value="KG"/>
+            <xs:enumeration value="KH"/>
+            <xs:enumeration value="KI"/>
+            <xs:enumeration value="KM"/>
+            <xs:enumeration value="KN"/>
+            <xs:enumeration value="KP"/>
+            <xs:enumeration value="KR"/>
+            <xs:enumeration value="KW"/>
+            <xs:enumeration value="KY"/>
+            <xs:enumeration value="KZ"/>
+            <xs:enumeration value="LA"/>
+            <xs:enumeration value="LB"/>
+            <xs:enumeration value="LC"/>
+            <xs:enumeration value="LI"/>
+            <xs:enumeration value="LK"/>
+            <xs:enumeration value="LR"/>
+            <xs:enumeration value="LS"/>
+            <xs:enumeration value="LT"/>
+            <xs:enumeration value="LU"/>
+            <xs:enumeration value="LV"/>
+            <xs:enumeration value="LY"/>
+            <xs:enumeration value="MA"/>
+            <xs:enumeration value="MC"/>
+            <xs:enumeration value="MD"/>
+            <xs:enumeration value="ME"/>
+            <xs:enumeration value="MF"/>
+            <xs:enumeration value="MG"/>
+            <xs:enumeration value="MH"/>
+            <xs:enumeration value="MK"/>
+            <xs:enumeration value="ML"/>
+            <xs:enumeration value="MM"/>
+            <xs:enumeration value="MN"/>
+            <xs:enumeration value="MO"/>
+            <xs:enumeration value="MP"/>
+            <xs:enumeration value="MQ"/>
+            <xs:enumeration value="MR"/>
+            <xs:enumeration value="MS"/>
+            <xs:enumeration value="MT"/>
+            <xs:enumeration value="MU"/>
+            <xs:enumeration value="MV"/>
+            <xs:enumeration value="MW"/>
+            <xs:enumeration value="MX"/>
+            <xs:enumeration value="MY"/>
+            <xs:enumeration value="MZ"/>
+            <xs:enumeration value="NA"/>
+            <xs:enumeration value="NC"/>
+            <xs:enumeration value="NE"/>
+            <xs:enumeration value="NF"/>
+            <xs:enumeration value="NG"/>
+            <xs:enumeration value="NI"/>
+            <xs:enumeration value="NL"/>
+            <xs:enumeration value="NO"/>
+            <xs:enumeration value="NP"/>
+            <xs:enumeration value="NR"/>
+            <xs:enumeration value="NU"/>
+            <xs:enumeration value="NZ"/>
+            <xs:enumeration value="OM"/>
+            <xs:enumeration value="PA"/>
+            <xs:enumeration value="PE"/>
+            <xs:enumeration value="PF"/>
+            <xs:enumeration value="PG"/>
+            <xs:enumeration value="PH"/>
+            <xs:enumeration value="PK"/>
+            <xs:enumeration value="PL"/>
+            <xs:enumeration value="PM"/>
+            <xs:enumeration value="PN"/>
+            <xs:enumeration value="PR"/>
+            <xs:enumeration value="PS"/>
+            <xs:enumeration value="PT"/>
+            <xs:enumeration value="PW"/>
+            <xs:enumeration value="PY"/>
+            <xs:enumeration value="QA"/>
+            <xs:enumeration value="RE"/>
+            <xs:enumeration value="RO"/>
+            <xs:enumeration value="RS"/>
+            <xs:enumeration value="RU"/>
+            <xs:enumeration value="RW"/>
+            <xs:enumeration value="SA"/>
+            <xs:enumeration value="SB"/>
+            <xs:enumeration value="SC"/>
+            <xs:enumeration value="SD"/>
+            <xs:enumeration value="SE"/>
+            <xs:enumeration value="SG"/>
+            <xs:enumeration value="SH"/>
+            <xs:enumeration value="SI"/>
+            <xs:enumeration value="SJ"/>
+            <xs:enumeration value="SK"/>
+            <xs:enumeration value="SL"/>
+            <xs:enumeration value="SM"/>
+            <xs:enumeration value="SN"/>
+            <xs:enumeration value="SO"/>
+            <xs:enumeration value="SR"/>
+            <xs:enumeration value="ST"/>
+            <xs:enumeration value="SV"/>
+            <xs:enumeration value="SY"/>
+            <xs:enumeration value="SZ"/>
+            <xs:enumeration value="TC"/>
+            <xs:enumeration value="TD"/>
+            <xs:enumeration value="TF"/>
+            <xs:enumeration value="TG"/>
+            <xs:enumeration value="TH"/>
+            <xs:enumeration value="TJ"/>
+            <xs:enumeration value="TK"/>
+            <xs:enumeration value="TL"/>
+            <xs:enumeration value="TM"/>
+            <xs:enumeration value="TN"/>
+            <xs:enumeration value="TO"/>
+            <xs:enumeration value="TR"/>
+            <xs:enumeration value="TT"/>
+            <xs:enumeration value="TV"/>
+            <xs:enumeration value="TW"/>
+            <xs:enumeration value="TZ"/>
+            <xs:enumeration value="UA"/>
+            <xs:enumeration value="UG"/>
+            <xs:enumeration value="UM"/>
+            <xs:enumeration value="US"/>
+            <xs:enumeration value="UY"/>
+            <xs:enumeration value="UZ"/>
+            <xs:enumeration value="VA"/>
+            <xs:enumeration value="VC"/>
+            <xs:enumeration value="VE"/>
+            <xs:enumeration value="VG"/>
+            <xs:enumeration value="VI"/>
+            <xs:enumeration value="VN"/>
+            <xs:enumeration value="VU"/>
+            <xs:enumeration value="WF"/>
+            <xs:enumeration value="WS"/>
+            <xs:enumeration value="YE"/>
+            <xs:enumeration value="YT"/>
+            <xs:enumeration value="ZA"/>
+            <xs:enumeration value="ZM"/>
+            <xs:enumeration value="ZW"/>
+            <xs:enumeration value="BQ"/>
+            <xs:enumeration value="CW"/>
+            <xs:enumeration value="SS"/>
+            <xs:enumeration value="SX"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TipoCorreoElectronico">
+        <xs:annotation>
+            <xs:documentation>Validador de correos electronicos</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="collapse"/>
+            <xs:pattern value="((\w[-+._\w]+@\w[-.\w]+\.\w[-.\w]+)(;?))*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NonNegativeFloat">
+        <xs:annotation>
+            <xs:documentation>Acepta cantidades mayores a 0</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NumeroNDecimales" final="">
+        <xs:annotation>
+            <xs:documentation>Acepta cantidades mayores a 0</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:fractionDigits value="10"/>
+            <xs:totalDigits value="22"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NumeroDosDecimales" final="">
+        <xs:annotation>
+            <xs:documentation>Acepta cantidades mayores a 0</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TipoImpuesto">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="IVA"/>
+            <xs:enumeration value="PETROLEO"/>
+            <xs:enumeration value="TURISMO HOSPEDAJE"/>
+            <xs:enumeration value="TURISMO PASAJES"/>
+            <xs:enumeration value="TIMBRE DE PRENSA"/>
+            <xs:enumeration value="BOMBEROS"/>
+            <xs:enumeration value="TASA MUNICIPAL"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
