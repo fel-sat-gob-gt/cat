@@ -1,0 +1,108 @@
+{
+    "Cabecera": {
+        "Nombre": "Catalogo RTU TipoPersoneria (Preliminar)",
+        "Ultima Actualizacion": "30/01/2020 20:49:36"
+    },
+    "Contenido": [
+        {
+            "TipoPersoneria": "0",
+            "DescripcionPersoneria": "PERSONA INDIVIDUAL",
+            "Rdon": ""
+        },
+        {
+            "TipoPersoneria": "719",
+            "DescripcionPersoneria": "ASOCIACIÓN CIVIL",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "720",
+            "DescripcionPersoneria": "ASOCIACIÓN COMUNITARIA Y DE DESARROLLO",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "721",
+            "DescripcionPersoneria": "OTRO TIPO DE ASOCIACIÓN",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "723",
+            "DescripcionPersoneria": "ASOCIACIÓN DE TRANSPORTE",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "724",
+            "DescripcionPersoneria": "ASOCIACIÓN DE VECINOS",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "725",
+            "DescripcionPersoneria": "ASOCIACIÓN EDUCATIVA, CULTURAL O DEPORTIVA",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "726",
+            "DescripcionPersoneria": "ASOCIACIÓN EMPRESARIAL, AGRÍCOLA, ARTESANAL, INDUSTRIAL Y OTRAS",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "727",
+            "DescripcionPersoneria": "ASOCIACIÓN MÉDICA Y DE SALUD",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "728",
+            "DescripcionPersoneria": "ASOCIACIÓN SOLIDARISTA DE EMPLEADOS",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "729",
+            "DescripcionPersoneria": "CÁMARA",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "730",
+            "DescripcionPersoneria": "GREMIAL",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "731",
+            "DescripcionPersoneria": "COMITÉ",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "732",
+            "DescripcionPersoneria": "SINDICATO",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "733",
+            "DescripcionPersoneria": "ORGANIZACIÓN NO GUBERNAMENTAL",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "734",
+            "DescripcionPersoneria": "PARTIDO POLÍTICO",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "735",
+            "DescripcionPersoneria": "IGLESIA CATÓLICA",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "736",
+            "DescripcionPersoneria": "OTRA ENTIDAD RELIGIOSA",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "737",
+            "DescripcionPersoneria": "COLEGIO DE PROFESIONALES",
+            "Rdon": "SI"
+        },
+        {
+            "TipoPersoneria": "739",
+            "DescripcionPersoneria": "CENTRO EDUCATIVO POR COOPERATIVA",
+            "Rdon": "SI"
+        }
+    ]
+}
