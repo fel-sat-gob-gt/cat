@@ -1,0 +1,38 @@
+{
+    "Cabecera": {
+        "Nombre": "Catalogo FEL AfiliacionIVA",
+        "Ultima Actualizacion": "30/01/2020 20:49:36"
+    },
+    "Contenido": [
+        {
+            "AfiliacionIVA": "GEN",
+            "DescripcionAfiliacionIVA": "REGIMEN GENERAL",
+            "Estado": "A"
+        },
+        {
+            "AfiliacionIVA": "PEQ",
+            "DescripcionAfiliacionIVA": "PEQUEÑO CONTRIBUYENTE",
+            "Estado": "A"
+        },
+        {
+            "AfiliacionIVA": "EXE",
+            "DescripcionAfiliacionIVA": "EXENTO - Compatibilidad previo 2019-03-01",
+            "Estado": "I"
+        },
+        {
+            "AfiliacionIVA": "PEE",
+            "DescripcionAfiliacionIVA": "PEQUEÑO CONTRIBUYENTE ELECTRONICO",
+            "Estado": "A"
+        },
+        {
+            "AfiliacionIVA": "AGR",
+            "DescripcionAfiliacionIVA": "CONTRIBUYENTE AGROPECUARIO",
+            "Estado": "A"
+        },
+        {
+            "AfiliacionIVA": "AGE",
+            "DescripcionAfiliacionIVA": "ASOCIACIÓN DE VECINOS",
+            "Estado": "A"
+        }
+    ]
+}
