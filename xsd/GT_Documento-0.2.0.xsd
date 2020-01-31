@@ -271,6 +271,29 @@
 																				</xs:restriction>
 																			</xs:simpleType>
 																		</xs:attribute>
+																		<xs:attribute name="NumeroResolucion" use="optional">
+																			<xs:annotation>
+																				<xs:documentation>Numero de resolución relacionada a la frase.. Uso opcional de acuerdo a reglas y validaciones.</xs:documentation>
+																			</xs:annotation>
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:minLength value="4"/>
+																					<xs:maxLength value="50"/>
+																					<xs:whiteSpace value="collapse"/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:attribute>
+																		<xs:attribute name="FechaResolucion" use="optional">
+																			<xs:annotation>
+																				<xs:documentation>Fecha de resolución relacionada a la frase. Uso opcional de acuerdo a reglas y validaciones.</xs:documentation>
+																			</xs:annotation>
+																			<xs:simpleType>
+																				<xs:restriction base="xs:date">
+																					<xs:pattern value="((\d{4})-(\d{2})-(\d{2})" />
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:attribute>
+
 																	</xs:complexType>
 																</xs:element>
 															</xs:sequence>
@@ -694,7 +717,7 @@
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
 			<xs:maxLength value="18"/>
-			<xs:pattern value="(([1-9])+([0-9])*([0-9]|K))|(([1-9]+[0-9]){12,13})|(CF)|^([A-Z0-9]{3,18})$"/>
+			<xs:pattern value="((([1-9])+([0-9])*([0-9]|K))|(([1-9]+[0-9]){12,13})|(CF)|^([A-Z0-9]{3,18}))$"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="tipoNITDelEFACE">
@@ -702,7 +725,7 @@
 			<xs:minLength value="1"/>
 			<xs:maxLength value="13"/>
 			<xs:whiteSpace value="collapse"/>
-			<xs:pattern value="([1-9])+([0-9])*([0-9]|K)"/>
+			<xs:pattern value="(([1-9])+([0-9])*([0-9]|K))$"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:complexType name="tipoDireccion">
@@ -1060,7 +1083,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="TipoCorreoElectronico">
 		<xs:annotation>
-			<xs:documentation>Validador de correos electronicos</xs:documentation>
+			<xs:documentation>Validador de correos electronicos DISCUTIR: (([a-zA-Z\-0-9\.]+@)([a-zA-Z\-0-9\.]+)[;]*)+$ </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="collapse"/>
