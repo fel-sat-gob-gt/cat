@@ -1,0 +1,87 @@
+{
+    "Cabecera": {
+        "Nombre": "MiniRTU - Ejemplo",
+        "Ultima Actualizacion": "27/01/2020 07:49:36"
+    },
+    "minirtu": [
+        {
+            "Nit": "10699862",
+            "afiliacionIVA": "PEQ",
+            "estado": "A",
+            "tipoPersoneria": "0",
+            "establecimientos": [
+                {
+                    "zona": "4",
+                    "estado": "A",
+                    "numero": 1,
+                    "municipio": "Villa Canales",
+                    "numeroCasa": "8-62",
+                    "apto": null,
+                    "departamento": "GUATEMALA",
+                    "letra": null,
+                    "nombre": "INGENIERO JOSE PEQUEÑO",
+                    "calleAvenida": "7 CALLE",
+                    "colonia": "COLONIA MEDICA"
+                }
+            ],
+            "nombre": "JOSE EJEMPLO, PEQUEÑO CONTRIBUYENTE",
+            "frases": [
+                {
+                    "escenario": 1,
+                    "tipo": 3,
+                    "fechaResolucion": null,
+                    "numeroResolucion": null
+                }
+            ]
+        },
+        {
+            "Nit": "18548997",
+            "afiliacionIVA": "GEN",
+            "estado": "A",
+            "tipoPersoneria": "719",
+            "marcas": [
+                {
+                    "fecha": null,
+                    "codigo": 3,
+                    "valor": "S"
+                }
+            ],
+            "establecimientos": [
+                {
+                    "zona": "1",
+                    "estado": "A",
+                    "numero": 1,
+                    "municipio": "Antigua Guatemala",
+                    "numeroCasa": "# 97-C",
+                    "apto": null,
+                    "departamento": "SACATEPEQUEZ",
+                    "letra": null,
+                    "nombre": "ASOCIACION CIVIL EJEMPLO DE LAG",
+                    "calleAvenida": "SAN FELIPE DE JESUS",
+                    "colonia": null
+                },
+                {
+                    "zona": "1",
+                    "estado": "A",
+                    "numero": 2,
+                    "municipio": "Antigua Guatemala",
+                    "numeroCasa": "89 O",
+                    "apto": null,
+                    "departamento": "SACATEPEQUEZ",
+                    "letra": null,
+                    "nombre": "LIBRERIA LAG",
+                    "calleAvenida": "CALLE PRINCIPAL SAN FELIPE DE JESUS"
+                }
+            ],
+            "nombre": "ASOCIACION CIVIL EJEMPLO DE LAG",
+            "frases": [
+                {
+                    "escenario": 4,
+                    "tipo": 1,
+                    "fechaResolucion": null,
+                    "numeroResolucion": null
+                }
+            ]
+        }
+    ]
+}
