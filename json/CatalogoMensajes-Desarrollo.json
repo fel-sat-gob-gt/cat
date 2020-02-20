@@ -1,563 +1,573 @@
 {
-   "Cabecera":{
-      "Nombre":"FEL-CATALOGO-MENSAJES",
-      "Ultima Actualizacion":"11/11/19"
-   },
-   "Contenido":[
-      {
-         "codigo":"FEL_RCP000",
-         "validacion":"Regla que certifica la Factura Enviada, Aplica cuando se realizaron todas las validaciones de rechazo y todas pasaron exitosamente",
-         "mensaje":"Se Devuelve un FaceId"
-      },
-      {
-         "codigo":"FEL_AUT001",
-         "validacion":"Validacion de la variable de Token exista en el header del mensaje enviado",
-         "mensaje":"Error variable token no viene en el header del mensaje"
-      },
-      {
-         "codigo":"FEL_AUT002",
-         "validacion":"Validacion de Expiracion del token enviado.",
-         "mensaje":"El Token ha expirado, favor de renovarlo"
-      },
-      {
-         "codigo":"FEL_AUT003",
-         "validacion":"se valida el usuario y la clave que concuerden con el certificador que envia el dte",
-         "mensaje":"Error Usuario / Clave Invalidos"
-      },
-      {
-         "codigo":"FEL_ASO099",
-         "validacion":"El NIT Certificador no se encontraba acreditado por el NIT Emisor del DTE, en el momento que indica la casilla Fecha y hora de emisión",
-         "mensaje":"El Certificador no está acreditado por el Emisor del DTE."
-      },
-	    {
-         "codigo":"FEL_ANU099",
-         "validacion":"El NIT Certificador no se encontraba acreditado por el NIT Emisor del DTE, en el momento que indica la casilla Fecha y hora de emisión",
-         "mensaje":"El Certificador no está acreditado por el Emisor del DTE."
-      },
-      {
-         "codigo":"FEL_GEN100",
-         "validacion":"Se valida el esquema y por alguna razon no se puede cargar",
-         "mensaje":"Error Genérico Comuníquese con el Administrador del sistema"
-      },
-      {
-         "codigo":"FEL_GEN101",
-         "validacion":"Se realiza la validacion de que el nodo de certificacion exista dentro del dte enviado",
-         "mensaje":"No existe el nodo de certificación dentro del xsd para validaciones del xml"
-      },
-      {
-         "codigo":"FEL_GEN102",
-         "validacion":"Error en esquema XSD",
-         "mensaje":"El XML enviado no cumple con el esquema del XSD"
-      },
-      {
-         "codigo":"FEL_GEN103",
-         "validacion":"No se encuentra presente el nodo de firma del certificador",
-         "mensaje":"Validar que la firma del certificador este correcta"
-      },
-      {
-         "codigo":"FEL_INF300",
-         "validacion":"La casilla Fecha y hora de emisión tiene una antiguedad mayor a tres días con respecto a la casilla Fecha y hora de certificación.",
-         "mensaje":"La diferencia entre la fecha de emisión y de certificación excede los cinco días."
-      },
-      {
-         "codigo":"FEL_INF301",
-         "validacion":"La casilla Fecha y hora de emisión es posterior al último día del mes de la Fecha y hora de certificación.",
-         "mensaje":"La fecha de emisión es posterior al último día del mes de la fecha de certificación."
-      },
-      {
-         "codigo":"FEL_RCP302",
-         "validacion":"El NIT no existe en el RTU (sistema electrónico de la SAT que contiene el Registro Tributario Unificado).",
-         "mensaje":"El NIT no existe en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP303",
-         "validacion":"El NIT no está afiliado al IVA (la afiliación puede ser en cualquier régimen, incluyendo el de Pequeño Contribuyente o el de exento)",
-         "mensaje":"El NIT no está afiliado."
-      },
-      {
-         "codigo":"FEL_RCP304",
-         "validacion":"El NIT no tiene estatus activo en el RTU (sistema electrónico de la SAT que contiene el Registro Tributario Unificado).",
-         "mensaje":"El NIT no está activo en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP305",
-         "validacion":"El establecimiento no existe en los registros de la SAT para ese NIT.",
-         "mensaje":"El establecimiento no existe en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP306",
-         "validacion":"El establecimiento no aparece activo en la SAT para ese NIT en esa fecha de emisión.",
-         "mensaje":"El establecimiento no está activo en la SAT (para la fecha de emision)."
-      },
-      {
-         "codigo":"FEL_RCP307",
-         "validacion":"Se incluye la casilla Tipo Especial y el contenido de la casilla ID del Receptor no es numérico.",
-         "mensaje":"El CUI del Receptor no es numérico."
-      },
-      {
-         "codigo":"FEL_RCP308",
-         "validacion":"Se incluye la casilla Tipo Especial y la casilla ID del Receptor contiene un número con dígito verificador inválido",
-         "mensaje":"El CUI del Receptor tiene un dígito verificador inválido."
-      },
-      {
-         "codigo":"FEL_RCP309",
-         "validacion":"No se incluye la casilla Tipo Especial y el contenido de la casilla ID del Receptor es diferente de CF y no existe en el RTU",
-         "mensaje":"El CUI del Receptor tiene un dígito verificador inválido."
-      },
-      {
-         "codigo":"FEL_RCP310",
-         "validacion":"Se incluyen las casillas Tipo Especial y Exportación",
-         "mensaje":"El tipo especial CUI no debe estar presente para una exportación."
-      },
-      {
-         "codigo":"FEL_RCP311",
-         "validacion":"Se incluye la casilla Exportación y el contenido de la casilla ID del Receptor es diferente de CF",
-         "mensaje":"El NIT del Receptor debe ser CF para una exportación."
-      },
-      {
-         "codigo":"FEL_RCP312",
-         "validacion":"Se incluye la casilla “Exportación” y el contenido de la casilla “Tipo de DTE” incluye uno de los textos: NABN,RDON,RECI,NCRE,NDEB,FESP",
-         "mensaje":"El Tipo de Documento no puede utilizarse para una exportación"
-      },
-      {
-         "codigo":"FEL_RCP313",
-         "validacion":"El contenido de esta casilla es diferente al resultado de (Casilla Cantidad) multiplicado por (casilla PrecioUnitario)",
-         "mensaje":"Precio calculado incorrectamente."
-      },
-      {
-         "codigo":"FEL_RCP314",
-         "validacion":"El contenido de esta casilla es mayor que el contenido de la casilla Precio.",
-         "mensaje":"El Descuento no debe ser mayor al Precio."
-      },
-      {
-         "codigo":"FEL_RCP315",
-         "validacion":"Existe un total del monto de impuesto para un impuesto no permitido para el tipo de DTE",
-         "mensaje":"El tipo de DTE no debe incluir el impuesto"
-      },
-      {
-         "codigo":"FEL_RCP316",
-         "validacion":"(El contenido de la casilla es PEQUEÑO CONTRIBUYENTE) y (el contenido de la casilla Tipo de DTE incluye uno de los textos:FACT, FCAM, RDON, RECI, NDEB, NCRE).",
-         "mensaje":"El Tipo de Documento no aplica para este Régimen del IVA."
-      },
-      {
-         "codigo":"FEL_RCP317",
-         "validacion":"(El contenido de la casilla es diferente de PEQUEÑO CONTRIBUYENTE) y (el contenido de la casilla Tipo de DTE incluye uno de los textos: FPEQ, FCAP).",
-         "mensaje":"El Tipo de Documento no aplica para este Régimen del IVA."
-      },
-      {
-         "codigo":"FEL_RCP318",
-         "validacion":"No está presente en el XML un tipo de frase requerido para el Tipo de DTE",
-         "mensaje":"El Tipo de Frase debe estar presente para el Tipo de DTE"
-      },
-      {
-         "codigo":"FEL_INF319",
-         "validacion":"Está presente en el XML un tipo de frase no requerido para el “Tipo de DTE”.",
-         "mensaje":"El Tipo de Frase  no debe de estar presente para el Tipo de DTE"
-      },
-      {
-         "codigo":"FEL_RCP320",
-         "validacion":"Está presente en el XML un Tipo de Frase Requerido u Opcional para el Tipo de DTE y el Código de Escenario para ese Tipo de Frase no existe en el catálogo.",
-         "mensaje":"El código de escenario no existe para el Tipo de Frase: xxx"
-      },
-      {
-         "codigo":"FEL_RCP321",
-         "validacion":"Está presente en el XML un Tipo de Frase Requerio u Opcional para el Tipo de DTE, el Código de Escenario para ese Tipo de Frase existe en el catálogo pero no corresponde a la obligación de la afiliación del impuesto registrada para el NIT del emisor.",
-         "mensaje":"El código de escenario para el Tipo de Frase xxx no corresponde a la afiliación del NIT del emisor."
-      },
-      {
-         "codigo":"FEL_RCP322",
-         "validacion":"El Tipo de DTE contiene uno de los textos: FACT, FCAM, el NIT del Emisor se encuentra afiliado como Agente de Retención del IVA y el Tipo de Frase Retención del IVA no está presente en el XML.",
-         "mensaje":"El Tipo de Frase Retención del IVA debe estar presente para ese NIT Emisor."
-      },
-      {
-         "codigo":"FEL_RCP323",
-         "validacion":"El Tipo de DTE contiene uno de los textos: FACT, FCAM, se incluye la casilla Exportación y el Tipo de Frase Exento o no afecto al IVA no está presente en el XML.",
-         "mensaje":"El Tipo de Frase Exento o no Afecto al IVA debe estar presente para una exportación."
-      },
-      {
-         "codigo":"FEL_RCP324",
-         "validacion":"El Tipo de DTE contiene uno de los textos: FACT, FCAM, se incluye la casilla Exportación, la casilla Tipo de Frase Exento o no afecto al IVA está presente en el XML y el Código de Escenario para ese tipo de frase es diferente de: 1.",
-         "mensaje":"El Código de Escenario xxx para el Tipo de Frase Exento o no Afecto al IVA no corresponde para una exportación."
-      },
-      {
-         "codigo":"FEL_RCP325",
-         "validacion":"El Tipo de DTE contiene uno de los textos: FACT, FCAM, no se incluye la casilla Exportación,  uno o más de los ítems del DTE no incluyen IVA y el Tipo de Frase Exento o no afecto al IVA no está presente en el XML.",
-         "mensaje":"El Tipo de Frase Exento o no Afecto al IVA debe estar presente  cuando el DTE contiene Items sin IVA."
-      },
-      {
-         "codigo":"FEL_RCP326",
-         "validacion":"El Tipo de DTE contiene uno de los textos: FACT, FCAM, no se incluye la casilla Exportación, uno o más de los ítems del DTE no incluyen IVA, la casilla Tipo de Frase Exento o no afecto al IVA está presente en el XML  y el Código de Escenario para ese tipo de frase es diferente de: 1,2, 3, 7, 9, 10, 11, 12.",
-         "mensaje":"El Código de Escenario xxx para el Tipo de Frase Exento o no Afecto no corresponde para el tipo de DTE."
-      },
-      {
-         "codigo":"FEL_RCP327",
-         "validacion":"El Tipo de DTE contiene el texto: RDON, la casilla Tipo de Frase Exento o no afecto al IVA está presente en el XML  y el Código de Escenario para ese tipo de frase es diferente de: 4.",
-         "mensaje":"El Código de Escenario xxx para el Tipo de Frase Exento o no Afecto no corresponde para el tipo de DTE."
-      },
-      {
-         "codigo":"FEL_RCP328",
-         "validacion":"El Tipo de DTE contiene el texto: RECI, la casilla Tipo de Frase Exento o no afecto al IVA está presente en el XML  y el Código de Escenario para ese tipo de frase es diferente de: 5, 6,8.",
-         "mensaje":"El Código de Escenario xxx para el Tipo de Frase Exento o no Afecto no corresponde para el tipo de DTE."
-      },
-      {
-         "codigo":"FEL_RCP329",
-         "validacion":"La casilla no está presente en el XML.",
-         "mensaje":"Monto Gravable debe estar presente para IVA."
-      },
-      {
-         "codigo":"FEL_RCP330",
-         "validacion":"El contenido de la casilla no existe en el catálogo.",
-         "mensaje":"Error. Código de Unidad Gravable no existe en el catálogo para el IVA."
-      },
-      {
-         "codigo":"FEL_RCP331",
-         "validacion":"El contenido de esta casilla es diferente al producto (multiplicación) de: • Casilla Monto gravable • Porcentaje sobre el monto gravable, correspondiente al Código de la unidad gravable consignado en el XML.",
-         "mensaje":"Monto del Impuesto calculado incorrectamente para el IVA"
-      },
-      {
-         "codigo":"FEL_RCP333",
-         "validacion":"El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen antiguo  y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total de Impuestos del documento origen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
-         "mensaje":"El total del impuesto IVA no puede ser mayor al del documento origen registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP334",
-         "validacion":"El contenido de la casilla no existe en el catálogo de unidades gravables.",
-         "mensaje":"Código de Unidad Gravable no existe en el catálogo de Petróleo."
-      },
-      {
-         "codigo":"FEL_RCP335",
-         "validacion":"La casilla no está presente en el XML",
-         "mensaje":"Cantidad de Unidades Gravables debe existir para Petróleo."
-      },
-      {
-         "codigo":"FEL_RCP336",
-         "validacion":"El valor de la casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”",
-         "mensaje":"Total de Impuestos calculado incorrectamente para Petróleo."
-      },
-      {
-         "codigo":"FEL_RCP337",
-         "validacion":"El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen antiguo  y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total de Impuestos del documento origen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
-         "mensaje":"El total del impuesto Petroleo no puede ser mayor al del documento origen registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP338",
-         "validacion":"El valor de la casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”",
-         "mensaje":"Total de Impuestos calculado incorrectamente para Turismo Hospedaje."
-      },
-      {
-         "codigo":"FEL_RCP339",
-         "validacion":"El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen antiguo y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total de Impuestos del documento origen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
-         "mensaje":"El total del impuesto Turismo Hospedaje no puede ser mayor al del documento origen registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP340",
-         "validacion":"El valor de la casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”",
-         "mensaje":"Total de Impuestos calculado incorrectamente para Turismo Pasajes."
-      },
-      {
-         "codigo":"FEL_RCP341",
-         "validacion":"El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen antiguo  y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total de Impuestos del documento origen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
-         "mensaje":"El total del impuesto Turismo Pasaje no puede ser mayor al del documento origen registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP342",
-         "validacion":"El valor de la casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”.",
-         "mensaje":"Total de Impuestos calculado incorrectamente para Timbre de Prensa."
-      },
-      {
-         "codigo":"FEL_RCP343",
-         "validacion":"El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen antiguo  y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total de Impuestos del documento origen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
-         "mensaje":"El total del Timbre de Prensa no puede ser mayor al del documento origen registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP344",
-         "validacion":"El valor de la casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”.",
-         "mensaje":"Total de Impuestos calculado incorrectamente para Bomberos."
-      },
-      {
-         "codigo":"FEL_RCP345",
-         "validacion":"El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen antiguo  y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total de Impuestos del documento origen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
-         "mensaje":"El total del impuesto Bomberos no puede ser mayor al del documento origen registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP346",
-         "validacion":"El valor de la casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”",
-         "mensaje":"Total de Impuestos calculado incorrectamente para Tasa Municipal."
-      },
-      {
-         "codigo":"FEL_RCP347",
-         "validacion":"El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen antiguo  y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total de Impuestos del documento origen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
-         "mensaje":"El total de la Tasa Municipal no puede ser mayor a la del documento origen registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP348",
-         "validacion":"El contenido de esta casilla es diferente al resultado de la casilla Precio menos la casilla Descuento más la sumatoria de las casillas MontoImpuesto de los impuestos que sean sumables al DTE (excepto el IVA por estar ya incluido), según se indica en cada caso por impuesto.",
-         "mensaje":"Total calculado incorrectamente."
-      },
-      {
-         "codigo":"FEL_RCP349",
-         "validacion":"El contenido de esta casilla es diferente a la sumatoria de las casillas Total",
-         "mensaje":"Gran Total calculado incorrectamente."
-      },
-      {
-         "codigo":"FEL_RCP350",
-         "validacion":"El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen antiguo  y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total de Impuestos del documento origen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
-         "mensaje":"El Gran Total no puede ser mayor al del documento origen registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP351",
-         "validacion":"No se incluye la casilla Régimen antiguo y el contenido de la presente casilla no coincide con ningún DTE registrado en la SAT.",
-         "mensaje":"El número de Autorización del Documento Origen no coincide con ningún DTE registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP352",
-         "validacion":"No se incluye la casilla Régimen antiguo, el contenido de la presente casilla coincide con un DTE registrado en la SAT y el valor de la casilla Tipo de DTE del documento origen es diferente de: FACT, FCAM.",
-         "mensaje":"El número de Autorización del Documento Origen corresponde a un documento diferente a factura."
-      },
-      {
-         "codigo":"FEL_RCP353",
-         "validacion":"Se incluye la casilla Régimen antiguo, el contenido de la presente casilla coincide con un Número de Resolución de Autorización registrado en la SAT y el valor de la casilla Código Tipo de esa Resolución  es diferente de:1, 2, 7, 8, 9, 30, 32, 37, 38, 53, 57, 60, 62, 63, 66, 67, 68, 69, 72.",
-         "mensaje":"El número de Autorización del Documento Origen corresponde a un documento diferente a factura."
-      },
-      {
-         "codigo":"FEL_RCP354",
-         "validacion":"No se incluye la casilla Régimen antiguo, el contenido de la presente casilla coincide con un DTE registrado en la SAT y el valor de la casilla NIT del Emisor no coincide con el que aparece registrado en la SAT para ese mismo documento origen.",
-         "mensaje":"El valor de la casilla NIT del Emisor no coincide con el registrado en el Documento Origen."
-      },
-      {
-         "codigo":"FEL_RCP355",
-         "validacion":"No se incluye la casilla Régimen antiguo, el contenido de la presente casilla coincide con un DTE registrado en la SAT y el valor de la casilla ID del Receptor no coincide con el que aparece registrado en la SAT para ese mismo documento origen.",
-         "mensaje":"El valor de la casilla ID del Receptor no coincide con el registrado en el Documento Origen."
-      },
-      {
-         "codigo":"FEL_RCP356",
-         "validacion":"No se incluye la casilla Régimen antiguo, el contenido de la presente casilla coincide con un DTE registrado en la SAT y el valor de la casilla NIT del Certificador no coincide con el que aparece registrado en la SAT para ese mismo documento origen.",
-         "mensaje":"El valor de la casilla NIT del Certificador no coincide con el registrado en el Documento Origen."
-      },
-      {
-         "codigo":"FEL_RCP357",
-         "validacion":"Se incluye la casilla Régimen antiguo y el contenido de la presente casilla no coincide con ningún Número de Resolución de Autorización registrado en la SAT.",
-         "mensaje":"El número de Autorización del Documento Origen no existe en la SAT"
-      },
-      {
-         "codigo":"FEL_RCP358",
-         "validacion":"No se incluye la casilla Régimen antiguo y el contenido de la presente casilla no coincide con la que aparece registrada en la SAT de acuerdo al valor de la casilla Número de Autorización del Documento Origen",
-         "mensaje":"La fecha de emisión del documento origen no coincide con la registrada en la SAT."
-      },
-      {
-         "codigo":"FEL_RCP359",
-         "validacion":"Se incluye la casilla Régimen antiguo y el contenido de la casilla es diferente a la serie que aparece registrado en la SAT de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
-         "mensaje":"La serie del documento origen no coincide con la registrada en la SAT para esa Resolución de Autorización."
-      },
-      {
-         "codigo":"FEL_RCP360",
-         "validacion":"Se incluye la casilla Régimen antiguo y el contenido de la casilla no se encuentra dentro del rango que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
-         "mensaje":"El número del documento origen no se encuentra dentro del rango registrado en la SAT para esa Resolución de Autorización."
-      },
-      {
-         "codigo":"FEL_INF361",
-         "validacion":"La firma electrónica avanzada del Emisor no corresponde al DTE",
-         "mensaje":"La firma del Emisor es errónea."
-      },
-      {
-         "codigo":"FEL_RCP362",
-         "validacion":"El contenido de la casilla no coincide con el NIT del CERTIFICADOR que envió este DTE",
-         "mensaje":"El NIT del CERTIFICADOR no coincide con el NIT del usuario."
-      },
-      {
-         "codigo":"FEL_INF363",
-         "validacion":"La SAT registrará la “Fecha y hora de recepción en la SAT”. El contenido de dicha casilla es más de 24 horas posterior a la casilla “Fecha y hora de certificación”.",
-         "mensaje":"La “Fecha y hora de recepción en la SAT” es más de 24 horas posterior a la “Fecha y hora de certificación” del CERTIFICADOR."
-      },
-      {
-         "codigo":"FEL_INF364",
-         "validacion":"La firma electrónica avanzada del CERTIFICADOR no corresponde al DTE",
-         "mensaje":"La firma del CERTIFICADOR es errónea."
-      },
-      {
-         "codigo":"FEL_RCP365",
-         "validacion":"El contenido de la casilla coincide con UUID enviado anteriormente por el Certificador, dentro del mismo día calendario con respecto a la fecha de certificación.",
-         "mensaje":"El número de autorización no puede repetirse."
-      },
-      {
-         "codigo":"FEL_RCP366",
-         "validacion":"El contenido de la casilla no coincide con los primeros 8 caracteres de izquierda a derecha del contenido de la casilla Numero de Autorización.",
-         "mensaje":"La serie del DTE no corresponde al número de autorización."
-      },
-      {
-         "codigo":"FEL_RCP367",
-         "validacion":"El contenido de la casilla no coincide con el equivalente en números decimales de los caracteres a partir de la posición 9 hasta la posición 16 (excluyendo los guiones -), de izquierda a derecha, del contenido de la casilla Numero de Autorización.",
-         "mensaje":"El número del DTE es incorrecto."
-      },
-      {
-         "codigo":"FEL_ANU368",
-         "validacion":"El contenido de la presente casilla no coincide con ningún DTE registrado en la SAT.",
-         "mensaje":"El número de Autorización del Documento a anular no coincide con ningún DTE registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_ANU369",
-         "validacion":"El contenido de la presente casilla no coincide con el que aparece registrado en la SAT de acuerdo al valor de la casilla Número de Autorización del Documento a Anular",
-         "mensaje":"El NIT del Emisor del documento a anular no coincide con el registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_ANU370",
-         "validacion":"La firma electrónica del Emisor no corresponde al NIT del Emisor del documento a anular.",
-         "mensaje":"La firma del Emisor es errónea."
-      },
-      {
-         "codigo":"FEL_ANU371",
-         "validacion":"El contenido de la presente casilla no coincide con el que aparece registrado en la SAT de acuerdo al valor de la casilla Número de Autorización del Docuento a Anular",
-         "mensaje":"El ID del Receptor del documento a anular no coincide con el registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_ANU372",
-         "validacion":"El contenido de la presente casilla no coincide con el que aparece registrado en la SAT de acuerdo al valor de la casilla Número de Autorización del Documento a Anular",
-         "mensaje":"El NIT del Certificador del documento a anular no coincide con el registrado en la SAT."
-      },
-      {
-         "codigo":"FEL_ANU373",
-         "validacion":"La firma electrónica del CERTIFICADOR no corresponde al NIT del Certificador.",
-         "mensaje":"La firma del CERTIFICADOR es errónea."
-      },
-      {
-         "codigo":"FEL_ANU374",
-         "validacion":"El contenido de la presente casilla no coincide con el que aparece registrado en la SAT de acuerdo al valor de la casilla Número de Autorización del Docuento a Anular",
-         "mensaje":"La fecha de emisión del documento a anular no coincide con la registrada en la SAT."
-      },
-      {
-         "codigo":"FEL_ANU375",
-         "validacion":"La casilla Fecha de anulación excede a la fecha de vencimiento de la declaración mensual del IVA del período al que corresponde el documento a anular.",
-         "mensaje":"La fecha de anulación excede la fecha de vencimiento del período del IVA al que corresponde el documento a anular."
-      },
-      {
-         "codigo":"FEL_ANU376",
-         "validacion":"La casilla Fecha de anulación” es menor a la Fecha de emisión del DTE a anular  que aparece registrado en la SAT de acuerdo al valor de la casilla Número de Autorización del Docuento a Anular.",
-         "mensaje":"La fecha de anulación no puede ser inferior a la fecha de emisión del DTE a anular."
-      },
-      {
-         "codigo":"FEL_ANU377",
-         "validacion":"El tiempo transcurrido entre la Fecha y hora de certificación y la Fecha y hora de recepción en la SAT excede las 24 horas.",
-         "mensaje":"La Fecha y hora de recepción en la SAT es mayor a 24 horas posterior a la Fecha y hora de certificación del documento a anular."
-      },
-      {
-         "codigo":"FEL_ANU378",
-         "validacion":"La Fecha de certificación de la anulación es diferente a la Fecha de anulación (se despercian horas, minutos y segundos)",
-         "mensaje":"La Fecha de certificación es diferente a la Fecha de anulación."
-      },
-      {
-         "codigo":"FEL_RCP379",
-         "validacion":"El NIT no está activo en el Registro de Emisores FEL.",
-         "mensaje":"El NIT no corresponde a un Emisor Activo del Régimen FEL."
-      },
-      {
-         "codigo":"FEL_INF380",
-         "validacion":"Se incluye la casilla Tipo Especial y el Tipo de documento es diferente de “FESP",
-         "mensaje":"La casilla Tipo Especial sólo puede incluirse en Facturas Especiales"
-      },
-      {
-         "codigo":"FEL_INF381",
-         "validacion":"El contenido de la casilla ID del receptor es igual a CF y el Tipo de documento es FESP",
-         "mensaje":"El ID del Receptor no puede ser CF para una factura especial."
-      },
-      {
-         "codigo":"FEL_INF382",
-         "validacion":"Se incluye la casilla Tipo Especial con el texto Número de documento de identificación del extranjero”y el contenido de la casilla ID del receptor no cumple con estas condiciones:Tener una longitud entre 3 y 18 caracteres, Puede contener letras de la A a la Z (mayúsculas) y dígitos (0-9), No debe contener espacios",
-         "mensaje":"El ID del Receptor no corresponde a un formato del tipo especial Número de documento de identificación del extranjero."
-      },
-      {
-         "codigo":"FEL_RCP383",
-         "validacion":"El tipo de documento es NCRE o NDEB y la moneda es diferente a la moneda del documento referenciado según la casilla Numero Autorizacion Documento Origen en el complemento Referencias a las notas de crédito o débito incluido.",
-         "mensaje":"Las notas de débito o crédito deben ser emitidas en la misma moneda del documento origen."
-      },
-      {
-         "codigo":"FEL_SEC500",
-         "validacion":"El contenido de la casilla es diferente del resultado de la siguiente operación: casilla Precio menos la casilla descuento y el resultado de ambas dividido entre el factor 1.12; cuando la casilla Código de la Unidad Gravable es igual a 1.",
-         "mensaje":"Error. Monto Gravable calculado incorrectamente para el IVA"
-      },
-      {
-         "codigo":"FEL_SEC502",
-         "validacion":"La casilla está presente en el XML.",
-         "mensaje":"Cantidad de Unidades Gravables no debe estar presente para IVA."
-      },
-      {
-         "codigo":"FEL_SEC503",
-         "validacion":"La casilla está presente en el XML.",
-         "mensaje":"Monto Gravable no debe estar presente para Petróleo."
-      },
-      {
-         "codigo":"FEL_SEC506",
-         "validacion":"Si el tipo de cambio consignado en el XML es GTQ y el contenido de esta casilla es diferente al producto (multiplicación) de las dos casillas siguientes: Tasa específica en Q del Código de la unidad gravable por la Cantidad de Unidades Gravables. Ó, Si el tipo de cambio consignado en el XML es diferente de GTQ y el contenido de esta casilla es diferente de: El valor de la Tasa específica en Q del Código de la unidad gravable dividido entre el tipo de cambio del Banco de Guatemala en la fecha de emisión del DTE y el resultado multiplicarlo por la casilla Cantidad de Unidades Gravables.",
-         "mensaje":"Monto del Impuesto calculado incorrectamente para Petróleo."
-      },
-      {
-         "codigo":"FEL_SEC508",
-         "validacion":"El contenido de la casilla no existe en el catálogo.",
-         "mensaje":"Código de Unidad Gravable no existe en el catálogo para Turismo Hospedaje."
-      },
-      {
-         "codigo":"FEL_SEC509",
-         "validacion":"La casilla está presente en el XML.",
-         "mensaje":"Cantidad de Unidades Gravables no debe estar presente para Turismo Hospedaje."
-      },
-      {
-         "codigo":"FEL_SEC511",
-         "validacion":"La casilla está presente en el XML.",
-         "mensaje":"Monto Gravable no debe estar presente para Turismo Pasajes."
-      },
-      {
-         "codigo":"FEL_SEC512",
-         "validacion":"El contenido de la casilla no existe en el catálogo de unidades gravables.",
-         "mensaje":"Código de Unidad Gravable no existe en el catálogo de Turismo Pasajes."
-      },
-      {
-         "codigo":"FEL_SEC513",
-         "validacion":"La casilla no está presente en el XML",
-         "mensaje":"Cantidad de Unidades Gravables debe existir para Turismo Pasajes."
-      },
-      {
-         "codigo":"FEL_SEC515",
-         "validacion":"El contenido de la casilla no existe en el catálogo.",
-         "mensaje":"Código de Unidad Gravable no existe en el catálogo para Timbre de Prensa."
-      },
-      {
-         "codigo":"FEL_SEC518",
-         "validacion":"El contenido de la casilla es diferente del resultado de la siguiente operación: casilla Precio menos la casilla descuento y el resultado de ambas dividido entre el factor 1.12; cuando la casilla Código de la Unidad Gravable correspondiente al impuesto IVA es igual a 1. Ó, El contenido de la casilla es diferente del resultado de la siguiente operación: casilla Precio menos la casilla descuento; cuando la casilla Código de la Unidad Gravable correspondiente al impuesto IVA es igual a 2.",
-         "mensaje":"Monto Gravable calculado incorrectamente para Bomberos."
-      },
-      {
-         "codigo":"FEL_SEC519",
-         "validacion":"El contenido de la casilla no existe en el catálogo.",
-         "mensaje":"Código de Unidad Gravable no existe en el catálogo para Bomberos."
-      },
-      {
-         "codigo":"FEL_SEC523",
-         "validacion":"El contenido de la casilla no existe en el catálogo.",
-         "mensaje":"Código de Unidad Gravable no existe en el catálogo para Tasa Municipal."
-      },
-      {
-         "codigo":"FEL_RCP525",
-         "validacion":"(El CATÁLOGO DE COMPLEMENTOS DISPONIBLES PARA CADA TIPO DE DTE indica que, para el tipo de DTE, un determinado complemento es requerido) y (el citado complemento está vacío)",
-         "mensaje":"Un complemento requerido está ausente en el DTE."
-      },
-      {
-         "codigo":"FEL_SEC526",
-         "validacion":"(El CATÁLOGO DE COMPLEMENTOS DISPONIBLES PARA CADA TIPO DE DTE indica que, para el tipo de DTE, un determinado complemento no corresponde) y (el citado complemento está lleno)",
-         "mensaje":"Un complemento no corresponde que esté presente en el DTE."
-      },
-      {
-         "codigo":"FEL_SEC533",
-         "validacion":"Si el tipo de cambio consignado en el XML es diferente de GTQ y el contenido de esta casilla es diferente de: El valor de la Tasa específica en Q del Código de la unidad gravable dividido entre el tipo de cambio del Banco de Guatemala en la fecha de emisión del DTE y el resultado multiplicarlo por la casilla Cantidad de Unidades Gravables.",
-         "mensaje":"Monto del Impuesto calculado incorrectamente para Petróleo."
-      },
-      {
-         "codigo":"FEL_INF534",
-         "validacion":"a) La fecha de emisión es inferior al 01 de junio de 2019 y el contenido de la casilla es diferente al resultado de aplicar el algoritmo siguiente:  Si la sumatoria de las casillas Monto Gravable es menor o igual a 30,000 entonces esta casilla ISR a retener es igual a la sumatoria de las casillas Monto Gravable por 5%.  Si la sumatoria de las casillas Monto Gravable es mayor a 30,000. Entonces esta casilla ISR a retener es igual a 1,500  más ((la sumatoria de las casillas Monto Gravable menos 30,000) por 7%). b) La fecha de emisión es superior o igual al 01 de junio de 2019 y el contenido de la casilla es diferente al 5% de la sumatoria de las casillas Monto Gravable.",
-         "mensaje":"El valor de la casilla ISR a Retener es erróneo."
-      },
-      {
-         "codigo":"FEL_INF534",
-         "validacion":"a) La fecha de emisión es inferior al 01 de junio de 2019 y el contenido de la casilla es diferente al resultado de aplicar el algoritmo siguiente:  Si la sumatoria de las casillas Monto Gravable es menor o igual a 30,000 entonces esta casilla ISR a retener es igual a la sumatoria de las casillas Monto Gravable por 5%.  Si la sumatoria de las casillas Monto Gravable es mayor a 30,000. Entonces esta casilla ISR a retener es igual a 1,500  más ((la sumatoria de las casillas Monto Gravable menos 30,000) por 7%). b) La fecha de emisión es superior o igual al 01 de junio de 2019 y el contenido de la casilla es diferente al 5% de la sumatoria de las casillas Monto Gravable.",
-         "mensaje":"El valor de la casilla ISR a Retener es erróneo."
-      }
-   ]
+    "Cabecera": {
+        "Nombre": "FEL-CATALOGO-MENSAJES",
+        "Ultima Actualizacion": "20/02/20"
+    },
+    "Contenido": [
+        {
+            "codigo": "FEL_RCP000",
+            "validacion": "Regla que certifica la Factura\r\nEnviada, Aplica cuando se realizaron todas las validaciones de rechazo y todas pasaron exitosamente",
+            "mensaje": "Se\r\nDevuelve un FaceId"
+        },
+        {
+            "codigo": "FEL_AUT001",
+            "validacion": "Validacion\r\nde la variable de Token exista en el header del mensaje enviado",
+            "mensaje": "Error variable token no viene en el header\r\ndel mensaje"
+        },
+        {
+            "codigo": "FEL_AUT002",
+            "validacion": "Validacion de Expiracion\r\ndel token enviado.",
+            "mensaje": "El Token ha expirado, favor de renovarlo"
+        },
+        {
+            "codigo": "FEL_AUT003",
+            "validacion": "se valida el usuario y la clave que concuerden con el certificador que envia el\r\ndte",
+            "mensaje": "Error Usuario / Clave Invalidos"
+        },
+        {
+            "codigo": "FEL_ASO099",
+            "validacion": "El NIT Certificador no se encontraba\r\nacreditado por el NIT Emisor del DTE, en el momento que indica la casilla Fecha y hora de emisión",
+            "mensaje": "El\r\nCertificador no está acreditado por el Emisor del DTE."
+        },
+        {
+            "codigo": "FEL_GEN100",
+            "validacion": "Se valida el esquema y por alguna razon no se puede cargar",
+            "mensaje": "Error Genérico Comuníquese\r\ncon el Administrador del sistema"
+        },
+        {
+            "codigo": "FEL_GEN101",
+            "validacion": "Se realiza la validacion\r\nde que el nodo de certificacion exista dentro del dte enviado",
+            "mensaje": "No existe el nodo de certificación dentro del\r\nxsd para validaciones del xml"
+        },
+        {
+            "codigo": "FEL_GEN102",
+            "validacion": "Error en\r\nesquema XSD",
+            "mensaje": "El XML enviado no cumple con el esquema del XSD"
+        },
+        {
+            "codigo": "FEL_GEN103",
+            "validacion": "No se encuentra presente el nodo de firma del certificador",
+            "mensaje": "Validar que la firma del\r\ncertificador este correcta"
+        },
+        {
+            "codigo": "FEL_INF300",
+            "validacion": "La casilla\r\nFecha y hora de emisión tiene una antiguedad mayor a tres días con respecto a la casilla Fecha y hora de\r\ncertificación.",
+            "mensaje": "La diferencia entre la fecha de emisión y de certificación excede los cinco días."
+        },
+        {
+            "codigo": "FEL_INF301",
+            "validacion": "La casilla Fecha y hora de emisión es posterior al último día del mes de la Fecha y hora de\r\ncertificación.",
+            "mensaje": "La fecha de emisión es posterior al último día del mes de la fecha de\r\ncertificación."
+        },
+        {
+            "codigo": "FEL_RCP302",
+            "validacion": "El NIT no\r\nexiste en el RTU (sistema electrónico de la SAT que contiene el Registro Tributario Unificado).",
+            "mensaje": "El NIT no\r\nexiste en la SAT."
+        },
+        {
+            "codigo": "FEL_RCP303",
+            "validacion": "El NIT no\r\nestá afiliado al IVA (la afiliación puede ser en cualquier régimen, incluyendo el de Pequeño Contribuyente o el de\r\nexento)",
+            "mensaje": "El NIT no está afiliado."
+        },
+        {
+            "codigo": "FEL_RCP304",
+            "validacion": "El NIT no tiene estatus activo en el RTU (sistema electrónico de la SAT que contiene el Registro\r\nTributario Unificado).",
+            "mensaje": "El NIT no está activo en la SAT."
+        },
+        {
+            "codigo": "FEL_RCP305",
+            "validacion": "El establecimiento no existe en los registros de la SAT para ese NIT.",
+            "mensaje": "El\r\nestablecimiento no existe en la SAT."
+        },
+        {
+            "codigo": "FEL_RCP306",
+            "validacion": "El\r\nestablecimiento no aparece activo en la SAT para ese NIT en esa fecha de emisión.",
+            "mensaje": "El establecimiento no\r\nestá activo en la SAT (para la fecha de emision)."
+        },
+        {
+            "codigo": "FEL_RCP307",
+            "validacion": "Se incluye la casilla Tipo Especial y el contenido de la casilla ID del Receptor no es\r\nnumérico.",
+            "mensaje": "El CUI del Receptor no es numérico."
+        },
+        {
+            "codigo": "FEL_RCP308",
+            "validacion": "Se incluye la casilla Tipo Especial y la casilla ID del Receptor contiene un número\r\ncon dígito verificador inválido",
+            "mensaje": "El CUI del Receptor tiene un dígito verificador inválido."
+        },
+        {
+            "codigo": "FEL_RCP309",
+            "validacion": "No se incluye la casilla Tipo Especial y el contenido de la casilla\r\nID del Receptor es diferente de CF y no existe en el RTU",
+            "mensaje": "El CUI del Receptor tiene un dígito verificador\r\ninválido."
+        },
+        {
+            "codigo": "FEL_RCP310",
+            "validacion": "Se incluyen las casillas\r\nTipo Especial y Exportación",
+            "mensaje": "El tipo especial CUI no debe estar presente para una exportación."
+        },
+        {
+            "codigo": "FEL_RCP311",
+            "validacion": "Se incluye la casilla Exportación y el contenido de la\r\ncasilla ID del Receptor es diferente de CF",
+            "mensaje": "El NIT del Receptor debe ser CF para una exportación."
+        },
+        {
+            "codigo": "FEL_RCP312",
+            "validacion": "Se incluye la casilla “Exportación” y el\r\ncontenido de la casilla “Tipo de DTE” incluye uno de los textos: NABN,RDON,RECI,NCRE,NDEB,FESP",
+            "mensaje": "El Tipo de\r\nDocumento no puede utilizarse para una exportación"
+        },
+        {
+            "codigo": "FEL_RCP313",
+            "validacion": "El contenido de esta casilla es diferente al resultado de (Casilla Cantidad)\r\nmultiplicado por (casilla PrecioUnitario)",
+            "mensaje": "Precio calculado incorrectamente."
+        },
+        {
+            "codigo": "FEL_RCP314",
+            "validacion": "El contenido de esta casilla es mayor que el contenido de la casilla\r\nPrecio.",
+            "mensaje": "El Descuento no debe ser mayor al Precio."
+        },
+        {
+            "codigo": "FEL_RCP315",
+            "validacion": "Existe un total del monto de impuesto para un impuesto no permitido para el tipo de DTE",
+            "mensaje": "El tipo de DTE no debe incluir el impuesto"
+        },
+        {
+            "codigo": "FEL_RCP316",
+            "validacion": "(El contenido de la\r\ncasilla es PEQUEÑO CONTRIBUYENTE) y (el contenido de la casilla Tipo de DTE incluye uno de los textos:FACT, FCAM, RDON,\r\nRECI, NDEB, NCRE).",
+            "mensaje": "El Tipo de Documento no aplica para este Régimen del IVA."
+        },
+        {
+            "codigo": "FEL_RCP317",
+            "validacion": "(El contenido de la casilla es diferente de PEQUEÑO CONTRIBUYENTE) y\r\n(el contenido de la casilla Tipo de DTE incluye uno de los textos: FPEQ, FCAP).",
+            "mensaje": "El Tipo de Documento no\r\naplica para este Régimen del IVA."
+        },
+        {
+            "codigo": "FEL_RCP318",
+            "validacion": "No está presente en el XML un tipo de frase requerido para el Tipo de\r\nDTE",
+            "mensaje": "El Tipo de Frase debe estar presente para el Tipo de DTE"
+        },
+        {
+            "codigo": "FEL_INF319",
+            "validacion": "Está presente en el XML un tipo de frase no requerido para el “Tipo de DTE”.",
+            "mensaje": "El Tipo\r\nde Frase no debe de estar presente para el Tipo de DTE"
+        },
+        {
+            "codigo": "FEL_RCP320",
+            "validacion": "Está presente en el XML un Tipo de Frase Requerido u\r\nOpcional para el Tipo de DTE y el Código de Escenario para ese Tipo de Frase no existe en el catálogo.",
+            "mensaje": "El\r\ncódigo de escenario no existe para el Tipo de Frase: xxx"
+        },
+        {
+            "codigo": "FEL_RCP321",
+            "validacion": "Está presente en el XML\r\nun Tipo de Frase Requerio u Opcional para el Tipo de DTE, el Código de Escenario para ese Tipo de Frase existe en el\r\ncatálogo pero no corresponde a la obligación de la afiliación del impuesto registrada para el NIT del\r\nemisor.",
+            "mensaje": "El código de escenario para el Tipo de Frase xxx no corresponde a la afiliación del NIT del\r\nemisor."
+        },
+        {
+            "codigo": "FEL_RCP322",
+            "validacion": "El Tipo de DTE contiene\r\nuno de los textos: FACT, FCAM, el NIT del Emisor se encuentra afiliado como Agente de Retención del IVA y el Tipo de\r\nFrase Retención del IVA no está presente en el XML.",
+            "mensaje": "El Tipo de Frase Retención del IVA debe estar presente\r\npara ese NIT Emisor."
+        },
+        {
+            "codigo": "FEL_RCP323",
+            "validacion": "El Tipo de DTE contiene uno de los textos: FACT, FCAM, se incluye la casilla Exportación y el Tipo\r\nde Frase Exento o no afecto al IVA no está presente en el XML.",
+            "mensaje": "El Tipo de Frase Exento o no Afecto al IVA\r\ndebe estar presente para una exportación."
+        },
+        {
+            "codigo": "FEL_RCP324",
+            "validacion": "El Tipo de DTE contiene uno de los textos: FACT, FCAM, se\r\nincluye la casilla Exportación, la casilla Tipo de Frase Exento o no afecto al IVA está presente en el XML y el Código\r\nde Escenario para ese tipo de frase es diferente de: 1.",
+            "mensaje": "El Código de Escenario xxx para el Tipo de Frase\r\nExento o no Afecto al IVA no corresponde para una exportación."
+        },
+        {
+            "codigo": "FEL_RCP325",
+            "validacion": "El Tipo de DTE contiene uno de los textos: FACT, FCAM, no se incluye la casilla Exportación, uno o\r\nmás de los ítems del DTE no incluyen IVA y el Tipo de Frase Exento o no afecto al IVA no está presente en el\r\nXML.",
+            "mensaje": "El Tipo de Frase Exento o no Afecto al IVA debe estar presente cuando el DTE contiene Items sin\r\nIVA."
+        },
+        {
+            "codigo": "FEL_RCP326",
+            "validacion": "El Tipo de\r\nDTE contiene uno de los textos: FACT, FCAM, no se incluye la casilla Exportación, uno o más de los ítems del DTE no\r\nincluyen IVA, la casilla Tipo de Frase Exento o no afecto al IVA está presente en el XML y el Código de Escenario para\r\nese tipo de frase es diferente de: 1,2, 3, 7, 9, 10, 11, 12.",
+            "mensaje": "El Código de Escenario xxx para el Tipo de\r\nFrase Exento o no Afecto no corresponde para el tipo de DTE."
+        },
+        {
+            "codigo": "FEL_RCP327",
+            "validacion": "El Tipo de DTE contiene el texto: RDON, la\r\ncasilla Tipo de Frase Exento o no afecto al IVA está presente en el XML y el Código de Escenario para ese tipo de frase\r\nes diferente de: 4.",
+            "mensaje": "El Código de Escenario xxx para el Tipo de Frase Exento o no Afecto no corresponde para\r\nel tipo de DTE."
+        },
+        {
+            "codigo": "FEL_RCP328",
+            "validacion": "El Tipo de DTE contiene el texto: RECI, la casilla Tipo\r\nde Frase Exento o no afecto al IVA está presente en el XML y el Código de Escenario para ese tipo de frase es diferente\r\nde: 5, 6,8.",
+            "mensaje": "El Código de Escenario xxx para el Tipo de Frase Exento o no Afecto no corresponde para el tipo\r\nde DTE."
+        },
+        {
+            "codigo": "FEL_RCP329",
+            "validacion": "La casilla no está presente en el XML.",
+            "mensaje": "Monto Gravable debe estar presente\r\npara IVA."
+        },
+        {
+            "codigo": "FEL_RCP330",
+            "validacion": "El\r\ncontenido de la casilla no existe en el catálogo.",
+            "mensaje": "Error. Código de Unidad Gravable no existe en el catálogo\r\npara el IVA."
+        },
+        {
+            "codigo": "FEL_RCP331",
+            "validacion": "El contenido de esta casilla es diferente al producto\r\n(multiplicación) de: • Casilla Monto gravable • Porcentaje sobre el monto gravable, correspondiente al Código de la\r\nunidad gravable consignado en el XML.",
+            "mensaje": "Monto del Impuesto calculado incorrectamente para el IVA"
+        },
+        {
+            "codigo": "FEL_RCP333",
+            "validacion": "El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen\r\nantiguo y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total de Impuestos del documento\r\norigen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento\r\nOrigen.",
+            "mensaje": "El total del impuesto IVA no puede ser mayor al del documento origen registrado en la SAT."
+        },
+        {
+            "codigo": "FEL_RCP334",
+            "validacion": "El contenido de la casilla no existe en el catálogo de unidades\r\ngravables.",
+            "mensaje": "Código de Unidad Gravable no existe en el catálogo de Petróleo."
+        },
+        {
+            "codigo": "FEL_RCP335",
+            "validacion": "La casilla\r\nno está presente en el XML",
+            "mensaje": "Cantidad de Unidades Gravables debe existir para Petróleo."
+        },
+        {
+            "codigo": "FEL_RCP336",
+            "validacion": "El valor de\r\nla casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”",
+            "mensaje": "Total de\r\nImpuestos calculado incorrectamente para Petróleo."
+        },
+        {
+            "codigo": "FEL_RCP337",
+            "validacion": "El contenido de la\r\ncasilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen antiguo y el valor de la casilla Total de\r\nImpuestos es mayor que el valor de la casilla Total de Impuestos del documento origen que aparece registrado en la SAT,\r\nde acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
+            "mensaje": "El total del impuesto\r\nPetroleo no puede ser mayor al del documento origen registrado en la SAT."
+        },
+        {
+            "codigo": "FEL_RCP338",
+            "validacion": "El valor de la casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del\r\nImpuesto”",
+            "mensaje": "Total de Impuestos calculado incorrectamente para Turismo Hospedaje."
+        },
+        {
+            "codigo": "FEL_RCP339",
+            "validacion": "El contenido de la casilla Tipo de DTE incluye el texto:\r\nNCRE, no se incluye la casilla Régimen antiguo y el valor de la casilla Total de Impuestos es mayor que el valor de la\r\ncasilla Total de Impuestos del documento origen que aparece registrado en la SAT, de acuerdo al valor de la casilla\r\nNúmero de Autorización del Documento Origen.",
+            "mensaje": "El total del impuesto Turismo Hospedaje no puede ser mayor al\r\ndel documento origen registrado en la SAT."
+        },
+        {
+            "codigo": "FEL_RCP340",
+            "validacion": "El valor de la casilla “Total de Impuestos” es diferente a la\r\nsumatoria de las casillas “Monto del Impuesto”",
+            "mensaje": "Total de Impuestos calculado incorrectamente para Turismo\r\nPasajes."
+        },
+        {
+            "codigo": "FEL_RCP341",
+            "validacion": "El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen\r\nantiguo y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total de Impuestos del documento\r\norigen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento\r\nOrigen.",
+            "mensaje": "El total del impuesto Turismo Pasaje no puede ser mayor al del documento origen registrado en la\r\nSAT."
+        },
+        {
+            "codigo": "FEL_RCP342",
+            "validacion": "El valor de la casilla “Total de Impuestos” es diferente\r\na la sumatoria de las casillas “Monto del Impuesto”.",
+            "mensaje": "Total de Impuestos calculado incorrectamente para\r\nTimbre de Prensa."
+        },
+        {
+            "codigo": "FEL_RCP343",
+            "validacion": "El contenido de la\r\ncasilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen antiguo y el valor de la casilla Total de\r\nImpuestos es mayor que el valor de la casilla Total de Impuestos del documento origen que aparece registrado en la SAT,\r\nde acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
+            "mensaje": "El total del Timbre de\r\nPrensa no puede ser mayor al del documento origen registrado en la SAT."
+        },
+        {
+            "codigo": "FEL_RCP344",
+            "validacion": "El valor de la casilla\r\n“Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”.",
+            "mensaje": "Total de Impuestos\r\ncalculado incorrectamente para Bomberos."
+        },
+        {
+            "codigo": "FEL_RCP345",
+            "validacion": "El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se\r\nincluye la casilla Régimen antiguo y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total\r\nde Impuestos del documento origen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de\r\nAutorización del Documento Origen.",
+            "mensaje": "El total del impuesto Bomberos no puede ser mayor al del documento\r\norigen registrado en la SAT."
+        },
+        {
+            "codigo": "FEL_RCP346",
+            "validacion": "El valor de la casilla\r\n“Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”",
+            "mensaje": "Total de Impuestos\r\ncalculado incorrectamente para Tasa Municipal."
+        },
+        {
+            "codigo": "FEL_RCP347",
+            "validacion": "El\r\ncontenido de la casilla Tipo de DTE incluye el texto: NCRE, no se incluye la casilla Régimen antiguo y el valor de la\r\ncasilla Total de Impuestos es mayor que el valor de la casilla Total de Impuestos del documento origen que aparece\r\nregistrado en la SAT, de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
+            "mensaje": "El\r\ntotal de la Tasa Municipal no puede ser mayor a la del documento origen registrado en la SAT."
+        },
+        {
+            "codigo": "FEL_RCP348",
+            "validacion": "El contenido de esta casilla es diferente al resultado de\r\nla casilla Precio menos la casilla Descuento más la sumatoria de las casillas MontoImpuesto de los impuestos que sean\r\nsumables al DTE (excepto el IVA por estar ya incluido), según se indica en cada caso por impuesto.",
+            "mensaje": "Total\r\ncalculado incorrectamente."
+        },
+        {
+            "codigo": "FEL_RCP349",
+            "validacion": "El contenido de esta casilla es diferente a la\r\nsumatoria de las casillas Total",
+            "mensaje": "Gran Total calculado incorrectamente."
+        },
+        {
+            "codigo": "FEL_RCP350",
+            "validacion": "El contenido de la casilla Tipo de DTE incluye el texto: NCRE, no se\r\nincluye la casilla Régimen antiguo y el valor de la casilla Total de Impuestos es mayor que el valor de la casilla Total\r\nde Impuestos del documento origen que aparece registrado en la SAT, de acuerdo al valor de la casilla Número de\r\nAutorización del Documento Origen.",
+            "mensaje": "El Gran Total no puede ser mayor al del documento origen registrado en\r\nla SAT."
+        },
+        {
+            "codigo": "FEL_RCP351",
+            "validacion": "No se incluye la casilla\r\nRégimen antiguo y el contenido de la presente casilla no coincide con ningún DTE registrado en la SAT.",
+            "mensaje": "El\r\nnúmero de Autorización del Documento Origen no coincide con ningún DTE registrado en la SAT."
+        },
+        {
+            "codigo": "FEL_RCP352",
+            "validacion": "No se incluye la casilla Régimen antiguo, el contenido de la presente\r\ncasilla coincide con un DTE registrado en la SAT y el valor de la casilla Tipo de DTE del documento origen es diferente\r\nde: FACT, FCAM.",
+            "mensaje": "El número de Autorización del Documento Origen corresponde a un documento diferente a\r\nfactura."
+        },
+        {
+            "codigo": "FEL_RCP353",
+            "validacion": "Se incluye la casilla Régimen antiguo, el contenido de la presente\r\ncasilla coincide con un Número de Resolución de Autorización registrado en la SAT y el valor de la casilla Código Tipo\r\nde esa Resolución es diferente de:1, 2, 7, 8, 9, 30, 32, 37, 38, 53, 57, 60, 62, 63, 66, 67, 68, 69, 72.",
+            "mensaje": "El\r\nnúmero de Autorización del Documento Origen corresponde a un documento diferente a factura."
+        },
+        {
+            "codigo": "FEL_RCP354",
+            "validacion": "No se incluye la casilla\r\nRégimen antiguo, el contenido de la presente casilla coincide con un DTE registrado en la SAT y el valor de la casilla\r\nNIT del Emisor no coincide con el que aparece registrado en la SAT para ese mismo documento origen.",
+            "mensaje": "El\r\nvalor de la casilla NIT del Emisor no coincide con el registrado en el Documento Origen."
+        },
+        {
+            "codigo": "FEL_RCP355",
+            "validacion": "No se incluye la casilla Régimen antiguo, el contenido de la presente casilla coincide con un DTE\r\nregistrado en la SAT y el valor de la casilla ID del Receptor no coincide con el que aparece registrado en la SAT para\r\nese mismo documento origen.",
+            "mensaje": "El valor de la casilla ID del Receptor no coincide con el registrado en el\r\nDocumento Origen."
+        },
+        {
+            "codigo": "FEL_RCP356",
+            "validacion": "No se incluye la casilla Régimen antiguo, el contenido de\r\nla presente casilla coincide con un DTE registrado en la SAT y el valor de la casilla NIT del Certificador no coincide\r\ncon el que aparece registrado en la SAT para ese mismo documento origen.",
+            "mensaje": "El valor de la casilla NIT del\r\nCertificador no coincide con el registrado en el Documento Origen."
+        },
+        {
+            "codigo": "FEL_RCP357",
+            "validacion": "Se incluye la casilla\r\nRégimen antiguo y el contenido de la presente casilla no coincide con ningún Número de Resolución de Autorización\r\nregistrado en la SAT.",
+            "mensaje": "El número de Autorización del Documento Origen no existe en la SAT"
+        },
+        {
+            "codigo": "FEL_RCP358",
+            "validacion": "No se incluye la casilla\r\nRégimen antiguo y el contenido de la presente casilla no coincide con la que aparece registrada en la SAT de acuerdo al\r\nvalor de la casilla Número de Autorización del Documento Origen",
+            "mensaje": "La fecha de emisión del documento origen no\r\ncoincide con la registrada en la SAT."
+        },
+        {
+            "codigo": "FEL_RCP359",
+            "validacion": "Se incluye la casilla Régimen antiguo y el contenido de la casilla es\r\ndiferente a la serie que aparece registrado en la SAT de acuerdo al valor de la casilla Número de Autorización del\r\nDocumento Origen.",
+            "mensaje": "La serie del documento origen no coincide con la registrada en la SAT para esa Resolución\r\nde Autorización."
+        },
+        {
+            "codigo": "FEL_RCP360",
+            "validacion": "Se incluye\r\nla casilla Régimen antiguo y el contenido de la casilla no se encuentra dentro del rango que aparece registrado en la\r\nSAT, de acuerdo al valor de la casilla Número de Autorización del Documento Origen.",
+            "mensaje": "El número del documento\r\norigen no se encuentra dentro del rango registrado en la SAT para esa Resolución de Autorización."
+        },
+        {
+            "codigo": "FEL_RCP361",
+            "validacion": "La firma electrónica avanzada del Emisor no corresponde al DTE",
+            "mensaje": "La firma del Emisor es\r\nerrónea."
+        },
+        {
+            "codigo": "FEL_RCP362",
+            "validacion": "El contenido de la\r\ncasilla no coincide con el NIT del CERTIFICADOR que envió este DTE",
+            "mensaje": "El NIT del CERTIFICADOR no coincide con\r\nel NIT del usuario."
+        },
+        {
+            "codigo": "FEL_INF363",
+            "validacion": "La SAT registrará la “Fecha y hora de recepción en la SAT”. El\r\ncontenido de dicha casilla es más de 24 horas posterior a la casilla “Fecha y hora de certificación”.",
+            "mensaje": "La\r\n“Fecha y hora de recepción en la SAT” es más de 24 horas posterior a la “Fecha y hora de certificación” del\r\nCERTIFICADOR."
+        },
+        {
+            "codigo": "FEL_RCP364",
+            "validacion": "La firma electrónica avanzada del CERTIFICADOR\r\nno corresponde al DTE",
+            "mensaje": "La firma del CERTIFICADOR es errónea."
+        },
+        {
+            "codigo": "FEL_RCP365",
+            "validacion": "El\r\ncontenido de la casilla coincide con UUID enviado anteriormente por el Certificador, dentro del mismo día calendario con\r\nrespecto a la fecha de certificación.",
+            "mensaje": "El número de autorización no puede repetirse."
+        },
+        {
+            "codigo": "FEL_RCP366",
+            "validacion": "El contenido de la\r\ncasilla no coincide con los primeros 8 caracteres de izquierda a derecha del contenido de la casilla Numero de\r\nAutorización.",
+            "mensaje": "La serie del DTE no corresponde al número de autorización."
+        },
+        {
+            "codigo": "FEL_RCP367",
+            "validacion": "El contenido de la casilla no coincide con el equivalente en números\r\ndecimales de los caracteres a partir de la posición 9 hasta la posición 16 (excluyendo los guiones -), de izquierda a\r\nderecha, del contenido de la casilla Numero de Autorización.",
+            "mensaje": "El número del DTE es incorrecto."
+        },
+        {
+            "codigo": "FEL_ANU368",
+            "validacion": "El contenido de la presente casilla no coincide con ningún DTE registrado en la\r\nSAT.",
+            "mensaje": "El número de Autorización del Documento a anular no coincide con ningún DTE registrado en la\r\nSAT."
+        },
+        {
+            "codigo": "FEL_ANU369",
+            "validacion": "El contenido de la presente casilla no coincide con el que aparece registrado en la\r\nSAT de acuerdo al valor de la casilla Número de Autorización del Documento a Anular",
+            "mensaje": "El NIT del Emisor del\r\ndocumento a anular no coincide con el registrado en la SAT."
+        },
+        {
+            "codigo": "FEL_ANU370",
+            "validacion": "La firma electrónica del Emisor no corresponde al NIT del Emisor del documento a\r\nanular.",
+            "mensaje": "La firma del Emisor es errónea."
+        },
+        {
+            "codigo": "FEL_ANU371",
+            "validacion": "El contenido de la presente casilla no coincide con el que aparece registrado en la\r\nSAT de acuerdo al valor de la casilla Número de Autorización del Docuento a Anular",
+            "mensaje": "El ID del Receptor del\r\ndocumento a anular no coincide con el registrado en la SAT."
+        },
+        {
+            "codigo": "FEL_ANU372",
+            "validacion": "El contenido de la presente casilla no coincide con el que aparece registrado en la\r\nSAT de acuerdo al valor de la casilla Número de Autorización del Documento a Anular",
+            "mensaje": "El NIT del Certificador\r\ndel documento a anular no coincide con el registrado en la SAT."
+        },
+        {
+            "codigo": "FEL_ANU373",
+            "validacion": "La firma electrónica del CERTIFICADOR no corresponde al NIT del\r\nCertificador.",
+            "mensaje": "La firma del CERTIFICADOR es errónea."
+        },
+        {
+            "codigo": "FEL_ANU374",
+            "validacion": "El contenido de la presente casilla no coincide con el que aparece registrado en la\r\nSAT de acuerdo al valor de la casilla Número de Autorización del Docuento a Anular",
+            "mensaje": "La fecha de emisión del\r\ndocumento a anular no coincide con la registrada en la SAT."
+        },
+        {
+            "codigo": "FEL_ANU375",
+            "validacion": "La casilla Fecha de anulación excede a la fecha de vencimiento de la declaración\r\nmensual del IVA del período al que corresponde el documento a anular.",
+            "mensaje": "La fecha de anulación excede la fecha\r\nde vencimiento del período del IVA al que corresponde el documento a anular."
+        },
+        {
+            "codigo": "FEL_ANU376",
+            "validacion": "La\r\ncasilla Fecha de anulación” es menor a la Fecha de emisión del DTE a anular que aparece registrado en la SAT de acuerdo\r\nal valor de la casilla Número de Autorización del Docuento a Anular.",
+            "mensaje": "La fecha de anulación no puede ser\r\ninferior a la fecha de emisión del DTE a anular."
+        },
+        {
+            "codigo": "FEL_ANU377",
+            "validacion": "El tiempo\r\ntranscurrido entre la Fecha y hora de certificación y la Fecha y hora de recepción en la SAT excede las 24\r\nhoras.",
+            "mensaje": "La Fecha y hora de recepción en la SAT es mayor a 24 horas posterior a la Fecha y hora de\r\ncertificación del documento a anular."
+        },
+        {
+            "codigo": "FEL_ANU378",
+            "validacion": "La Fecha de certificación de la anulación es\r\ndiferente a la Fecha de anulación (se despercian horas, minutos y segundos)",
+            "mensaje": "La Fecha de certificación es\r\ndiferente a la Fecha de anulación."
+        },
+        {
+            "codigo": "FEL_RCP379",
+            "validacion": "El NIT no está activo en el Registro de Emisores FEL.",
+            "mensaje": "El NIT no corresponde a un\r\nEmisor Activo del Régimen FEL."
+        },
+        {
+            "codigo": "FEL_INF380",
+            "validacion": "Se incluye la casilla Tipo Especial y el Tipo de documento es diferente de\r\n“FESP",
+            "mensaje": "La casilla Tipo Especial sólo puede incluirse en Facturas Especiales"
+        },
+        {
+            "codigo": "FEL_INF381",
+            "validacion": "El contenido de la casilla ID del receptor es igual a CF y el Tipo\r\nde documento es FESP",
+            "mensaje": "El ID del Receptor no puede ser CF para una factura especial."
+        },
+        {
+            "codigo": "FEL_INF382",
+            "validacion": "Se incluye la casilla Tipo Especial con el texto Número de documento\r\nde identificación del extranjero”y el contenido de la casilla ID del receptor no cumple con estas condiciones:Tener una\r\nlongitud entre 3 y 18 caracteres, Puede contener letras de la A a la Z (mayúsculas) y dígitos (0-9), No debe contener\r\nespacios",
+            "mensaje": "El ID del Receptor no corresponde a un formato del tipo especial Número de documento de\r\nidentificación del extranjero."
+        },
+        {
+            "codigo": "FEL_RCP383",
+            "validacion": "El tipo\r\nde documento es NCRE o NDEB y la moneda es diferente a la moneda del documento referenciado según la casilla Numero\r\nAutorizacion Documento Origen en el complemento Referencias a las notas de crédito o débito incluido.",
+            "mensaje": "Las\r\nnotas de débito o crédito deben ser emitidas en la misma moneda del documento origen."
+        },
+        {
+            "codigo": "FEL_RCP384",
+            "validacion": "El contenido de la casilla es diferente de B y el Tipo de Documento que se está emitiendo es alguno de estos: FACA, FCCA, FAAE o FCAE.",
+            "mensaje": "El contribuyente agropecuario únicamente puede facturar bienes."
+        },
+        {
+            "codigo": "FEL_RCP385",
+            "validacion": "El tipo de DTE es RDON y no se incluye la casilla personería.",
+            "mensaje": "El tipo de DTE RDON debe de incluir la casilla personería."
+        },
+        {
+            "codigo": "FEL_RCP386",
+            "validacion": "El tipo de DTE es diferente de RDON e incluye la casilla personeria.",
+            "mensaje": "El tipo de DTE no debe incluir la casilla personería."
+        },
+        {
+            "codigo": "FEL_RCP387",
+            "validacion": "La casilla contiene un tipo de personería diferente al de la lista Tipos de DTE por tipo de personería",
+            "mensaje": "El Tipo de DTE no aplica para este tipo de personería”."
+        },
+        {
+            "codigo": "FEL_SEC500",
+            "validacion": "El contenido de la casilla es diferente del resultado de la siguiente operación:\r\ncasilla Precio menos la casilla descuento y el resultado de ambas dividido entre el factor 1.12; cuando la casilla\r\nCódigo de la Unidad Gravable es igual a 1.",
+            "mensaje": "Error. Monto Gravable calculado incorrectamente para el\r\nIVA"
+        },
+        {
+            "codigo": "FEL_SEC502",
+            "validacion": "La casilla\r\nestá presente en el XML.",
+            "mensaje": "Cantidad de Unidades Gravables no debe estar presente para IVA."
+        },
+        {
+            "codigo": "FEL_SEC503",
+            "validacion": "La casilla está presente en el XML.",
+            "mensaje": "Monto Gravable no\r\ndebe estar presente para Petróleo."
+        },
+        {
+            "codigo": "FEL_SEC506",
+            "validacion": "Si el tipo de cambio consignado en el XML es GTQ y el contenido de esta casilla es\r\ndiferente al producto (multiplicación) de las dos casillas siguientes: Tasa específica en Q del Código de la unidad\r\ngravable por la Cantidad de Unidades Gravables. Ó, Si el tipo de cambio consignado en el XML es diferente de GTQ y el\r\ncontenido de esta casilla es diferente de: El valor de la Tasa específica en Q del Código de la unidad gravable dividido\r\nentre el tipo de cambio del Banco de Guatemala en la fecha de emisión del DTE y el resultado multiplicarlo por la\r\ncasilla Cantidad de Unidades Gravables.",
+            "mensaje": "Monto del Impuesto calculado incorrectamente para\r\nPetróleo."
+        },
+        {
+            "codigo": "FEL_SEC508",
+            "validacion": "El contenido de la casilla no existe en el catálogo.",
+            "mensaje": "Código de Unidad\r\nGravable no existe en el catálogo para Turismo Hospedaje."
+        },
+        {
+            "codigo": "FEL_SEC509",
+            "validacion": "La casilla está presente en el\r\nXML.",
+            "mensaje": "Cantidad de Unidades Gravables no debe estar presente para Turismo Hospedaje."
+        },
+        {
+            "codigo": "FEL_SEC511",
+            "validacion": "La casilla está presente en el XML.",
+            "mensaje": "Monto Gravable no\r\ndebe estar presente para Turismo Pasajes."
+        },
+        {
+            "codigo": "FEL_SEC512",
+            "validacion": "El contenido de la casilla no existe en el catálogo de unidades gravables.",
+            "mensaje": "Código de Unidad Gravable no existe en el catálogo de Turismo Pasajes."
+        },
+        {
+            "codigo": "FEL_SEC513",
+            "validacion": "La casilla\r\nno está presente en el XML",
+            "mensaje": "Cantidad de Unidades Gravables debe existir para Turismo Pasajes."
+        },
+        {
+            "codigo": "FEL_SEC515",
+            "validacion": "El contenido de la casilla no existe en el catálogo.",
+            "mensaje": "Código de Unidad\r\nGravable no existe en el catálogo para Timbre de Prensa."
+        },
+        {
+            "codigo": "FEL_SEC518",
+            "validacion": "El contenido\r\nde la casilla es diferente del resultado de la siguiente operación: casilla Precio menos la casilla descuento y el\r\nresultado de ambas dividido entre el factor 1.12; cuando la casilla Código de la Unidad Gravable correspondiente al\r\nimpuesto IVA es igual a 1. Ó, El contenido de la casilla es diferente del resultado de la siguiente operación: casilla\r\nPrecio menos la casilla descuento; cuando la casilla Código de la Unidad Gravable correspondiente al impuesto IVA es\r\nigual a 2.",
+            "mensaje": "Monto Gravable calculado incorrectamente para Bomberos."
+        },
+        {
+            "codigo": "FEL_SEC519",
+            "validacion": "El contenido de la casilla no existe en el catálogo.",
+            "mensaje": "Código de Unidad\r\nGravable no existe en el catálogo para Bomberos."
+        },
+        {
+            "codigo": "FEL_SEC523",
+            "validacion": "El contenido de la casilla no existe en el catálogo.",
+            "mensaje": "Código de Unidad\r\nGravable no existe en el catálogo para Tasa Municipal."
+        },
+        {
+            "codigo": "FEL_RCP525",
+            "validacion": "(El CATÁLOGO DE COMPLEMENTOS DISPONIBLES PARA CADA TIPO DE DTE indica\r\nque, para el tipo de DTE, un determinado complemento es requerido) y (el citado complemento está vacío)",
+            "mensaje": "Un\r\ncomplemento requerido está ausente en el DTE."
+        },
+        {
+            "codigo": "FEL_SEC526",
+            "validacion": "(El CATÁLOGO DE COMPLEMENTOS DISPONIBLES PARA CADA TIPO DE DTE indica que, para el\r\ntipo de DTE, un determinado complemento no corresponde) y (el citado complemento está lleno)",
+            "mensaje": "Un complemento\r\nno corresponde que esté presente en el DTE."
+        },
+        {
+            "codigo": "FEL_SEC533",
+            "validacion": "Si el tipo\r\nde cambio consignado en el XML es diferente de GTQ y el contenido de esta casilla es diferente de: El valor de la Tasa\r\nespecífica en Q del Código de la unidad gravable dividido entre el tipo de cambio del Banco de Guatemala en la fecha de\r\nemisión del DTE y el resultado multiplicarlo por la casilla Cantidad de Unidades Gravables.",
+            "mensaje": "Monto del\r\nImpuesto calculado incorrectamente para Petróleo."
+        },
+        {
+            "codigo": "FEL_INF534",
+            "validacion": "a) La fecha de emisión\r\nes inferior al 01 de junio de 2019 y el contenido de la casilla es diferente al resultado de aplicar el algoritmo\r\nsiguiente: Si la sumatoria de las casillas Monto Gravable es menor o igual a 30,000 entonces esta casilla ISR a retener\r\nes igual a la sumatoria de las casillas Monto Gravable por 5%. Si la sumatoria de las casillas Monto Gravable es mayor a\r\n30,000. Entonces esta casilla ISR a retener es igual a 1,500 más ((la sumatoria de las casillas Monto Gravable menos\r\n30,000) por 7%). b) La fecha de emisión es superior o igual al 01 de junio de 2019 y el contenido de la casilla es\r\ndiferente al 5% de la sumatoria de las casillas Monto Gravable.",
+            "mensaje": "El valor de la casilla ISR a Retener es\r\nerróneo."
+        }
+    ]
 }
