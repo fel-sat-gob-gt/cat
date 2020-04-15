@@ -1,0 +1,348 @@
+{
+  "Cabecera": {
+    "Nombre": "FEL-CATALOGO-UNIDADES-GRAVABLES",
+    "Ultima Actualizacion": "05/08/2019 08:00:00"
+  },
+  "Contenido": [
+    {
+      "impuesto": "IVA",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Tasa 12.00%",
+          "nombreCorto": "IVA 12%",
+          "operaSobreCasilla": "MontoGravable",
+          "factor": 0.12
+        },
+        {
+          "codigoUnidadGravable": 2,
+          "nombreUnidadGravable": "Tasa 0",
+          "nombreCorto": "IVA 0",
+          "operaSobreCasilla": "MontoGravable",
+          "factor": 0
+        }
+      ]
+    },
+    {
+      "impuesto": "PETROLEO",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Gasolina superior",
+          "nombreCorto": "Gasolina superior Q4.70",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 4.7
+        },
+        {
+          "codigoUnidadGravable": 2,
+          "nombreUnidadGravable": "Gasolina regular",
+          "nombreCorto": "Gasolina regular Q4.60",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 4.6
+        },
+        {
+          "codigoUnidadGravable": 3,
+          "nombreUnidadGravable": "Gasolina de aviación",
+          "nombreCorto": "Gasolina de aviación Q4.70",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 4.7
+        },
+        {
+          "codigoUnidadGravable": 4,
+          "nombreUnidadGravable": "Diésel",
+          "nombreCorto": "Diésel Q1.30",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 1.3
+        },
+        {
+          "codigoUnidadGravable": 5,
+          "nombreUnidadGravable": "Gas Oil",
+          "nombreCorto": "Gas Oil Q1.30",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 1.3
+        },
+        {
+          "codigoUnidadGravable": 6,
+          "nombreUnidadGravable": "Kerosina (DPK), (Avjet, turbo fuel)",
+          "nombreCorto": "Kerosina avjet turbo fuel Q0.50",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.5
+        },
+        {
+          "codigoUnidadGravable": 7,
+          "nombreUnidadGravable": "Nafta",
+          "nombreCorto": "Nafta Q0.50",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.5
+        },
+        {
+          "codigoUnidadGravable": 8,
+          "nombreUnidadGravable": "Fuel Oil (Bunker C)",
+          "nombreCorto": "Fuel Oil (Bunker C) Q0.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0
+        },
+        {
+          "codigoUnidadGravable": 9,
+          "nombreUnidadGravable": "Gas licuado de petróleo a granel",
+          "nombreCorto": "Gas licuado granel Q0.50",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.5
+        },
+        {
+          "codigoUnidadGravable": 10,
+          "nombreUnidadGravable": "Gas licuado petróleo carburación",
+          "nombreCorto": "Gas licuado carburación Q0.50",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.5
+        },
+        {
+          "codigoUnidadGravable": 11,
+          "nombreUnidadGravable": "Petróleo crudo usado como combustible",
+          "nombreCorto": "Petróleo crudo combustible Q0.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0
+        },
+        {
+          "codigoUnidadGravable": 12,
+          "nombreUnidadGravable": "Otros combustibles derivados del petróleo",
+          "nombreCorto": "Otros combustibles Q0.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0
+        },
+        {
+          "codigoUnidadGravable": 13,
+          "nombreUnidadGravable": "Asfaltos",
+          "nombreCorto": "Asfaltos Q0.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0
+        }
+      ]
+    },
+    {
+      "impuesto": "TURISMO HOSPEDAJE",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Tasa Hospedaje 10%",
+          "nombreCorto": "Hospedaje 10.00%",
+          "operaSobreCasilla": "MontoGravable",
+          "factor": 0.1
+        },
+		{
+          "codigoUnidadGravable": 2,
+          "nombreUnidadGravable": "Tasa Hospedaje Exento Tasa 0",
+          "nombreCorto": "Hospedaje Exento 0%",
+          "operaSobreCasilla": "MontoGravable",
+          "factor": 0
+        }
+      ]
+    },
+    {
+      "impuesto": "TURISMO PASAJES",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Salida del país por vía aérea",
+          "nombreCorto": "Salida vía aérea USD30.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 30
+        },
+        {
+          "codigoUnidadGravable": 2,
+          "nombreUnidadGravable": "Salida del país por vía marítima",
+          "nombreCorto": "Salida vía marítima USD10.00",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 10
+        }
+      ]
+    },
+    {
+      "impuesto": "TIMBRE DE PRENSA",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Timbre de prensa cinco (5) por millar",
+          "nombreCorto": "Timbre de prensa",
+          "operaSobreCasilla": "MontoGravable",
+          "factor": 0.5
+        }
+      ]
+    },
+    {
+      "impuesto": "BOMBEROS",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Tasa por seguro contra incendio",
+          "nombreCorto": "Bomberos 2.00%",
+          "operaSobreCasilla": "MontoGravable",
+          "factor": 0.02
+        }
+      ]
+    },
+    {
+      "impuesto": "TASA MUNICIPAL",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": null,
+          "nombreUnidadGravable": "Texto variable (nombre del departamento, municipio y concepto)",
+          "nombreCorto": "Texto variable",
+          "operaSobreCasilla": null,
+          "factor": null
+        }
+      ]
+    },
+	
+	{
+      "impuesto": "BEBIDAS ALCOHOLICAS",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Cervezas y otras bebidas",
+          "nombreCorto": "Cervezas y otras bebidas 6.00%",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 6.0
+
+        },
+		{
+          "codigoUnidadGravable": 2,
+          "nombreUnidadGravable": "Vinos",
+          "nombreCorto": "Vinos 7.50%",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 7.5
+        },
+		{
+          "codigoUnidadGravable": 3,
+          "nombreUnidadGravable": "Vino espumoso",
+          "nombreCorto": "Vino espumoso 7.50%",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 7.5
+        },
+		{
+          "codigoUnidadGravable": 4,
+          "nombreUnidadGravable": "Vino vermouth",
+          "nombreCorto": "Vino vermouth 7.50%",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 7.5
+        },
+		{
+          "codigoUnidadGravable": 5,
+          "nombreUnidadGravable": "Sidras",
+          "nombreCorto": "Sidras 7.50%",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 7.5
+        },
+		{
+          "codigoUnidadGravable": 6,
+          "nombreUnidadGravable": "Bebidas alcohólicas destiladas",
+          "nombreCorto": "Bebidas alcohólicas destiladas 8.50%",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 8.5
+        },
+		{
+          "codigoUnidadGravable": 7,
+          "nombreUnidadGravable": "Bebidas alcohólicas mezcladas",
+          "nombreCorto": "Bebidas alcohólicas mezcladas 7.50%",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 7.5
+        },
+		{
+          "codigoUnidadGravable": 8,
+          "nombreUnidadGravable": "Otras bebidas fermentadas",
+          "nombreCorto": "Otras bebidas fermentadas 7.50%",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 7.5
+        }
+      ]
+    },
+	{
+      "impuesto": "TABACO",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Precio de fábrica",
+          "nombreCorto": "Precio de fábrica por 100%",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 100
+
+        },
+		{
+          "codigoUnidadGravable": 2,
+          "nombreUnidadGravable": "Precio sugerido al consumidor ",
+          "nombreCorto": "Precio sugerido al consumidor por 75%",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 75
+        }
+      ]
+    },
+		{
+      "impuesto": "CEMENTO",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Bolsa de 42.5 kgs",
+          "nombreCorto": "Bolsa de 42.5 kgs Q1.50",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 1.5
+
+        }
+      ]
+    },
+	{
+      "impuesto": "BEBIDAS NO ALCOHOLICAS",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Bebidas gaseosas y jarabes",
+          "nombreCorto": "Bebidas gaseosas y jarabes Q0.18",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.18
+
+        },
+		{
+          "codigoUnidadGravable": 2,
+          "nombreUnidadGravable": "Bebidas isotónicas o deportivas",
+          "nombreCorto": "Bebidas isotónicas o deportivas Q0.12",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.12
+        },
+		{
+          "codigoUnidadGravable": 3,
+          "nombreUnidadGravable": "Jugos y néctares",
+          "nombreCorto": "Jugos y néctares Q0.10",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.1
+        },
+		{
+          "codigoUnidadGravable": 4,
+          "nombreUnidadGravable": "Bebidas de yogur",
+          "nombreCorto": "Bebidas de yogur Q0.10",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.1
+        },
+		{
+          "codigoUnidadGravable": 5,
+          "nombreUnidadGravable": "Agua natural envasada",
+          "nombreCorto": "Agua natural envasada Q0.08",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.08
+        }
+      ]
+    },
+	{
+      "impuesto": "TARIFA PORTUARIA",
+      "unidadesGravables": [
+        {
+          "codigoUnidadGravable": 1,
+          "nombreUnidadGravable": "Tarifa Portuaria",
+          "nombreCorto": "Tarifa Portuaria $0.05",
+          "operaSobreCasilla": "CantidadUnidadesGravables",
+          "factor": 0.05
+        }
+      ]
+    }
+	
+	
+  ]
+}
