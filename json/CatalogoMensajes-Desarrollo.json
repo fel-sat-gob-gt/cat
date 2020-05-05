@@ -1,7 +1,7 @@
 {
     "Cabecera": {
         "Nombre": "FEL-CATALOGO-MENSAJES",
-        "Ultima Actualizacion": "20/02/20"
+        "Ultima Actualizacion": "5/05/20"
     },
     "Contenido": [
         {
@@ -350,7 +350,7 @@
             "mensaje": "El número del documento\r\norigen no se encuentra dentro del rango registrado en la SAT para esa Resolución de Autorización."
         },
         {
-            "codigo": "FEL_RCP361",
+            "codigo": "FEL_INF361",
             "validacion": "La firma electrónica avanzada del Emisor no corresponde al DTE",
             "mensaje": "La firma del Emisor es\r\nerrónea."
         },
@@ -365,7 +365,7 @@
             "mensaje": "La\r\n“Fecha y hora de recepción en la SAT” es más de 24 horas posterior a la “Fecha y hora de certificación” del\r\nCERTIFICADOR."
         },
         {
-            "codigo": "FEL_RCP364",
+            "codigo": "FEL_INF364",
             "validacion": "La firma electrónica avanzada del CERTIFICADOR\r\nno corresponde al DTE",
             "mensaje": "La firma del CERTIFICADOR es errónea."
         },
@@ -483,6 +483,131 @@
             "codigo": "FEL_RCP387",
             "validacion": "La casilla contiene un tipo de personería diferente al de la lista Tipos de DTE por tipo de personería",
             "mensaje": "El Tipo de DTE no aplica para este tipo de personería”."
+        },
+        {
+            "codigo": "FEL_RCP388",
+            "validacion": "La casilla no está presente en el XML",
+            "mensaje": "Monto Gravable debe existir en el XML para el impuesto Bebidas Alcohólicas."
+        },
+        {
+            "codigo": "FEL_RCP389",
+            "validacion": "El contenido de la casilla no existe en el catálogo del impuesto Bebidas Alcohólicas.",
+            "mensaje": "Código de Unidad Gravable debe existir en el catálogo del impuesto Bebidas Alcohólicas."
+        },
+        {
+            "codigo": "FEL_RCP390",
+            "validacion": "La casilla no está presente en el XML",
+            "mensaje": "Cantidad de Unidades Gravables debe existir en el XML para el impuesto Bebidas Alcohólicas."
+        },
+        {
+            "codigo": "FEL_RCP391",
+            "validacion": "El contenido de esta casilla es diferente del producto (multiplicación) de las casillas: Monto Gravable (precio sugerido al consumidor)* Porcentaje sobre el monto gravable (de acuerdo al “Código de unidad gravable” que corresponda) * Cantidad de Unidades Gravables",
+            "mensaje": "Monto del Impuesto Bebidas Alcohólicas calculado incorrectamente."
+        },
+        {
+            "codigo": "FEL_RCP392",
+            "validacion": "El valor de la casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”",
+            "mensaje": "Total de Impuestos Bebidas Alcohólicas calculado incorrectamente."
+        },
+        {
+            "codigo": "FEL_RCP393",
+            "validacion": "La casilla no está presente en el XML",
+            "mensaje": "Monto Gravable debe existir para el impuesto Tabaco."
+        },
+        {
+            "codigo": "FEL_RCP394",
+            "validacion": "El contenido de la casilla no existe en el catálogo de unidades gravables.",
+            "mensaje": "Código de Unidad Gravable no existe en el catálogo para el impuesto Tabaco."
+        },
+        {
+            "codigo": "FEL_RCP395",
+            "validacion": "La casilla no está presente en el XML",
+            "mensaje": "Cantidad de Unidades Gravables debe existir para el impuesto Tabaco."
+        },
+        {
+            "codigo": "FEL_RCP396",
+            "validacion": "El contenido de esta casilla es diferente del producto (multiplicación) de las casillas: Monto Gravable (precio sugerido al consumidor)* Porcentaje sobre el monto gravable (de acuerdo al “Código de unidad gravable” que corresponda) * Cantidad de Unidades Gravables",
+            "mensaje": "Monto del Impuesto Tabaco calculado incorrectamente."
+        },
+        {
+            "codigo": "FEL_RCP397",
+            "validacion": "El valor de la casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”",
+            "mensaje": "Total de Impuestos calculado incorrectamente para Tabaco."
+        },
+        {
+            "codigo": "FEL_RCP398",
+            "validacion": "La casilla está presente en el XML.",
+            "mensaje": "Monto Gravable no debe estar presente para el impuesto Cemento."
+        },
+        {
+            "codigo": "FEL_RCP399",
+            "validacion": "El contenido de la casilla no existe en el catálogo de unidades gravables.",
+            "mensaje": "Código de Unidad Gravable no existe en el catálogo del impuesto Cemento."
+        },
+        {
+            "codigo": "FEL_RCP400",
+            "validacion": "La casilla no está presente en el XML",
+            "mensaje": "Cantidad de Unidades Gravables debe existir para el impuesto Cemento."
+        },
+        {
+            "codigo": "FEL_RCP401",
+            "validacion": "Si la moneda de emisión del documento es “GTQ” y el contenido de esta casilla es diferente al producto (multiplicación) de las casillas siguientes: Impuesto en Q sobre cada unidad gravable (de acuerdo al “Código de unidad gravable” que corresponda)* Cantidad de Unidades Gravables",
+            "mensaje": "Monto del Impuesto calculado incorrectamente para Cemento."
+        },
+        {
+            "codigo": "FEL_RCP402",
+            "validacion": "Si la moneda de emisión del documento es diferente de “GTQ” y el contenido de esta casilla es diferente de:\r\na) El valor del Impuesto en GTQ sobre cada unidad gravable (de acuerdo al “Código de unidad gravable” que corresponda) dividido entre el tipo de cambio del Banco de Guatemala en la fecha de emisión del DTE y el resultado multiplicarlo por la casilla “Cantidad de Unidades Gravables”. Cuando la moneda de emisión es inferior frente al dólar estadounidense.\r\nb) El valor del Impuesto en GTQ sobre cada unidad gravable (de acuerdo al “Código de unidad gravable” que corresponda), divido entre el tipo de cambio del Banco de Guatemala para el dólar estadounidense en la fecha de emisión del DTE,  multiplicado por el tipo de cambio del Banco de Guatemala para la moneda de emisión en la fecha de emisión del DTE; y el resultado multiplicado por la casilla “Cantidad de Unidades Gravables”. Cuando la moneda de emisión es superior frente al dólar estadounidense.",
+            "mensaje": "Monto del Impuesto calculado incorrectamente para Cemento."
+        },
+        {
+            "codigo": "FEL_RCP403",
+            "validacion": "El valor de la casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”",
+            "mensaje": "Total, de Impuestos calculado incorrectamente para Cemento."
+        },
+        {
+            "codigo": "FEL_RCP404",
+            "validacion": "La casilla está presente en el XML.",
+            "mensaje": "Monto Gravable no debe estar presente para el impuesto Bebidas No Alcohólicas."
+        },
+        {
+            "codigo": "FEL_RCP405",
+            "validacion": "El contenido de la casilla no existe en el catálogo de unidades gravables.",
+            "mensaje": "Código de Unidad Gravable no existe en el catálogo del impuesto Bebidas No Alcohólicas."
+        },
+        {
+            "codigo": "FEL_RCP406",
+            "validacion": "La casilla no está presente en el XML",
+            "mensaje": "Cantidad de Unidades Gravables debe existir para el impuesto Bebidas No Alcohólicas."
+        },
+        {
+            "codigo": "FEL_RCP407",
+            "validacion": "Si el tipo de cambio consignado en el XML es “GTQ” y el contenido de esta casilla es diferente al producto (multiplicación) de las casillas siguientes:\r\n•\tImpuesto en Q sobre cada unidad gravable (de acuerdo al “Código de unidad gravable” que corresponda)\r\nCantidad de Unidades Gravables",
+            "mensaje": "Monto del Impuesto calculado incorrectamente para Bebidas No Alcohólicas."
+        },
+        {
+            "codigo": "FEL_RCP408",
+            "validacion": "Si la moneda de emisión del documento es diferente de “GTQ” y el contenido de esta casilla es diferente de:\r\na)\tEl valor del Impuesto en Q sobre cada unidad gravable (de acuerdo al “Código de unidad gravable” que corresponda) dividido entre el tipo de cambio del Banco de Guatemala en la fecha de emisión del DTE y el resultado multiplicarlo por la casilla “Cantidad de Unidades Gravables”. Cuando la moneda de emisión es inferior frente al dólar estadounidense.\r\nb)\tEl valor del Impuesto en GTQ sobre cada unidad gravable (de acuerdo al “Código de unidad gravable” que corresponda), divido entre el tipo de cambio del Banco de Guatemala para el dólar estadounidense en la fecha de emisión del DTE,  multiplicado por el tipo de cambio del Banco de Guatemala para la moneda de emisión en la fecha de emisión del DTE; y el resultado multiplicado por la casilla “Cantidad de Unidades Gravables”. Cuando la moneda de emisión es superior frente al dólar estadounidense.",
+            "mensaje": "Monto del Impuesto calculado incorrectamente para Bebidas No Alcohólicas."
+        },
+        {
+            "codigo": "FEL_RCP409",
+            "validacion": "El valor de la casilla “Total de Impuestos” es diferente a la sumatoria de las casillas “Monto del Impuesto”.",
+            "mensaje": "Total de Impuestos calculado incorrectamente para Bebidas No Alcohólicas."
+        },
+        {
+            "codigo": "FEL_RCP410",
+            "validacion": "La casilla está presente en el XML.",
+            "mensaje": "Monto Gravable no debe estar presente para el impuesto Tarifa Portuaria."
+        },
+        {
+            "codigo": "FEL_RCP411",
+            "validacion": "El contenido de la casilla no existe en el catálogo de unidades gravables.",
+            "mensaje": "Código de Unidad Gravable no existe en el catálogo del impuesto Tarifa Portuaria."
+        },
+        {
+            "codigo": "FEL_RCP412",
+            "validacion": "La casilla no está presente en el XML",
+            "mensaje": "Cantidad de Unidades Gravables debe existir para el impuesto Tarifa Portuaria."
         },
         {
             "codigo": "FEL_SEC500",
