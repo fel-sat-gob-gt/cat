@@ -104,5 +104,10 @@
             "DescripcionPersoneria": "CENTRO EDUCATIVO POR COOPERATIVA",
             "Rdon": "SI"
         }
+        {
+            "TipoPersoneria": "2635",
+            "DescripcionPersoneria": "FUNDACION",
+            "Rdon": "SI"
+        }
     ]
 }
