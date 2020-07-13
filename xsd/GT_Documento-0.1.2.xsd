@@ -1074,11 +1074,11 @@ b) Sirve para integrar al DTE información adicional de interés para la SAT.</x
 	</xs:simpleType>
 	<xs:simpleType name="TipoCorreoElectronico">
 		<xs:annotation>
-			<xs:documentation>Validador de correos electronicos</xs:documentation>
+			<xs:documentation>Validador de correos electronicos. Patron actualizado correos con _ </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="collapse"/>
-			<xs:pattern value="((\w[-+._\w]+@\w[-.\w]+\.\w[-.\w]+)(;?))*"/>
+			<xs:pattern value="([a-zA-Z\-0-9\.\_ñ$+=\!\#]+@)([a-zA-Zñ\-0-9\.\_]+)[;]*"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="NonNegativeFloat">
