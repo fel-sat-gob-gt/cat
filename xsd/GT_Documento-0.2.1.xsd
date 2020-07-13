@@ -1083,11 +1083,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TipoCorreoElectronico">
 		<xs:annotation>
-			<xs:documentation>Validador de correos electronicos DISCUTIR: (([a-zA-Z\-0-9\.]+@)([a-zA-Z\-0-9\.]+)[;]*)+$ </xs:documentation>
+			<xs:documentation>Patron de formato de correo, actualizado para permitir guin bajo y signo mas en emails. </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="collapse"/>
-			<xs:pattern value="((\w[-+._\w]+@\w[-.\w]+\.\w[-.\w]+)(;?))*"/>
+			<xs:pattern value="([a-zA-Z\-0-9\.\_ñ$+=\!\#]+@)([a-zA-Zñ\-0-9\.\_]+)[;]*"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="NonNegativeFloat">
