@@ -1,7 +1,7 @@
 {
     "Cabecera": {
         "Nombre": "FEL-CATALOGO-MENSAJES",
-        "Ultima Actualizacion": "5/05/20"
+        "Ultima Actualizacion": "14/09/20"
     },
     "Contenido": [
         {
@@ -111,7 +111,7 @@
         },
         {
             "codigo": "FEL_RCP312",
-            "validacion": "Se incluye la casilla “Exportación” y el\r\ncontenido de la casilla “Tipo de DTE” incluye uno de los textos: NABN,RDON,RECI,NCRE,NDEB,FESP",
+            "validacion": "Se incluye la casilla “Exportación” y el\r\ncontenido de la casilla “Tipo de DTE” incluye uno de los textos: NABN,RDON,RECI,FESP",
             "mensaje": "El Tipo de\r\nDocumento no puede utilizarse para una exportación"
         },
         {
@@ -476,7 +476,7 @@
         },
         {
             "codigo": "FEL_RCP386",
-            "validacion": "El tipo de DTE es diferente de RDON e incluye la casilla personeria.",
+            "validacion": "El tipo de DTE es diferente de: FACT, FCAM ó RDON e incluye la casilla personeria.",
             "mensaje": "El tipo de DTE no debe incluir la casilla personería."
         },
         {
@@ -608,6 +608,51 @@
             "codigo": "FEL_RCP412",
             "validacion": "La casilla no está presente en el XML",
             "mensaje": "Cantidad de Unidades Gravables debe existir para el impuesto Tarifa Portuaria."
+        },
+        {
+            "codigo": "FEL_RCP413",
+            "validacion": "Revisar",
+            "mensaje": ""
+        },
+        {
+            "codigo": "FEL_RCP414",
+            "validacion": "Se incluye la casilla Exportación, el Tipo de DTE es distinto de NDEB, NCRE; y no se incluye el complemento Exportaciones",
+            "mensaje": "Una exportación debe incluir el complemento correspondiente, para documentos distintos de NDEB y NCRE"
+        },
+        {
+            "codigo": "FEL_RCP415",
+            "validacion": "Se incluye la casilla”Exp”, el tipo de documento es “NCRE” o “NDEB” el documento referenciado según la casilla “Numero Autorizacion Documento Origen” en el complemento Referencias a las notas de crédito o débito incluido, no tiene la casilla Exp",
+            "mensaje": "Las notas de débito o crédito para un documento origen que no era exportación, no deben incluir la marca “Exp”."
+        },
+        {
+            "codigo": "FEL_RCP416",
+            "validacion": "No se incluye la casilla”Exp”, el tipo de documento es “NCRE” o “NDEB” y el documento referenciado según la casilla “Numero Autorizacion Documento Origen” en el complemento “Referencias a las notas de crédito o débito” incluido, si tiene la casilla “Exp”.",
+            "mensaje": "Las notas de débito o crédito para un documento origen que era exportación, deben incluir la marca “Exp”."
+        },
+        {
+            "codigo": "FEL_RCP417",
+            "validacion": "El texto de la casilla contiene un digito verificador inválido para un NIT.",
+            "mensaje": "NIT del tercero inválido."
+        },
+        {
+            "codigo": "FEL_RCP418",
+            "validacion": "El texto de la casilla no existe o no está activo en el Registro Tributario Unificado de la SAT.",
+            "mensaje": "NIT del tercero no está activo en el RTU."
+        },
+        {
+            "codigo": "FEL_RCP419",
+            "validacion": "El valor de la casilla es diferente del resultado de multiplicar el valor de la casilla “BaseImponible” por  el 12%.",
+            "mensaje": "MontoCobroIVA calculado incorrectamente según la BaseImponible."
+        },
+        {
+            "codigo": "FEL_RCP420",
+            "validacion": "El valor de la casilla es diferente de la suma de los valores de las casillas:\r\nMontoCobroDAI\r\nMontoCobroIVA\r\nMontoCobroOtros",
+            "mensaje": "Monto del Cobro Total calculado incorrectamente."
+        },
+        {
+            "codigo": "FEL_RCP421",
+            "validacion": "El contenido de la casilla, corresponde a un DTE que tiene asociada una Retención de IVA en el sistema Retenciones Web de la SAT, la cual coincide además en las casillas:\r\nNIT Emisor\r\nID del Receptor",
+            "mensaje": "El DTE a anular tiene una Retención de IVA en el sistema Retenciones Web de SAT."
         },
         {
             "codigo": "FEL_SEC500",
